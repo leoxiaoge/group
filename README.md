@@ -38,5 +38,5 @@ git push -u origin master
 ├─app.json              配置页面路由、导航条、选项卡等页面类信息，详见
 ├─app.wxss              公有样式文件
 ├─project.config.json   项目配置文件，配置应用名称、appid、版本等打包信息，详见
-└─sitemap.json          sitemap 配置，详见
+└─sitemap.json          sitemap 配置
 ```
