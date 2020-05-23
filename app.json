@@ -3,12 +3,59 @@
     "pages/index/index",
     "pages/logs/logs"
   ],
+  "subpackages": [{
+      "root": "pages/index",
+      "pages": [
+        "index/index"
+      ]
+    }
+  ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
   },
+  "tabBar": {
+    "color": "#a8a8a8",
+    "selectedColor": "#37bfc8",
+    "borderStyle": "black",
+    "list": [{
+        "pagePath": "pages/home/selfservice/index",
+        "text": "自助服务",
+        "iconPath": "static/selfservice.png",
+        "selectedIconPath": "static/selfserviceon.png"
+      },
+      {
+        "pagePath": "pages/home/store/index",
+        "text": "商城",
+        "iconPath": "static/store.png",
+        "selectedIconPath": "static/storeon.png"
+      },
+      {
+        "pagePath": "pages/order/index/index",
+        "text": "订单",
+        "iconPath": "static/order.png",
+        "selectedIconPath": "static/orderon.png"
+      },
+      {
+        "pagePath": "pages/home/user/index",
+        "text": "我的",
+        "iconPath": "static/user.png",
+        "selectedIconPath": "static/useron.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "cu-custom": "/components/custom/custom"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }
