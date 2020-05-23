@@ -4,13 +4,22 @@
 
 准备VS code，微信开发者工具
 
-**目录结构**
+**git命令**
 
-下面是整个项目的目录结构。
+```
+git pull
+git add ./
+git commit -m "commit"
+git push -u origin master
+```
+
+**组织结构**
+
+下面是整个项目的组织结构。
 
 ```
 ┌─components            存放小程序组件的目录，详见
-│  └─comp-a.vue         可复用的组件
+│  └─logo               可复用的组件
 ├─config                存放业务服务器API地址，详见
 │  └─api.js             服务器API文件，详见
 ├─lib                   存放第三方库目录，详见
@@ -22,7 +31,6 @@
 │  └─list
 │     └─list.vue        list页面
 ├─static                存放应用引用静态资源（如图片、视频等）的目录，详见
-│  ├─fonts              静态资源fonts文件，详见
 │  └─images             静态资源images文件，详见
 ├─utils                 存放公用js的目录，详见
 ├─.gitignore            git管理文件，详见
