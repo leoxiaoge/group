@@ -1,0 +1,47 @@
+<!--pages/home/select/select.wxml-->
+<view class="container">
+	<view class="select-">
+		<view>
+			<view>🔍</view>
+			<input placeholder="请输入小区名称"></input>
+		</view>
+		<view>
+			<button>搜索</button>
+		</view>
+	</view>
+	<view>
+		<view></view>
+		<view>
+			<image></image>
+			<text>重新定位</text>
+		</view>
+	</view>
+	<view>
+		<view>
+			<text>选择小区</text>
+		</view>
+		<view>
+			<radio-group bindchange="radioChange">
+				<label class="" wx:for="{{items}}" wx:key="{{item.value}}">
+					<view>
+						<view class="">
+							<radio value="{{item.value}}" checked="true" />
+						</view>
+						<view class="">{{item.name}}</view>
+					</view>
+					<view>
+					  <text>{{item.number}}</text>
+					</view>
+				</label>
+			</radio-group>
+		</view>
+	</view>
+	<view>
+		<view>
+		  <button>提交</button>
+		</view>
+		<view>
+		  <button>全国范围销售</button>
+		</view>
+	</view>
+</view>

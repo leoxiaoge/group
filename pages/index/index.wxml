@@ -1,13 +1,111 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+	<view class="header">
+		<view class="map" bindtap="selectTap">
+			<image class="map-icon" src="{{mapIcon}}" mode="widthFix"></image>
+			<text class="map-text">龙华阳关花园</text>
+			<image class="map-down" src="{{mapDown}}"></image>
+		</view>
+	</view>
+	<view class="navigation-grid">
+		<view class="navigation-grid-content">
+			<button class="navigation-grid-item" open-type="getUserInfo" wx:for="{{navigation}}" wx:for-item="item" wx:key="index">
+				<view class="navigation-grid-info-image">
+					<image class="navigation-grid-image" src="{{item.icon}}" mode="widthFix"></image>
+					<text class="navigation-grid-info" wx:if="{{item.dot}}">{{item.info}}</text>
+				</view>
+				<text class="navigation-grid-text">{{item.text}}</text>
+			</button>
+		</view>
+	</view>
+	<view class="content-empty">
+		<view class="content-empty-head">
+			<image class="content-empty-image" src="{{empty}}" mode="widthFix"></image>
+			<text class="content-empty-text">您所在的小区目前还没有团长哦！</text>
+		</view>
+		<view class="content-can">
+			<text class="content-can-text">您可以</text>
+		</view>
+		<view class="content-button">
+			<view class="content-invite-button">
+				<button class="invite-button" open-type="getUserInfo">邀请一个</button>
+			</view>
+			<view class="content-application-button">
+				<button class="application-button" open-type="getUserInfo">申请团长</button>
+			</view>
+		</view>
+	</view>
+	<view class="main-content">
+		<view class="main-list-item" wx:for="{{list}}" wx:for-item="item" wx:key="index">
+			<view class="main-list-head">
+				<view class="main-list-info">
+					<view class="main-list-user">
+						<image class="main-list-user-image" src="{{item.avatar}}" mode="widthFix"></image>
+						<text class="main-list-user-name">{{item.name}}</text>
+					</view>
+					<view class="main-list-status-time">
+						<text class="main-list-status">{{item.status}}</text>
+						<text class="main-list-time">{{item.time}}</text>
+					</view>
+				</view>
+				<view class="main-list-share">
+					<image class="main-list-share-image" src="{{share}}" mode="widthFix"></image>
+				</view>
+			</view>
+			<view class="main-list-show">
+				<swiper class="main-list-show-swiper" autoplay="{{autoplay}}" circular="{{circular}}" indicator-dots="{{indicatorDots}}" interval="13000" duration="1000" bindchange="swiperSecond" display-multiple-items="3">
+					<swiper-item wx:for="{{item.images}}" wx:for-item="elements" wx:for-index="i" wx:key="id">
+						<image class="main-show-image" src="{{elements}}" mode="aspectFill"></image>
+					</swiper-item>
+				</swiper>
+			</view>
+			<view class="main-list-label">
+				<block wx:for="{{item.label}}" wx:for-item="elements" wx:for-index="i" wx:key="index">
+					<text class="main-list-label-text">{{elements}}</text>
+				</block>
+			</view>
+			<view class="main-list-title">
+				<text class="main-list-title-text">{{item.title}}</text>
+			</view>
+			<view class="main-list-subtitle">
+				<text class="main-list-subtitle-text">{{item.subtitle}}</text>
+			</view>
+			<view class="main-list-footer">
+				<view class="main-list-participants">
+					<view class="main-list-participants-content">
+						<block wx:for="{{item.participants}}" wx:for-item="elements" wx:for-index="i" wx:key="index">
+							<image class="main-list-participants-image" src="{{elements}}" mode="widthFix"></image>
+						</block>
+					</view>
+				</view>
+				<view class="main-already">
+					<text class="main-already-text">已有</text>
+					<text class="main-already-number">128</text>
+					<text class="main-already-text">位邻居参团</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="page-section-spacing">
+		<scroll-view scroll-x="true" class="nav" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+			<block wx:for="{{nearbyList}}" wx:for-item="item" wx:key="index">
+				<view class="scroll-view-item">
+					<view class="nav-item">
+						<view class="nav-item-avatar">
+							<image class="nav-item-avatar-image" src="{{item.avatar}}" mode="aspectFill"></image>
+						</view>
+						<view class="nav-item-info">
+							<view class="nav-item-info-name">{{item.name}}</view>
+							<view class="nav-item-status-number">
+								<view class="nav-item-dot"></view>
+								<view class="nav-item-status">{{item.status}}</view>
+								<view class="nav-item-number">{{item.number}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</block>
+		</scroll-view>
+	</view>
+	<navigation-bar />
 </view>

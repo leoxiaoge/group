@@ -14,6 +14,34 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const navigateTo = (url) => {
+  wx.navigateTo({
+    url: url
+  })
+}
+
+const navigateBack = (delta) => {
+  wx.navigateBack({
+    delta: delta
+  });
+}
+
+const redirectTo = (url) => {
+  wx.redirectTo({
+    url: url
+  })
+}
+
+const switchTab = (url) => {
+  wx.switchTab({
+    url: url
+  })
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  navigateTo: navigateTo,
+  navigateBack: navigateBack,
+  redirectTo: redirectTo,
+  switchTab: switchTab
 }

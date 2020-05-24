@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "选择小区",
   "enablePullDownRefresh": true,
   "usingComponents": {}
 }

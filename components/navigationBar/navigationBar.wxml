@@ -1,0 +1,17 @@
+<!--components/navigationBar/navigationBar.wxml-->
+<view class="container">
+  <view wx:if="{{show}}">
+    <suggestions />
+  </view>
+  <view class="empty"></view>
+  <view class="navigation">
+    <button class="navigation-bar-button" bindtap="centerTap">
+      <image class="navigation-bar-image" src="{{center}}"></image>
+      <text class="navigation-bar-text">{{centerText}}</text>
+    </button>
+    <button class="navigation-bar-button" bindtap="suggestionsTap">
+      <image class="navigation-bar-image" src="{{suggestions}}"></image>
+      <text class="navigation-bar-text">{{suggestionsText}}</text>
+    </button>
+  </view>
+</view>
