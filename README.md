@@ -19,7 +19,8 @@ git push -u origin master
 
 ```
 ┌─components            存放小程序组件的目录，详见
-│  └─logo               可复用的组件
+│  ├─navigationBar      顶部导航组件
+│  └─suggestions        意见与反馈组件  
 ├─config                存放业务服务器API地址，详见
 │  └─api.js             服务器API文件，详见
 ├─lib                   存放第三方库目录，详见
