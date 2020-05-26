@@ -26,10 +26,11 @@ git push -u origin master
 │  ├─vant-weapp         第三方库组件目录，详见
 │  └─wxParse            第三方库富文本目录，详见
 ├─pages                 业务页面文件存放的目录（待开发）
-│  ├─index
-│  │  └─index.vue       index页面
-│  └─list
-│     └─list.vue        list页面
+│  ├─index              index页面
+│  ├─home               首页分包文件
+│  │  └─index           index页面
+│  └─cneter             个人中心分包文件
+│     └─index           index页面
 ├─static                存放应用引用静态资源（如图片、视频等）的目录，详见
 │  └─images             静态资源images文件，详见
 ├─utils                 存放公用js的目录，详见
