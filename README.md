@@ -103,4 +103,6 @@ util.request(api.GoodsList, data).then((response) => {
 
 2.不使用分号，项目统一不使用分号结尾；
 
-3.禁用行尾空格...
+3.禁用行尾空格;
+
+4.使用===，不推荐使用==；
