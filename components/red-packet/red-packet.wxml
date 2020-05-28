@@ -42,5 +42,5 @@
 	</view>
 	<view class="red-packet-close" catchtap="closeTap">
 		<image src="{{closeIcon}}"></image>
-	</view>
+	</view> 
 </view>

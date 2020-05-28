@@ -106,7 +106,7 @@ Page({
   // 分享事件
   shareTap: function () {
     this.setData({
-      shareShow: true
+      isShare: true
     })
   }
 })

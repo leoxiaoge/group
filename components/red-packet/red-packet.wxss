@@ -58,7 +58,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -60%);
   width: 560rpx;
   background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-4.png');
   border-radius: 20rpx;
@@ -118,7 +118,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -60%);
   width: 560rpx;
   background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-4.png');
   border-radius: 20rpx;
@@ -196,7 +196,7 @@
 .red-packet-close {
   position: absolute;
   left: 50%;
-  bottom: 12%;
+  bottom: 18%;
   transform: translate(-50%, 0);
 }
 
