@@ -1,27 +1,46 @@
 <!--components/red-packet/red-packet.wxml-->
-<view class="red-packet">
-  <view class="red-packet-layout {{ open ? 'red-packet-open' : '' }}" bind:tap="handleOpen">
-    <view class="red-packet-up" />
-    <view class="red-packet-middle" />
-    <view class="red-packet-content">
-      <view class="red-packet-scan" />
-      <view class="red-packet-tip">小美送红包</view>
-    </view>
-    <view class="red-packet-top" />
-    <view class="red-packet-bottom" />
-    <view class="red-packet-left" />
-    <view class="red-packet-right" />
-    <view class="red-money red-money-left1" />
-    <view class="red-money red-money-left2" />
-    <view class="red-money red-money-left3" />
-    <view class="red-money red-money-left4" />
-    <view class="red-money red-money-middle1" />
-    <view class="red-money red-money-middle2" />
-    <view class="red-money red-money-middle3" />
-    <view class="red-money red-money-middle4" />
-    <view class="red-money red-money-right1" />
-    <view class="red-money red-money-right2" />
-    <view class="red-money red-money-right3" />
-    <view class="red-money red-money-right4" />
-  </view>
+<view class="content" wx:if="{{show}}" bindtap="closeTap">
+	<view class="red-packet" catchtap="catchPacket">
+		<view class="red-packet-bg" wx:if="{{!open}}">
+			<view class="red-packet-sharer">
+				<image src="{{redPacketOpen}}" mode="widthFix"></image>
+				<text>我是小吃货</text>
+			</view>
+			<view class="red-packet-remark">团长发红包，试试就知道</view>
+			<view class="red-packet-open">
+				<button catchtap="handleOpen">
+					<image src="{{redPacketOpen}}" mode="widthFix"></image>
+				</button>
+			</view>
+		</view>
+		<view class="red-packet-y" wx:if="{{open}}">
+			<view class="red-packet-user">
+				<view class="userinfo">
+					<view class="userinfo-avatar">
+						<open-data type="userAvatarUrl"></open-data>
+					</view>
+					<view class="userinfo-name">
+						<open-data type="userNickName"></open-data>
+					</view>
+				</view>
+			</view>
+			<view class="red-packet-received">
+				<text>领到了团长的红包</text>
+			</view>
+			<view class="red-packet-money">
+				<text class="red-packet-money-number">12.5</text>
+				<text class="red-packet-money-unit">元</text>
+			</view>
+			<view class="red-packet-usefulness">
+				<text>下单立减红包金额</text>
+			</view>
+			<view class="red-packet-order">
+				<button catchtap="closeTap">马上下单</button>
+			</view>
+			<view class="red-packet-note">注：本红包只能下单减扣，不可提现</view>
+		</view>
+	</view>
+	<view class="red-packet-close" catchtap="closeTap">
+		<image src="{{closeIcon}}"></image>
+	</view>
 </view>

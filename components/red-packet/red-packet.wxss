@@ -16,7 +16,27 @@
     transform: rotateX(0);
   }
 }
-.red-packet {
+
+.userinfo {  
+  position: relative;   
+  color: #fff;  
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+}  
+  
+.userinfo-avatar {  
+  overflow:hidden;  
+  display: block;  
+  width: 88rpx;  
+  height: 88rpx;  
+  margin: 20rpx; 
+  border-radius: 50%;  
+  border: 2px solid #fff;  
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+}
+
+.content {
   position: fixed;
   top: 0;
   left: 0;
@@ -30,271 +50,157 @@
   background: rgba(0,0,0,0.60);
 }
 
-.red-packet .red-packet-layout {
+.red-packet {
   position: relative;
 }
 
-.red-packet .red-packet-layout .red-packet-up {
-  background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-2.png');
-  background-size: 490rpx 82rpx;
-  width: 490rpx;
-  height: 82rpx;
-  transform: rotateX(-90deg);
-  transform-origin: 50% 100%;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-packet-up {
-  animation: open-up 0.2s ease-in-out  0.2s 1 normal;
-  animation-fill-mode: forwards;
-}
-
-.red-packet .red-packet-layout .red-packet-middle {
-  background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-4.png');
-  background-size: 490rpx 462rpx;
-  width: 490rpx;
-  height: 462rpx;
-}
-
-.red-packet .red-packet-layout .red-packet-content {
-  background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-12.png');
-  background-size: 422rpx 428rpx;
-  width: 422rpx;
-  height: 428rpx;
+.red-packet-bg {
   position: absolute;
-  top: 84rpx;
-  left: 34rpx;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 560rpx;
+  background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-4.png');
+  border-radius: 20rpx;
+}
+
+.red-packet-sharer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 200rpx 0 20rpx 0;
 }
 
-.red-packet .red-packet-layout.red-packet-open .red-packet-content {
-  top: -40rpx;
-  transition: top 0.2s ease-in-out 0.2s;
+.red-packet-sharer image {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
 }
 
-.red-packet .red-packet-layout .red-packet-top {
-  background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-6.png');
-  background-size: 490rpx 546rpx;
-  width: 490rpx;
-  height: 546rpx;
+.red-packet-sharer text {
+  font-size: 36rpx;
+  line-height: 1.8;
+  color: #f6e9b5;
+  padding: 0 10rpx;
+}
+
+.red-packet-remark {
+  font-size: 36rpx;
+  line-height: 1.8;
+  color: #f6e9b5;
+  text-align: center;
+  margin: 0 0 200rpx 0;
+}
+
+.red-packet-open {
+  display: flex;
+  justify-content: center;
+  margin: 100rpx 0 120rpx 0;
+}
+
+.red-packet-open button {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  background-color: #ebcd9b;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.red-packet-open image {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+}
+
+.red-packet-y {
   position: absolute;
-  top: -116rpx;
-  left: 0;
-  z-index: 101;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 560rpx;
+  background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-4.png');
+  border-radius: 20rpx;
 }
 
-.red-packet .red-packet-layout.red-packet-open .red-packet-top {
-  transform-origin: 0 200rpx;
-  animation: open-top 0.2s ease-in-out  0s 1 normal;
-  animation-fill-mode: forwards;
+.red-packet-user {
+  margin: 100rpx 0 0 0; 
 }
 
-.red-packet .red-packet-layout .red-packet-bottom {
-  background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-8.png');
-  background-size: 490rpx 264rpx;
-  width: 490rpx;
-  height: 264rpx;
+.red-packet-received {
+  text-align: center;
+  margin: 20rpx 0 10rpx 0;
+}
+
+.red-packet-received text {
+  font-size: 36rpx;
+  line-height: 1.8;
+  color: #989898;
+}
+
+.red-packet-money {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 20rpx 0 20rpx 0;
+}
+
+.red-packet-money-number {
+  font-size: 120rpx;
+  line-height: 1;
+  color: #c3a370;
+}
+
+.red-packet-money-unit {
+  font-size: 36rpx;
+  line-height: 1.6;
+  padding: 0 10rpx;
+  color: #c3a370;
+}
+
+.red-packet-usefulness {
+  text-align: center;
+}
+
+.red-packet-usefulness text {
+  font-size: 36rpx;
+  line-height: 1.6;
+  color: #c3a370;
+}
+
+.red-packet-order {
+  margin: 60rpx 0 100rpx 0;
+}
+
+.red-packet-order button {
+  width: 80%;
+  font-size: 36rpx;
+  line-height: 2.6;
+  color: #fff;
+  background-color: #ff5c27;
+  border-radius: 10rpx;
+}
+
+.red-packet-note {
+  text-align: center;
+  margin: 10rpx 0 20rpx 0;
+}
+
+.red-packet-note text {
+  font-size: 18rpx;
+  line-height: 1.6;
+  color: #a3a3a3;
+}
+
+.red-packet-close {
   position: absolute;
-  top: 278rpx;
-  left: 0;
-  z-index: 100;
+  left: 50%;
+  bottom: 12%;
+  transform: translate(-50%, 0);
 }
 
-.red-packet .red-packet-layout.red-packet-open .red-packet-bottom {
-  background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-10.png');
-}
-
-.red-packet .red-packet-layout .red-packet-left {
-  background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-14.png');
-  background-size: 56rpx 60rpx;
-  width: 56rpx;
-  height: 60rpx;
-  position: absolute;
-  top: 288rpx;
-  left: 56rpx;
-}
-
-.red-packet .red-packet-layout .red-packet-right {
-  background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-16.png');
-  background-size: 68rpx 70rpx;
+.red-packet-close image {
   width: 68rpx;
-  height: 70rpx;
-  position: absolute;
-  top: 292rpx;
-  right: 80rpx;
-}
-
-.red-packet .red-packet-layout .red-money {
-  position: absolute;
-  background-image: url('https://gxm-ecommerce.oss-cn-shenzhen.aliyuncs.com/user_upload/rc-upload-1547213682422-18.png');
-  visibility: visible;
-  transition-property: top;
-  transition-duration: 1s;
-  transition-timing-function: ease-in-out;
-  top: 0;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-left1 {
-  background-size: 44rpx 32rpx;
-  width: 44rpx;
-  height: 32rpx;
-  left: 20rpx;
-  transform: rotate(10deg);
-  transition-delay: 0.1s;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-left1 {
-  top: 280rpx;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-left2 {
-  background-size: 33rpx 24rpx;
-  width: 33rpx;
-  height: 24rpx;
-  left: -10rpx;
-  transform: rotate(20deg);
-  transition-delay: 0.2s;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-left2 {
-  top: 250rpx;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-left3 {
-  background-size: 33rpx 24rpx;
-  width: 33rpx;
-  height: 24rpx;
-  left: 60rpx;
-  transform: rotate(5deg);
-  transition-delay: 0.1s;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-left3 {
-  top: 300rpx;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-left4 {
-  background-size: 33rpx 24rpx;
-  width: 33rpx;
-  height: 24rpx;
-  left: 90rpx;
-  transform: rotate(5deg);
-  transition-delay: 0.3s;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-left4 {
-  top: 320rpx;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-middle1 {
-  background-size: 90rpx 64rpx;
-  width: 90rpx;
-  height: 64rpx;
-  transition-delay: 0.2s;
-  left: 200rpx;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-middle1 {
-  top: 320rpx;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-middle2 {
-  background-size: 67rpx 48rpx;
-  width: 67rpx;
-  height: 48rpx;
-  left: 160rpx;
-  transition-delay: 0.3s;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-middle2 {
-  top: 322rpx;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-middle3 {
-  background-size: 56rpx 40rpx;
-  width: 56rpx;
-  height: 40rpx;
-  left: 120rpx;
-  transform: rotate(10deg);
-  transition-delay: 0.1s;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-middle3 {
-  top: 322rpx;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-middle4 {
-  background-size: 56rpx 40rpx;
-  width: 56rpx;
-  height: 40rpx;
-  left: 270rpx;
-  transition-delay: 0.4s;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-middle4 {
-  top: 322rpx;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-right1 {
-  background-size: 56rpx 40rpx;
-  width: 56rpx;
-  height: 40rpx;
-  right: 50rpx;
-  transform: rotate(-30deg);
-  transition-delay: 0.2s;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-right1 {
-  top: 300rpx;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-right2 {
-  background-size: 33rpx 24rpx;
-  width: 33rpx;
-  height: 24rpx;
-  right: 26rpx;
-  transform: rotate(-10deg);
-  transition-delay: 0.3s;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-right2 {
-  top: 280rpx;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-right3 {
-  background-size: 33rpx 24rpx;
-  width: 33rpx;
-  height: 24rpx;
-  right: 0;
-  transition-delay: 0.1s;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-right3 {
-  top: 260rpx;
-}
-
-.red-packet .red-packet-layout .red-money.red-money-right4 {
-  background-size: 44rpx 32rpx;
-  width: 44rpx;
-  height: 32rpx;
-  right: 96rpx;
-  transition-delay: 0.2s;
-}
-
-.red-packet .red-packet-layout.red-packet-open .red-money.red-money-right4 {
-  top: 280rpx;
-}
-
-.red-packet .red-packet-layout .red-packet-content .red-packet-scan {
-  background-image: url('https://img.baobeicang.com/user_upload/rc-upload-1539741270100-2.jpeg');
-  background-size: 200rpx 200rpx;
-  width: 200rpx;
-  height: 200rpx;
-}
-
-.red-packet .red-packet-layout .red-packet-content .red-packet-tip {
-  font-size: 26rpx;
-  margin: 50rpx;
+  height: 68rpx;
 }

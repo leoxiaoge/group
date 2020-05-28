@@ -109,6 +109,6 @@
 		</scroll-view>
 	</view>
 	<navigation-bar />
-	<!-- <red-packet /> -->
-	<share-popup show="{{shareShow}}" />
+	<red-packet show="{{isOpen}}" />
+	<share-popup show="{{isShare}}" />
 </view>

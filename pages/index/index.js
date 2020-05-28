@@ -13,7 +13,8 @@ Page({
     autoplay: true,
     indicatorDots: false,
     circular: true,
-    shareShow: false, // 分享组件显示或者隐藏
+    isOpen: true, // 红包组件是否显示
+    isShare: false, // 分享组件是否显示
     navigation: [{
       text: '全部订单', // 文字
       icon: '/static/images/all_orders.png', // 图标名称或图片链接

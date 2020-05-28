@@ -7,7 +7,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    show: {
+      type: Boolean,
+      value: false
+    }
   },
 
   /**
@@ -15,16 +18,32 @@ Component({
    */
   data: {
     open: false,
+    closeIcon: '/static/images/close_packet_icon.png',
+    redPacketOpen: '/static/images/red-packet-open.png'
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    handleOpen() {
+    // 处理冒泡事件
+    catchPacket () {
+      console.log(this.data.open)
+    },
+
+    // 打开红包事件
+    handleOpen () {
       audio.play()
       this.setData({ 
         open: true 
+      })
+    },
+
+    // 关闭
+    closeTap () {
+      let show = !this.data.show
+      this.setData({ 
+        show: show
       })
     }
   }
