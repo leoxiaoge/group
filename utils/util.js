@@ -63,7 +63,7 @@ export const processing = (api, data) => {
 }
 
 export const request = async (api, data) => {
-  let handle = await processing(api, data);
+  let handle = await processing(api, data)
   return new Promise((resolve, reject) => {
     wx.showNavigationBarLoading()
     wx.request({
@@ -73,7 +73,7 @@ export const request = async (api, data) => {
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
-      success: (res) => {
+      success: res => {
         if (res.statusCode === 200) {
           if (res.data.IsError) {
             if (res.data.ErrCode === 'Missing_Session') {
@@ -92,7 +92,7 @@ export const request = async (api, data) => {
           reject(res.errMsg)
         }
       },
-      fail: (err) => {
+      fail: err => {
         reject(err)
         showToast('网络出错，请稍后再试!')
       },
@@ -103,31 +103,31 @@ export const request = async (api, data) => {
   })
 }
 
-const navigateTo = (url) => {
+const navigateTo = url => {
   wx.navigateTo({
     url: url
   })
 }
 
-const navigateBack = (delta) => {
+const navigateBack = delta => {
   wx.navigateBack({
     delta: delta
-  });
+  })
 }
 
-const redirectTo = (url) => {
+const redirectTo = url => {
   wx.redirectTo({
     url: url
   })
 }
 
-const switchTab = (url) => {
+const switchTab = url => {
   wx.switchTab({
     url: url
   })
 }
 
-const showToast = (msg) => {
+const showToast = msg => {
   wx.showToast({
     title: msg,
     icon: 'none',
@@ -136,7 +136,7 @@ const showToast = (msg) => {
   })
 }
 
-const showErrorToast = (msg) => {
+const showErrorToast = msg => {
   wx.showToast({
     title: msg,
     image: '/static/images/icon_error.png',
@@ -144,6 +144,22 @@ const showErrorToast = (msg) => {
   })
 }
 
+const showModal = content => {
+  return new Promise((resolve, reject) => {
+    try {
+      wx.showModal({
+        content: content,
+        confirmColor: '#fe7f00',
+        success: (res) => {
+          resolve(res)
+        }
+      })
+    } catch (error) {
+      console.error(error)
+      reject(error)
+    }
+  })
+}
 
 module.exports = {
   formatTime: formatTime,
@@ -152,5 +168,6 @@ module.exports = {
   redirectTo: redirectTo,
   switchTab: switchTab,
   showToast: showToast,
-  showErrorToast: showErrorToast
+  showErrorToast: showErrorToast,
+  showModal: showModal
 }
