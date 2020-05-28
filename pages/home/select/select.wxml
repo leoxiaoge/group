@@ -1,47 +1,51 @@
 <!--pages/home/select/select.wxml-->
 <view class="container">
-	<view class="select-">
-		<view>
-			<view>🔍</view>
+	<view class="select-header" id="select-header">
+		<view class="select-input">
+			<view class="select-icon">
+				<image src="{{selectIcon}}" mode="aspectFit"></image>
+			</view>
 			<input placeholder="请输入小区名称"></input>
 		</view>
-		<view>
-			<button>搜索</button>
+		<view class="select-button">
+			<text bindtap="selectTap">搜索</text>
 		</view>
 	</view>
-	<view>
-		<view></view>
-		<view>
-			<image></image>
-			<text>重新定位</text>
+	<view class="select-locate" id="select-locate">
+		<view class="select-locate-text">{{locate}}</view>
+		<view class="select-re">
+			<image class="select-re-locate-icon" src="{{locateIcon}}" mode="widthFix"></image>
+			<text class="select-re-locate">重新定位</text>
 		</view>
 	</view>
-	<view>
-		<view>
-			<text>选择小区</text>
-		</view>
-		<view>
-			<radio-group bindchange="radioChange">
-				<label class="" wx:for="{{items}}" wx:key="{{item.value}}">
-					<view>
-						<view class="">
-							<radio value="{{item.value}}" checked="true" />
+	<view class="select-title" id="select-title">
+		<text class="select-title-text">选择小区</text>
+	</view>
+	<view class="select-content">
+		<scroll-view scroll-y="true" class="scroll-view" style="height:{{scrollHeight}}px">
+			<view class="select-radio-group">
+				<radio-group bindchange="radioChange">
+					<label class="select-label" wx:for="{{items}}" wx:key="index">
+						<view class="select-radio-name">
+							<view class="select-radio">
+								<radio value="{{item.value}}" color="#ff5c27" />
+							</view>
+							<view class="select-locate-name">{{item.name}}</view>
 						</view>
-						<view class="">{{item.name}}</view>
-					</view>
-					<view>
-					  <text>{{item.number}}</text>
-					</view>
-				</label>
-			</radio-group>
-		</view>
+						<view class="select-distance">
+							<text class="select-distance-text">{{item.distance}}</text>
+						</view>
+					</label>
+				</radio-group>
+			</view>
+		</scroll-view>
 	</view>
-	<view>
-		<view>
-		  <button>提交</button>
+	<view class="select-footer" id="select-footer">
+		<view class="select-submit">
+			<button>提交</button>
 		</view>
-		<view>
-		  <button>全国范围销售</button>
+		<view class="select-nationwide">
+			<button>全国范围销售</button>
 		</view>
 	</view>
 </view>

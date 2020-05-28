@@ -1,2 +1,75 @@
 <!--pages/home/join/join.wxml-->
-<text>pages/home/join/join.wxml</text>
+<view class="container">
+	<view class="jion">
+		<view class="main-content">
+			<view class="main-list-item" wx:for="{{list}}" wx:for-item="item" wx:key="index">
+				<view class="main-list-head">
+					<view class="main-list-info">
+						<view class="main-list-user">
+							<image class="main-list-user-image" src="{{item.avatar}}" mode="widthFix"></image>
+							<text class="main-list-user-name">{{item.name}}</text>
+						</view>
+						<view class="main-list-status-time">
+							<text class="main-list-status">{{item.status}}</text>
+							<text class="main-list-time">{{item.time}}</text>
+						</view>
+					</view>
+					<button class="main-list-share" open-type="share">
+						<image class="main-list-share-image" src="{{share}}" mode="widthFix"></image>
+					</button>
+				</view>
+				<view class="main-list-show">
+					<swiper class="main-list-show-swiper" autoplay="{{autoplay}}" circular="{{circular}}" indicator-dots="{{indicatorDots}}" interval="13000" duration="1000" bindchange="swiperSecond" display-multiple-items="3">
+						<swiper-item wx:for="{{item.images}}" wx:for-item="elements" wx:for-index="i" wx:key="id">
+							<image class="main-show-image" src="{{elements}}" mode="aspectFill"></image>
+						</swiper-item>
+					</swiper>
+				</view>
+				<view class="main-list-label">
+					<block wx:for="{{item.label}}" wx:for-item="elements" wx:for-index="i" wx:key="index">
+						<text class="main-list-label-text">{{elements}}</text>
+					</block>
+				</view>
+				<view class="main-list-title">
+					<text class="main-list-title-text">{{item.title}}</text>
+				</view>
+				<view class="main-list-subtitle">
+					<text class="main-list-subtitle-text">{{item.subtitle}}</text>
+				</view>
+				<view class="main-list-footer">
+					<view class="main-list-participants">
+						<view class="main-list-participants-content">
+							<block wx:for="{{item.participants}}" wx:for-item="elements" wx:for-index="i" wx:key="index">
+								<image class="main-list-participants-image" src="{{elements}}" mode="widthFix"></image>
+							</block>
+						</view>
+					</view>
+					<view class="main-already">
+						<text class="main-already-text">已有</text>
+						<text class="main-already-number">128</text>
+						<text class="main-already-text">位邻居参团</text>
+					</view>
+				</view>
+				<view class="main-shop">
+					<block wx:for="{{shop}}" wx:for-item="item" wx:key="index">
+						<view class="main-shop-item">
+							<view class="main-shop-title">{{item.title}}</view>
+							<view class="main-shop-price">¥{{item.price}}</view>
+						</view>
+						<view class="main-shop-format-number">
+							<view class="main-shop-format">{{item.subtitle}}</view>
+							<view class="main-shop-number">x{{item.number}}</view>
+						</view>
+					</block>
+				</view>
+        <view class="main-total">
+          <view class="main-total-content">
+            <text class="main-total-number">共{{item.number}}件商品</text>
+            <text class="main-total-text">合计：</text>
+            <text class="main-total-price">¥{{item.number}}</text>
+          </view>
+        </view>
+			</view>
+		</view>
+	</view>
+</view>

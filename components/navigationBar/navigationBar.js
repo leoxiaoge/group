@@ -15,9 +15,9 @@ Component({
   data: {
     show: false,
     centerText: '团长助理',
-    center: '/static/images/logo.png',
+    center: '/static/images/home.png',
     suggestionsText: '投诉与建议',
-    suggestions: 'http://idlefish-autoui.oss-cn-hangzhou.aliyuncs.com/aliyun_k8s%2Fai_image%2F3ee94c0b62fb6619e86f6173f1b70d70.png'
+    suggestions: '/static/images/feedback.png'
   },
 
   /**

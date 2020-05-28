@@ -2,8 +2,12 @@
 
 .container {
   box-sizing: border-box;
-  background-color: #f7f6f6;
+  background-color: #f6f6f6;
   font-family: PingFangSC-Light, helvetica, 'Heiti SC';
+}
+
+page {
+  background-color: #f6f6f6;
 }
 
 view,
@@ -44,12 +48,6 @@ button {
 
 button::after {
   border: none;
-}
-
-button:not([size='mini']) {
-  width: auto;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 image {

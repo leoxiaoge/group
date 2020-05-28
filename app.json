@@ -28,7 +28,8 @@
   },
   "usingComponents": {
     "navigation-bar": "/components/navigationBar/navigationBar",
-    "suggestions": "/components/suggestions/suggestions"
+    "suggestions": "/components/suggestions/suggestions",
+    "red-packet": "/components/red-packet/red-packet"
   },
   "networkTimeout": {
     "request": 10000,
@@ -37,6 +38,5 @@
     "downloadFile": 10000
   },
   "debug": false,
-  "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

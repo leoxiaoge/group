@@ -2,14 +2,14 @@
 <view class="container">
 	<view class="header">
 		<view class="map" bindtap="selectTap">
-			<image class="map-icon" src="{{mapIcon}}" mode="widthFix"></image>
+			<image class="map-icon" src="{{locateIcon}}" mode="widthFix"></image>
 			<text class="map-text">龙华阳关花园</text>
-			<image class="map-down" src="{{mapDown}}"></image>
+			<image class="map-down" src="{{dropDownIcon}}" mode="widthFix"></image>
 		</view>
 	</view>
 	<view class="navigation-grid">
 		<view class="navigation-grid-content">
-			<button class="navigation-grid-item" open-type="getUserInfo" wx:for="{{navigation}}" wx:for-item="item" wx:key="index">
+			<button class="navigation-grid-item" open-type="getUserInfo" wx:for="{{navigation}}" wx:for-item="item" wx:key="index" data-url="{{item.url}}" bindtap="navigationTap">
 				<view class="navigation-grid-info-image">
 					<image class="navigation-grid-image" src="{{item.icon}}" mode="widthFix"></image>
 					<text class="navigation-grid-info" wx:if="{{item.dot}}">{{item.info}}</text>
@@ -28,7 +28,8 @@
 		</view>
 		<view class="content-button">
 			<view class="content-invite-button">
-				<button class="invite-button" open-type="getUserInfo">邀请一个</button>
+				<!-- <button class="invite-button" open-type="getUserInfo">邀请一个</button> -->
+				<button class="invite-button" open-type="share">邀请一个</button>
 			</view>
 			<view class="content-application-button">
 				<button class="application-button" open-type="getUserInfo">申请团长</button>
@@ -48,9 +49,9 @@
 						<text class="main-list-time">{{item.time}}</text>
 					</view>
 				</view>
-				<view class="main-list-share">
+				<button class="main-list-share" bindtap="shareTap">
 					<image class="main-list-share-image" src="{{share}}" mode="widthFix"></image>
-				</view>
+				</button>
 			</view>
 			<view class="main-list-show">
 				<swiper class="main-list-show-swiper" autoplay="{{autoplay}}" circular="{{circular}}" indicator-dots="{{indicatorDots}}" interval="13000" duration="1000" bindchange="swiperSecond" display-multiple-items="3">
@@ -108,4 +109,6 @@
 		</scroll-view>
 	</view>
 	<navigation-bar />
+	<!-- <red-packet /> -->
+	<share-popup show="{{shareShow}}" />
 </view>

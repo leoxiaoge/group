@@ -50,20 +50,17 @@ page {
 }
 
 .navigation-grid-item {
-  display: inline-block;
+  display: block;
+  width: 20%;
   text-align: center;
+  margin: 0 auto;
   padding: 30rpx 0;
   background-color: #fff;
 }
 
-.navigation-grid button:not([size='mini']) {
-  width: 20%;
-  margin-left: 0;
-  margin-right: 0;
-}
-
 .navigation-grid-info-image {
   position: relative;
+  line-height: 1.8;
 }
 
 .navigation-grid-info {
@@ -97,8 +94,9 @@ page {
 .navigation-grid-text {
   display: block;
   font-size: 24rpx;
+  line-height: 24rpx;
   color: #6b6b6b;
-  padding: 4rpx 0 0 0;
+  padding: 0;
 }
 
 .content-empty {
@@ -136,6 +134,7 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 40rpx;
 }
 
 .content-button button {
@@ -151,18 +150,12 @@ page {
   letter-spacing: 3rpx;
 }
 
-.content-button button:not([size='mini']) {
-  width: auto;
-  margin-left: 0;
-  margin-right: 0;
-}
-
 .content-invite-button {
   margin: 0 20rpx;
 }
 
 .invite-button {
-  padding: 0 80rpx;
+  padding: 0 60rpx;
   background-color: #2fdcc9;
 }
 
@@ -171,7 +164,7 @@ page {
 }
 
 .application-button {
-  padding: 0 80rpx;
+  padding: 0 60rpx;
   background-color: #ff5c27;
 }
 
@@ -232,6 +225,8 @@ page {
 .main-list-share {
   display: flex;
   align-items: center;
+  background-color: #fff;
+  margin: 0;
   padding: 4rpx;
 }
 
@@ -287,7 +282,7 @@ page {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: 30rpx 0;
+  padding: 10rpx 0;
 }
 
 .main-list-participants {
@@ -332,7 +327,6 @@ page {
   line-height: 80rpx;
   font-size: 16px;
   white-space: nowrap;
-  z-index: 99;
 }
 
 .scroll-view-item {
@@ -387,9 +381,9 @@ page {
 }
 
 .nav-item-dot {
-  width: 16rpx;
-  height: 16rpx;
-  margin: 2rpx 0;
+  width: 10rpx;
+  height: 10rpx;
+  margin: 6rpx 0;
   border-radius: 100%;
   background-color: #ff0000;
 }

@@ -1,2 +1,58 @@
 <!--pages/home/order/order.wxml-->
-<text>pages/home/order/order.wxml</text>
+<view class="container">
+	<scroll-view class="scroll-switch" scroll-x="true">
+		<block wx:for="{{switchTab}}" wx:for-item="item" wx:key="index">
+			<view class="switch-item" bindtap="switchTap">
+				<view class="switch-item-content">
+					<text class="switch-item-title">{{item.title}}</text>
+					<text class="switch-item-info">{{item.info}}</text>
+				</view>
+				<view class="{{ showType == 0 ? 'switch-item-active' : ''}}"></view>
+			</view>
+		</block>
+	</scroll-view>
+	<view class="order-content">
+		<block wx:for="{{order}}" wx:for-item="item" wx:key="index">
+			<view class="order-content-item">
+				<view class="order-content-title">{{item.title}}</view>
+				<view class="order-content-item-date-status">
+					<view class="order-content-date">{{item.deliveryDate}}</view>
+					<view class="order-content-status">{{item.status}}</view>
+				</view>
+				<view class="order-content-child">
+					<block wx:for="{{item.list}}" wx:for-item="elements" wx:for-index="y" wx:key="y">
+						<view class="order-content-child-item">
+							<view class="order-content-child-images">
+								<image src="{{elements.img}}" mode="widthFix"></image>
+							</view>
+							<view class="order-content-child-content">
+								<view class="order-content-child-info">
+									<view class="order-content-child-first">
+										<view class="order-content-child-title">{{elements.title}}</view>
+										<view class="order-content-child-price">¥{{elements.price}}</view>
+									</view>
+									<view class="order-content-child-second">
+										<view class="order-content-child-specification">{{elements.specification}}</view>
+										<view class="order-content-child-number">x{{elements.number}}</view>
+									</view>
+								</view>
+								<view class="order-content-child-order">订单号 {{elements.orderNum}}</view>
+							</view>
+						</view>
+					</block>
+				</view>
+				<view class="order-content-date">下单时间：{{item.orderDate}}</view>
+				<view class="order-content-total">
+					<text class="order-content-item-text">共{{item.total}}件商品 合计</text>
+					<text class="order-content-item-price">¥{{item.price}}</text>
+				</view>
+				<view class="order-content-item-button">
+					<button class="order-content-button order-content-button">联系团长</button>
+          <button class="order-content-button order-content-button">取消订单</button>
+          <button class="order-content-button order-content-button">付款</button>
+					<button class="order-content-button order-content-active-button">确认收货</button>
+				</view>
+			</view>
+		</block>
+	</view>
+</view>

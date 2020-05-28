@@ -1,1 +1,167 @@
 /* pages/home/select/select.wxss */
+page {
+  background-color: #fff;
+}
+
+radio {
+  transform: scale(0.8);
+}
+
+.select-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-top: 2rpx solid #f6f6f6;
+  border-bottom: 2rpx solid #f6f6f6;
+  padding: 16rpx 30rpx;
+}
+
+.select-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #f6f6f6;
+  border-radius: 8rpx;
+  padding: 10rpx 10rpx;
+}
+
+.select-icon {
+  padding: 0;
+}
+
+.select-icon image {
+  display: flex;
+  align-items: center;
+  width: 44rpx;
+  height: 44rpx;
+  padding: 6rpx;
+}
+
+.select-input input {
+  width: 100%;
+  padding: 0 10rpx;
+}
+
+.select-button {
+  width: 56rpx;
+  margin: 0 0 0 10px;
+}
+
+.select-button text {
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #ff5c27;
+}
+
+.select-locate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+}
+
+.select-locate-text {
+  font-size: 32rpx;
+  line-height: 1.6;
+  color: #ff5c27;
+}
+
+.select-re {
+  display: flex;
+  align-items: center;
+}
+
+.select-re-locate-icon {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.select-re-locate {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #ff5c27;
+  padding: 0 10rpx;
+}
+
+.select-content {
+  background-color: #fff;
+}
+
+.select-title {
+  background-color: #f6f6f6;
+  padding: 20rpx 30rpx;
+}
+
+.select-title-text {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #7b7b7b;
+}
+
+.select-radio-group {
+  background-color: #fff;
+  padding: 0 30rpx;
+}
+
+.select-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #f6f6f6;
+  padding: 30rpx 0;
+}
+
+.select-label:last-child {
+  border-bottom: 2rpx solid #fff;
+}
+
+.select-radio-name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.select-locate-name {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #7b7b7b;
+}
+
+.select-distance {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #7b7b7b;
+}
+
+.select-distance-text {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #9a9a9a;
+}
+
+.select-footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+  padding: 30rpx 30rpx;
+}
+
+.select-submit button {
+  width: 320rpx;
+  color: #fff;
+  background-color: #e5e5e5;
+  border-radius: 100rpx;
+}
+
+.select-nationwide button {
+  width: 320rpx;
+  color: #fff;
+  background-color: #ff5c27;
+  border-radius: 100rpx;
+}

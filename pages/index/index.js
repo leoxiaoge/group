@@ -6,47 +6,48 @@ const api = require('../../config/api.js');
 
 Page({
   data: {
-    mapIcon: 'http://idlefish-autoui.oss-cn-hangzhou.aliyuncs.com/aliyun_k8s%2Fai_image%2F1fb93fe7c2d0552f7bca6ab8714ceb61.png',
-    mapDown: 'http://idlefish-autoui.oss-cn-hangzhou.aliyuncs.com/aliyun_k8s%2Fai_image%2F71d1634fc5081d28020952fa8e128a4e.png',
-    empty: 'http://idlefish-autoui.oss-cn-hangzhou.aliyuncs.com/aliyun_k8s%2Fai_image%2F9470827dd4e20a500f85d02789a9633d.png',
-    share: '/static/images/logo.png',
+    locateIcon: '/static/images/locate_icon.png',
+    dropDownIcon: '/static/images/drop_down.png',
+    empty: '/static/images/empty_home.png',
+    share: '/static/images/share.png',
     autoplay: true,
     indicatorDots: false,
     circular: true,
+    shareShow: false, // 分享组件显示或者隐藏
     navigation: [{
       text: '全部订单', // 文字
-      icon: 'http://idlefish-autoui.oss-cn-hangzhou.aliyuncs.com/aliyun_k8s%2Fai_image%2F3575651de53b0b56a8780e7354e4ec26.png', // 图标名称或图片链接
+      icon: '/static/images/all_orders.png', // 图标名称或图片链接
       dot: true, // 是否显示图标右上角小红点
       info: '99', // 图标右上角徽标的内容
-      url: '', // 点击后跳转的链接地址
+      url: '/pages/home/order/order', // 点击后跳转的链接地址
       linkType: 'navigateTo' // 链接跳转类型，可选值为 redirectTo switchTab reLaunch
     }, {
       text: '待付款',
-      icon: '/static/images/logo.png',
+      icon: '/static/images/pending_payment.png',
       dot: false,
       info: '99',
-      url: '',
+      url: '/pages/home/order/order',
       linkType: 'navigateTo'
     }, {
       text: '待收货',
-      icon: '/static/images/logo.png',
+      icon: '/static/images/to_receipt.png',
       dot: false,
       info: '99',
-      url: '',
+      url: '/pages/home/order/order',
       linkType: 'navigateTo'
     }, {
       text: '我的参团',
-      icon: '/static/images/logo.png',
+      icon: '/static/images/my_jion.png',
       dot: false,
       info: '99',
-      url: '',
+      url: '/pages/home/join/join',
       linkType: 'navigateTo'
     }, {
       text: '我要开团',
-      icon: '/static/images/logo.png',
+      icon: '/static/images/to_application.png',
       dot: false,
       info: '99',
-      url: '',
+      url: '/pages/home/application/application',
       linkType: 'navigateTo'
     }],
 
@@ -88,7 +89,23 @@ Page({
   onLoad: function () {
 
   },
+
+  // 选择小区
   selectTap: function () {
-    util.navigateTo('../home/select/select')
+    util.navigateTo('/pages/home/select/select')
+  },
+
+  // 菜单导航
+  navigationTap: function (e) {
+    console.log(e)
+    let url = e.currentTarget.dataset.url
+    util.navigateTo(url)
+  },
+
+  // 分享事件
+  shareTap: function () {
+    this.setData({
+      shareShow: true
+    })
   }
 })

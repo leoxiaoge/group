@@ -1,4 +1,6 @@
 {
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "share-popup": "/components/share-popup/share-popup"
+  }
 }

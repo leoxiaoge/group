@@ -1,0 +1,18 @@
+<!--components/share-popup/share-popup.wxml-->
+<view class="content" bindtap="popupTap" wx:if="{{show}}">
+  <view class="share-content">
+    <view class="share-main">
+      <button class="share-wechat" open-type="share">
+        <image src="{{wechat}}" mode="widthFix"></image>
+        <view class="share-wechat-text">分享给好友</view>
+      </button>
+      <button class="share-poster" catchtap="posterTap">
+        <image src="{{poster}}" mode="widthFix"></image>
+        <view class="share-poster-text">保存海报</view>
+      </button>
+    </view>
+    <view class="share-cancel" catchtap="popupTap">
+      <button>取消</button>
+    </view>
+  </view>
+</view>
