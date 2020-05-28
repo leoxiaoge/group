@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-    const updateManager = wx.getUpdateManager();
+    const updateManager = wx.getUpdateManager()
     wx.getUpdateManager().onUpdateReady(() => {
       wx.showModal({
         title: '更新提示',
