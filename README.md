@@ -81,9 +81,35 @@ util.request(api.GoodsList, data).then((response) => {
 })
 ```
 
+## 3.数组遍历
+
+推荐使用
+
+```
+Array.map(item => {
+  console.log(item)
+}) 
+```
+
+或者使用
+
+```
+Array.forEach(item => {
+  console.log(item)
+})
+```
+
+不推荐使用
+
+```
+for(let i = 0; i < Array.length; i++) {
+  console.log(i)
+}
+```
 
 
-### 3.ECMAScript规范
+
+### 4.ECMAScript规范
 
 ```
     'indent': ['error', 2], // 强制使用一致的缩进
