@@ -1,5 +1,5 @@
 <!--components/share-popup/share-popup.wxml-->
-<view class="content" bindtap="popupTap" wx:if="{{show}}">
+<view class="content" wx:if="{{show}}" bindtap="popupTap" catchtouchmove="preventdefault">
   <view class="share-content">
     <view class="share-main">
       <button class="share-wechat" open-type="share">

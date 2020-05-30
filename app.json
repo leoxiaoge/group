@@ -10,7 +10,10 @@
         "select/select",
         "order/order",
         "join/join",
-        "application/application"
+        "application/application",
+        "applyUpload/applyUpload",
+        "applyFill/applyFill",
+        "applyAudit/applyAudit"
       ]
     },
     {

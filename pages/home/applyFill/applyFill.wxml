@@ -1,0 +1,22 @@
+<!--pages/home/applyFill/applyFill.wxml-->
+<view class="container">
+	<view class="steps">
+		<view class="steps-item">
+			<view class="steps-number steps-number-active">1</view>
+			<view class="steps-text steps-one-text">上传身份证</view>
+		</view>
+		<view class="steps-dashed"></view>
+		<view class="steps-item">
+			<view class="steps-number">2</view>
+			<view class="steps-text steps-two-text">填写资料</view>
+		</view>
+		<view class="steps-dashed"></view>
+		<view class="steps-item">
+			<view class="steps-number">3</view>
+			<view class="steps-text steps-three-text">等待审核</view>
+		</view>
+	</view>
+	<view>
+    
+	</view>
+</view>

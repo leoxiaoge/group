@@ -22,6 +22,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    // 处理冒泡事件，禁止滚动
+    preventdefault () {
+      console.log('冒泡事件')
+    },
     // 显示或者隐藏事件
     popupTap () {
       let show = !this.data.show

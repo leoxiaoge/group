@@ -28,7 +28,12 @@ Component({
   methods: {
     // 处理冒泡事件
     catchPacket () {
-      console.log(this.data.open)
+      console.log('冒泡事件')
+    },
+
+    // 冒泡事件，禁止滚动
+    preventdefault () {
+      console.log('冒泡事件')
     },
 
     // 打开红包事件

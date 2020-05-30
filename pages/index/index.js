@@ -48,7 +48,7 @@ Page({
       icon: '/static/images/to_application.png',
       dot: false,
       info: '99',
-      url: '/pages/home/application/application',
+      url: '/pages/home/applyUpload/applyUpload',
       linkType: 'navigateTo'
     }],
 
