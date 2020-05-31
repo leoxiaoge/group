@@ -32,7 +32,7 @@
 				<button class="invite-button" open-type="share">邀请一个</button>
 			</view>
 			<view class="content-application-button">
-				<button class="application-button" open-type="getUserInfo">申请团长</button>
+				<button class="application-button" open-type="getUserInfo" bindtap="applyTap">申请团长</button>
 			</view>
 		</view>
 	</view>
@@ -40,7 +40,7 @@
 		<view class="main-list-item" wx:for="{{list}}" wx:for-item="item" wx:key="index">
 			<view class="main-list-head">
 				<view class="main-list-info">
-					<view class="main-list-user">
+					<view class="main-list-user" catchtap="userTap">
 						<image class="main-list-user-image" src="{{item.avatar}}" mode="widthFix"></image>
 						<text class="main-list-user-name">{{item.name}}</text>
 					</view>
@@ -72,10 +72,12 @@
 				<text class="main-list-subtitle-text">{{item.subtitle}}</text>
 			</view>
 			<view class="main-list-footer">
-				<view class="main-list-participants">
+				<view class="main-list-participants" style="width: {{item.participants.length * 32 + 4}}rpx">
 					<view class="main-list-participants-content">
 						<block wx:for="{{item.participants}}" wx:for-item="elements" wx:for-index="i" wx:key="index">
-							<image class="main-list-participants-image" src="{{elements}}" mode="widthFix"></image>
+							<view class="main-list-participants-item" style="left: {{ 30 * i}}rpx;">
+								<image class="main-list-participants-image" src="{{elements}}" mode="aspectFit"></image>
+							</view>
 						</block>
 					</view>
 				</view>
@@ -109,6 +111,6 @@
 		</scroll-view>
 	</view>
 	<navigation-bar />
-	<red-packet show="{{isOpen}}" />
+	<red-packet show="{{!isOpen}}" />
 	<share-popup show="{{isShare}}" />
 </view>

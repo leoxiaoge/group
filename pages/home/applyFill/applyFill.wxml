@@ -1,22 +1,116 @@
 <!--pages/home/applyFill/applyFill.wxml-->
 <view class="container">
-	<view class="steps">
-		<view class="steps-item">
-			<view class="steps-number steps-number-active">1</view>
-			<view class="steps-text steps-one-text">上传身份证</view>
+	<apply-steps active="{{active}}" />
+	<view class="fill">
+		<view class="fill-piece">
+			<view class="fill-title">
+				<text class="fill-tag">*</text>
+				<text class="fill-title-text">手机号码（与微信绑定一致）</text>
+			</view>
+			<view class="fill-region">
+				<input placeholder="请填写手机号码"></input>
+				<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+			</view>
 		</view>
-		<view class="steps-dashed"></view>
-		<view class="steps-item">
-			<view class="steps-number">2</view>
-			<view class="steps-text steps-two-text">填写资料</view>
+		<view class="fill-piece">
+			<view class="fill-title">
+				<text class="fill-tag">*</text>
+				<text class="fill-title-text">团队名称</text>
+			</view>
+			<view class="fill-region">
+				<input placeholder="请填写团队名称"></input>
+			</view>
 		</view>
-		<view class="steps-dashed"></view>
-		<view class="steps-item">
-			<view class="steps-number">3</view>
-			<view class="steps-text steps-three-text">等待审核</view>
+		<view class="fill-piece">
+			<view class="fill-title">
+				<text class="fill-tag">*</text>
+				<text class="fill-title-text">创建人姓名</text>
+			</view>
+			<view class="fill-region">
+				<input placeholder="请填写创建人姓名"></input>
+			</view>
+		</view>
+		<view class="fill-piece">
+			<view class="fill-title">
+				<text class="fill-tag">*</text>
+				<text class="fill-title-text">电子邮箱</text>
+			</view>
+			<view class="fill-region">
+				<input placeholder="请填写电子邮箱"></input>
+			</view>
+		</view>
+		<view class="fill-piece">
+			<view class="fill-title">
+				<text class="fill-tag">*</text>
+				<text class="fill-title-text">身份证号</text>
+			</view>
+			<view class="fill-region">
+				<input placeholder="请填写身份证号"></input>
+			</view>
+		</view>
+		<view class="fill-piece">
+			<view class="fill-title">
+				<text class="fill-tag">*</text>
+				<text class="fill-title-text">身份证有效期</text>
+			</view>
+			<view class="fill-region">
+				<input placeholder="请选择身份证有效期"></input>
+				<image class="fill-arrow" src="{{arrowIcon}}" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="fill-piece">
+			<view class="fill-title">
+				<text class="fill-tag">*</text>
+				<text class="fill-title-text">身份证有效期</text>
+			</view>
+			<view class="fill-region fill-region-date">
+				<view class="fill-date">
+					<view class="fill-date-icon">
+						<image class="fill-date-image" src="{{dateIcon}}" mode="widthFix"></image>
+					</view>
+					<picker mode="date" value="{{startDate}}" end="{{endDate}}" bindchange="bindStartDateChange">
+						<input class="fill-date-text" wx:if="{{!startDate}}" placeholder="生效日期" disabled="true"></input>
+						<view class="picker fill-date-text">
+							{{startDate}}
+						</view>
+					</picker>
+				</view>
+				<view class="fill-date">
+					<view class="fill-date-icon">
+						<image class="fill-date-image" src="{{dateIcon}}" mode="widthFix"></image>
+					</view>
+					<picker mode="date" value="{{endDate}}" start="{{startDate}}" bindchange="bindEndDateChange">
+						<input class="fill-date-text" wx:if="{{!endDate}}" placeholder="到期日期" disabled="true"></input>
+						<view class="picker fill-date-text">
+							{{endDate}}
+						</view>
+					</picker>
+				</view>
+			</view>
+		</view>
+		<view class="fill-piece">
+			<view class="fill-title">
+				<text class="fill-tag">*</text>
+				<text class="fill-title-text">选择小区（团长所经营的小区）</text>
+			</view>
+			<view class="fill-region">
+				<input placeholder="请选择" disabled="true"></input>
+				<image class="fill-arrow" src="{{arrowIcon}}" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="fill-piece-item" wx:for="{{list}}" wx:for-item="item" wx:key="index">
+			<view class="fill-locate">
+				<image class="fill-locate-image" src="{{locateIcon}}" mode="widthFix"></image>
+				<text class="fill-locate-text">{{item.name}}</text>
+			</view>
+			<view class="fill-locate">
+				<text class="fill-locate-text">{{item.locate}}</text>
+			</view>
+		</view>
+		<view class="empty"></view>
+		<view class="fill-submit">
+			<button bindtap="submitTap">下一步</button>
 		</view>
 	</view>
-	<view>
-    
-	</view>
+	<navigation-bar />
 </view>

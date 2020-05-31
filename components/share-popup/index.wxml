@@ -1,4 +1,4 @@
-<!--components/share-popup/share-popup.wxml-->
+<!--components/share-popup/index.wxml-->
 <view class="content" wx:if="{{show}}" bindtap="popupTap" catchtouchmove="preventdefault">
   <view class="share-content">
     <view class="share-main">

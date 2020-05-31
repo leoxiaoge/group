@@ -1,11 +1,30 @@
 // pages/home/applyFill/applyFill.js
+const util = require('../../../utils/util.js')
+const api = require('../../../config/api.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    active: 2,
+    arrowIcon: '/static/images/arrow_icon.png',
+    dateIcon: '/static/images/date_icon.png',
+    locateIcon: '/static/images/locate_icon.png',
+    startDate: '',
+    endDate: '',
 
+    list: [{
+      name: '万科鲸鱼小区',
+      locate: '深圳市龙华区小点声001号'
+    }, {
+      name: '万科鲸鱼小区',
+      locate: '深圳市龙华区小点声001号'
+    }, {
+      name: '万科鲸鱼小区',
+      locate: '深圳市龙华区小点声001号'
+    }]
   },
 
   /**
@@ -27,6 +46,27 @@ Page({
    */
   onShow: function () {
 
+  },
+
+  // 开始时间选择器
+  bindStartDateChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      startDate: e.detail.value
+    })
+  },
+  
+  // 结束时间选择器
+  bindEndDateChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      endDate: e.detail.value
+    })
+  },
+
+  // 下一步
+  submitTap: function () {
+    util.navigateTo('/pages/home/applyAudit/applyAudit')
   },
 
   /**

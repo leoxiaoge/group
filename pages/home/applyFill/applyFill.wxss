@@ -1,53 +1,124 @@
 /* pages/home/applyFill/applyFill.wxss */
-.steps {
+.fill {
+  background-color: #fff;
+  padding: 30rpx 30rpx;
+}
+
+.fill-piece {
+  border-bottom: 2rpx solid #f7f7f7;
+  padding: 12rpx 0;
+}
+
+.fill-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.fill-tag {
+  font-size: 24rpx;
+  color: #ff0000;
+  padding: 0 8rpx 0 0;
+}
+
+.fill-title-text {
+  font-size: 24rpx;
+  line-height: 1.8;
+  color: #a9a9a9;
+}
+
+.fill-region {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fill-region input {
+  color: #7f7f7f;
+  font-size: 36rpx;
+  line-height: 1.6;
+  padding: 8rpx 20rpx;
+}
+
+.fill-region button {
+  height: 60rpx;
+  font-size: 24rpx;
+  line-height: 60rpx;
+  color: #ff0000;
+  background-color: #fff;
+  border: 2rpx solid #ff5c27;
+  border-radius: 100rpx;
+  margin: 0;
+}
+
+.fill-arrow {
+  width: 18rpx;
+  height: 18rpx;
+}
+
+.fill-region-date {
+  padding: 0 20rpx;
+}
+
+.fill-date {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%;
+}
+
+.fill-date-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40rpx 30rpx 80rpx 30rpx;
-  position: relative;
 }
 
-.steps-item {
-  text-align: center;
+.fill-date-image {
+  width: 36rpx;
+  height: 36rpx;
 }
 
-.steps-number {
-  width: 80rpx;
-  height: 80rpx;
-  line-height: 80rpx;
+.fill-date-text {
   font-size: 36rpx;
-  color: #fff;
-  text-align: center;
-  border-radius: 50%;
-  background-color: #cdcdcd;
+  line-height: 1.6;
+  color: #7f7f7f;
+  padding: 0 12rpx;
 }
 
-.steps-number-active {
-  background-color: #ff5c27;
+.fill-piece-item {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 10rpx 20rpx;
 }
 
-.steps-dashed {
-  width: 160rpx;
-  border: 2rpx dashed #cdcdcd;
-  margin: 0 20rpx;
+.fill-locate {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.steps-text {
-  position: absolute;
+.fill-locate-image {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.fill-locate-text {
   font-size: 24rpx;
-  line-height: 1.8;
-  color: #9a9a9a;
-  margin: 10rpx 0 0 0;
+  line-height: 1.6;
+  color: #7f7f7f;
+  padding: 0 8rpx;
 }
 
-.steps-one-text {
-  left: 1%;
+.fill-submit {
+  margin: 20rpx 0 0 0;
 }
 
-.steps-two-text {
-  left: 44%;
-}
-
-.steps-three-text {
-  left: 84%;
+.fill-submit button {
+  height: 80rpx;
+  font-size: 36rpx;
+  line-height: 80rpx;
+  color: #fff;
+  background-color: #ff5c27;
+  border-radius: 100rpx;
 }

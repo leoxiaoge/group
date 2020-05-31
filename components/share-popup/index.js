@@ -1,4 +1,4 @@
-// components/share-popup/share-popup.js
+// components/share-popup/index.js
 Component({
   /**
    * 组件的属性列表

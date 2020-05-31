@@ -1,4 +1,4 @@
-// components/suggestions/suggestions.js
+// components/suggestions/index.js
 Component({
   /**
    * 组件的属性列表

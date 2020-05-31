@@ -1,4 +1,4 @@
-/* components/red-packet/red-packet.wxss */
+/* components/red-packet/index.wxss */
 @keyframes open-top {
   0% {
     transform: rotateX(0);

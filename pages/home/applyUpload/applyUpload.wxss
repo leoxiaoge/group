@@ -1,53 +1,49 @@
 /* pages/home/applyUpload/applyUpload.wxss */
-.steps {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 40rpx 30rpx 80rpx 30rpx;
+.upload {
+  background-color: #fff;
+  padding: 30rpx 30rpx 30rpx 30rpx;
+}
+
+.upload-user {
+  text-align: center;
+  margin: 80rpx 0 0 0;
+}
+
+.upload-user-info {
   position: relative;
 }
 
-.steps-item {
-  text-align: center;
+.upload-user-info-card {
+  width: 400rpx;
+  height: 280rpx;
 }
 
-.steps-number {
-  width: 80rpx;
-  height: 80rpx;
-  line-height: 80rpx;
-  font-size: 36rpx;
-  color: #fff;
-  text-align: center;
-  border-radius: 50%;
-  background-color: #cdcdcd;
-}
-
-.steps-number-active {
-  background-color: #ff5c27;
-}
-
-.steps-dashed {
-  width: 160rpx;
-  border: 2rpx dashed #cdcdcd;
-  margin: 0 20rpx;
-}
-
-.steps-text {
+.upload-user-info-camera {
   position: absolute;
-  font-size: 24rpx;
-  line-height: 1.8;
-  color: #9a9a9a;
-  margin: 10rpx 0 0 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 160rpx;
 }
 
-.steps-one-text {
-  left: 1%;
+.upload-card-text {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #737373;
 }
 
-.steps-two-text {
-  left: 44%;
+.upload-submit {
+  margin: 0 30rpx;
 }
 
-.steps-three-text {
-  left: 84%;
+.upload-submit button {
+  width: 90%;
+  height: 80rpx;
+  font-size: 36rpx;
+  line-height: 80rpx;
+  color: #fff;
+  background-color: #ff5c27;
+  border-radius: 40rpx;
+  margin: 0;
 }

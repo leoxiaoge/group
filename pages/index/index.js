@@ -62,7 +62,7 @@ Page({
       title: '澳洲进口牛尾巴 入口即化 1500g/份',
       subtitle: '牛排，或称牛扒，是块状的牛肉，是西餐中最常见的食物之一。是西餐中最常见的食物之一。',
       number: 128,
-      participants: ['/static/images/logo.png', '/static/images/logo.png', '/static/images/logo.png']
+      participants: ['/static/images/my_jion.png', '/static/images/logo.png', '/static/images/logo.png']
     }],
     nearbyList: [{
       avatar: '/static/images/logo.png',
@@ -108,5 +108,15 @@ Page({
     this.setData({
       isShare: true
     })
+  },
+
+  // 申请团长
+  applyTap: function () {
+    util.navigateTo('/pages/home/applyFill/applyFill')
+  },
+
+  // 用户的团购
+  userTap: function () {
+    util.navigateTo('/pages/home/myJoin/myJoin')
   }
 })

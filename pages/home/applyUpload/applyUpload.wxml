@@ -1,32 +1,28 @@
 <!--pages/home/applyUpload/applyUpload.wxml-->
 <view class="container">
-	<view class="steps">
-		<view class="steps-item">
-			<view class="steps-number steps-number-active">1</view>
-			<view class="steps-text steps-one-text">上传身份证</view>
+	<apply-steps active="{{active}}" />
+	<view class="upload">
+		<view class="upload-user">
+			<view class="upload-user-info">
+				<image class="upload-user-info-card" src="{{positiveCard}}" mode="widthFix"></image>
+				<view>
+					<image class="upload-user-info-camera" src="{{cameraIcon}}" mode="widthFix"></image>
+				</view>
+			</view>
+			<view class="upload-card-text">上传头像面</view>
 		</view>
-		<view class="steps-dashed"></view>
-		<view class="steps-item">
-			<view class="steps-number">2</view>
-			<view class="steps-text steps-two-text">填写资料</view>
-		</view>
-		<view class="steps-dashed"></view>
-		<view class="steps-item">
-			<view class="steps-number">3</view>
-			<view class="steps-text steps-three-text">等待审核</view>
+		<view class="upload-user">
+			<view class="upload-user-info">
+				<image class="upload-user-info-card" src="{{reverseCard}}" mode="widthFix"></image>
+				<view>
+					<image class="upload-user-info-camera" src="{{cameraIcon}}" mode="widthFix"></image>
+				</view>
+			</view>
+			<view class="upload-card-text">上传国徽面</view>
 		</view>
 	</view>
-	<view>
-    <view>
-      <view></view>
-      <view>上传头像面</view>
-    </view>
-    <view>
-      <view></view>
-      <view>上传国徽面</view>
-    </view>
+	<view class="upload-submit">
+		<button bindtap="submitTap">提交</button>
 	</view>
-  <view>
-    <button>提交</button>
-  </view>
+	<navigation-bar />
 </view>

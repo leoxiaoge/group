@@ -1,0 +1,65 @@
+/* components/apply-steps/index.wxss */
+.steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f7f7;
+  padding: 40rpx 30rpx 80rpx 30rpx;
+  position: relative;
+}
+
+.steps-item {
+  text-align: center;
+}
+
+.steps-number {
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #cdcdcd;
+}
+
+.steps-number-active {
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #ff5c27;
+}
+
+.steps-dashed {
+  width: 160rpx;
+  border: 2rpx dashed #cdcdcd;
+  margin: 0 20rpx;
+}
+
+.steps-dashed-active {
+  border: 2rpx dashed #ff5c27;
+}
+
+.steps-text {
+  position: absolute;
+  font-size: 24rpx;
+  line-height: 1.8;
+  color: #9a9a9a;
+  margin: 10rpx 0 0 0;
+}
+
+.steps-one-text {
+  left: 5%;
+}
+
+.steps-two-text {
+  left: 43.5%;
+}
+
+.steps-three-text {
+  left: 81.5%;
+}

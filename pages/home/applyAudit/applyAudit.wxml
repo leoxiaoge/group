@@ -1,22 +1,16 @@
 <!--pages/home/applyAudit/applyAudit.wxml-->
 <view class="container">
-	<view class="steps">
-		<view class="steps-item">
-			<view class="steps-number steps-number-active">1</view>
-			<view class="steps-text steps-one-text">上传身份证</view>
+	<apply-steps active="{{active}}" />
+	<view class="audit">
+	  <view class="audit-submitted">
+		  <text class="audit-submitted-text">资料已提交审核中</text>
 		</view>
-		<view class="steps-dashed"></view>
-		<view class="steps-item">
-			<view class="steps-number">2</view>
-			<view class="steps-text steps-two-text">填写资料</view>
+		<view class="audit-passed">
+		  <image src="{{passedIcon}}" mode=""></image>
+			<view class="audit-passed-text">审核通过</view>
+			<view class="audit-center">
+			  <button bindtap="centerTap">进入团长中心</button>
+			</view>
 		</view>
-		<view class="steps-dashed"></view>
-		<view class="steps-item">
-			<view class="steps-number">3</view>
-			<view class="steps-text steps-three-text">等待审核</view>
-		</view>
-	</view>
-	<view>
-    
 	</view>
 </view>

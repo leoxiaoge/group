@@ -37,10 +37,12 @@
 					<text class="main-list-subtitle-text">{{item.subtitle}}</text>
 				</view>
 				<view class="main-list-footer">
-					<view class="main-list-participants">
+					<view class="main-list-participants" style="width: {{item.participants.length * 32 + 4}}rpx">
 						<view class="main-list-participants-content">
 							<block wx:for="{{item.participants}}" wx:for-item="elements" wx:for-index="i" wx:key="index">
-								<image class="main-list-participants-image" src="{{elements}}" mode="widthFix"></image>
+								<view class="main-list-participants-item" style="left: {{ 30 * i}}rpx; z-index: {{99-i}}">
+									<image class="main-list-participants-image" src="{{elements}}" mode="aspectFit"></image>
+								</view>
 							</block>
 						</view>
 					</view>
@@ -62,13 +64,13 @@
 						</view>
 					</block>
 				</view>
-        <view class="main-total">
-          <view class="main-total-content">
-            <text class="main-total-number">共{{item.number}}件商品</text>
-            <text class="main-total-text">合计：</text>
-            <text class="main-total-price">¥{{item.number}}</text>
-          </view>
-        </view>
+				<view class="main-total">
+					<view class="main-total-content">
+						<text class="main-total-number">共{{item.number}}件商品</text>
+						<text class="main-total-text">合计：</text>
+						<text class="main-total-price">¥{{item.number}}</text>
+					</view>
+				</view>
 			</view>
 		</view>
 	</view>

@@ -1,4 +1,4 @@
-// components/red-packet/red-packet.js
+// components/red-packet/index.js
 const audio = wx.createInnerAudioContext()
 audio.src = '/static/audio/rc-upload.mp3'
 

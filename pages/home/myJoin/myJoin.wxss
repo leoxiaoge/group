@@ -1,7 +1,4 @@
-/* pages/home/join/join.wxss */
-.jion {
-  margin: 30rpx 0;
-}
+/* pages/home/myJoin/myJoin.wxss */
 
 .main-content {
   margin: 0 30rpx;
@@ -24,24 +21,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-}
-
-.main-list-user {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.main-list-user-image {
-  width: 55rpx;
-  height: 55rpx;
-  border-radius: 100%;
-}
-
-.main-list-user-name {
-  font-size: 24rpx;
-  color: #5e5e5e;
-  padding: 0 16rpx 0 10rpx;
 }
 
 .main-list-status-time {
@@ -155,75 +134,4 @@
 .main-already-number {
   font-size: 24rpx;
   color: #ff0000;
-}
-
-.main-shop {
-  border-top: 2rpx solid #f6f6f6;
-  border-bottom: 2rpx solid #f6f6f6;
-  padding: 10rpx 0;
-}
-
-.main-shop-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.main-shop-title {
-  font-size: 24rpx;
-  line-height: 1.6;
-  color: #424242;
-}
-
-.main-shop-price {
-  font-size: 30rpx;
-  line-height: 1.6;
-  color: #ff5c27;
-}
-
-.main-shop-format-number {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.main-shop-format {
-  font-size: 20rpx;
-  line-height: 1.6;
-  color: #7b7b7b;
-}
-
-.main-shop-number {
-  font-size: 24rpx;
-  line-height: 1.6;
-  color: #b0b0b0;
-}
-
-.main-total {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.main-total-content {
-  padding: 10rpx 0 0 0;
-}
-
-.main-total-number {
-  font-size: 24rpx;
-  line-height: 1.6;
-  color: #424242;
-}
-
-.main-total-text {
-  font-size: 24rpx;
-  line-height: 1.6;
-  color: #424242;
-  padding: 0 0 0 10rpx;
-}
-
-.main-total-price {
-  font-size: 30rpx;
-  line-height: 1.6;
-  color: #ff5c27;
 }

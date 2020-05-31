@@ -1,0 +1,63 @@
+<!--pages/home/myJoin/myJoin.wxml-->
+<text>pages/home/myJoin/myJoin.wxml</text>
+<view>
+  <view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view>已实名认证</view>
+  </view>
+  <view>
+    <view></view>
+    <view></view>
+  </view>
+  <view class="main-content">
+		<view class="main-list-item" wx:for="{{list}}" wx:for-item="item" wx:key="index">
+			<view class="main-list-head">
+				<view class="main-list-info">
+					<view class="main-list-status-time">
+						<text class="main-list-status">{{item.status}}</text>
+						<text class="main-list-time">{{item.time}}</text>
+					</view>
+				</view>
+				<button class="main-list-share" bindtap="shareTap">
+					<image class="main-list-share-image" src="{{share}}" mode="widthFix"></image>
+				</button>
+			</view>
+			<view class="main-list-show">
+				<swiper class="main-list-show-swiper" autoplay="{{autoplay}}" circular="{{circular}}" indicator-dots="{{indicatorDots}}" interval="13000" duration="1000" bindchange="swiperSecond" display-multiple-items="3">
+					<swiper-item wx:for="{{item.images}}" wx:for-item="elements" wx:for-index="i" wx:key="id">
+						<image class="main-show-image" src="{{elements}}" mode="aspectFill"></image>
+					</swiper-item>
+				</swiper>
+			</view>
+			<view class="main-list-label">
+				<block wx:for="{{item.label}}" wx:for-item="elements" wx:for-index="i" wx:key="index">
+					<text class="main-list-label-text">{{elements}}</text>
+				</block>
+			</view>
+			<view class="main-list-title">
+				<text class="main-list-title-text">{{item.title}}</text>
+			</view>
+			<view class="main-list-subtitle">
+				<text class="main-list-subtitle-text">{{item.subtitle}}</text>
+			</view>
+			<view class="main-list-footer">
+				<view class="main-list-participants" style="width: {{item.participants.length * 32 + 4}}rpx">
+					<view class="main-list-participants-content">
+						<block wx:for="{{item.participants}}" wx:for-item="elements" wx:for-index="i" wx:key="index">
+							<view class="main-list-participants-item" style="left: {{ 30 * i}}rpx;">
+								<image class="main-list-participants-image" src="{{elements}}" mode="aspectFit"></image>
+							</view>
+						</block>
+					</view>
+				</view>
+				<view class="main-already">
+					<text class="main-already-text">已有</text>
+					<text class="main-already-number">128</text>
+					<text class="main-already-text">位邻居参团</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

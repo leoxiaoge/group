@@ -1,4 +1,4 @@
-<!--components/red-packet/red-packet.wxml-->
+<!--components/red-packet/index.wxml-->
 <view class="content" wx:if="{{show}}" bindtap="closeTap" catchtouchmove="preventdefault">
 	<view class="red-packet" catchtap="catchPacket">
 		<view class="red-packet-bg" wx:if="{{!open}}">

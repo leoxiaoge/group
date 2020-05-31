@@ -1,15 +1,22 @@
-// pages/home/applyAudit/applyAudit.js
-const util = require('../../../utils/util.js')
-const api = require('../../../config/api.js')
-
+// pages/home/myJoin/myJoin.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active: 3,
-    passedIcon: '/static/images/logo.png'
+    share: '/static/images/share.png',
+
+    list: [{
+      status: '距结束',
+      time: '3天12小时37分',
+      images: ['/static/images/logo.png', '/static/images/logo.png', '/static/images/logo.png'],
+      label: ['新鲜', '多汁', '做法简单', '送货上门'],
+      title: '澳洲进口牛尾巴 入口即化 1500g/份',
+      subtitle: '牛排，或称牛扒，是块状的牛肉，是西餐中最常见的食物之一。是西餐中最常见的食物之一。',
+      number: 128,
+      participants: ['/static/images/logo.png', '/static/images/logo.png', '/static/images/logo.png']
+    }]
   },
 
   /**
@@ -31,11 +38,6 @@ Page({
    */
   onShow: function () {
 
-  },
-
-  // 进入团长中心
-  centerTap: function () {
-    util.navigateTo('/pages/center/index/index')
   },
 
   /**

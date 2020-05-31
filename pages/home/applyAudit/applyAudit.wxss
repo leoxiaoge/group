@@ -1,53 +1,47 @@
 /* pages/home/applyAudit/applyAudit.wxss */
-.steps {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 40rpx 30rpx 80rpx 30rpx;
-  position: relative;
-}
-
-.steps-item {
-  text-align: center;
-}
-
-.steps-number {
-  width: 80rpx;
-  height: 80rpx;
-  line-height: 80rpx;
-  font-size: 36rpx;
-  color: #fff;
-  text-align: center;
-  border-radius: 50%;
-  background-color: #cdcdcd;
-}
-
-.steps-number-active {
-  background-color: #ff5c27;
-}
-
-.steps-dashed {
-  width: 160rpx;
-  border: 2rpx dashed #cdcdcd;
-  margin: 0 20rpx;
-}
-
-.steps-text {
+.audit {
   position: absolute;
-  font-size: 24rpx;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.audit-submitted {
+  width: 750rpx;
+  text-align: center;
+}
+
+.audit-submitted-text {
+  font-size: 48rpx;
   line-height: 1.8;
-  color: #9a9a9a;
-  margin: 10rpx 0 0 0;
+  color: #7e7e7e;
 }
 
-.steps-one-text {
-  left: 1%;
+.audit-passed {
+  text-align: center;
 }
 
-.steps-two-text {
-  left: 44%;
+.audit-passed image {
+  width: 120rpx;
+  height: 120rpx;
 }
 
-.steps-three-text {
-  left: 84%;
+.audit-passed-text {
+  font-size: 48rpx;
+  line-height: 1.8;
+  color: #7e7e7e;
+}
+
+.audit-center {
+  margin: 30rpx 0;
+}
+
+.audit-center button {
+  width: 32%;
+  height: 74rpx;
+  font-size: 24rpx;
+  line-height: 74rpx;
+  color: #fff;
+  background-color: #ff5c27;
+  border-radius: 100rpx;
 }

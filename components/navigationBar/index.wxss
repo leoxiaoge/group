@@ -1,4 +1,4 @@
-/* components/navigationBar/navigationBar.wxss */
+/* components/navigationBar/index.wxss */
 .empty {
   height: 100rpx;
 }

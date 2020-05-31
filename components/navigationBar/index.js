@@ -1,4 +1,4 @@
-// components/navigationBar/navigationBar.js
+// components/navigationBar/index.js
 const util = require('../../utils/util.js');
 
 Component({

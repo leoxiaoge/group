@@ -1,11 +1,17 @@
 // pages/home/applyUpload/applyUpload.js
+const util = require('../../../utils/util.js')
+const api = require('../../../config/api.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    active: 1,
+    positiveCard: '/static/images/logo.png',
+    reverseCard: '/static/images/logo.png',
+    cameraIcon: '/static/images/logo.png'
   },
 
   /**
@@ -27,6 +33,11 @@ Page({
    */
   onShow: function () {
 
+  },
+
+  // 提交
+  submitTap: function () {
+    util.navigateTo('/pages/home/applyFill/applyFill')
   },
 
   /**

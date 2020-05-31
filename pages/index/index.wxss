@@ -292,7 +292,14 @@ page {
 
 .main-list-participants-content {
   display: flex;
+  flex-direction: column-reverse;
   align-self: center;
+  position: relative;
+}
+
+.main-list-participants-item {
+  position: absolute;
+  top: -20rpx;
 }
 
 .main-list-participants-image {

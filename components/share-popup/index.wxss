@@ -1,4 +1,4 @@
-/* components/share-popup/share-popup.wxss */
+/* components/share-popup/index.wxss */
 .content {
   position: fixed;
   top: 0;

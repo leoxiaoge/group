@@ -1,4 +1,4 @@
-<!--components/navigationBar/navigationBar.wxml-->
+<!--components/navigationBar/index.wxml-->
 <view class="container">
   <view wx:if="{{show}}">
     <suggestions />

@@ -10,6 +10,7 @@
         "select/select",
         "order/order",
         "join/join",
+        "myJoin/myJoin",
         "application/application",
         "applyUpload/applyUpload",
         "applyFill/applyFill",
@@ -35,9 +36,9 @@
     }
   },
   "usingComponents": {
-    "navigation-bar": "/components/navigationBar/navigationBar",
-    "suggestions": "/components/suggestions/suggestions",
-    "red-packet": "/components/red-packet/red-packet"
+    "navigation-bar": "/components/navigationBar/index",
+    "suggestions": "/components/suggestions/index",
+    "red-packet": "/components/red-packet/index"
   },
   "networkTimeout": {
     "request": 10000,
