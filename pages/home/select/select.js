@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: true,
     selectIcon: '/static/images/select_icon.png',
     locateIcon: '/static/images/locate_icon.png',
     locate: '龙胜市场',

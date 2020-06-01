@@ -38,6 +38,7 @@
 					</label>
 				</radio-group>
 			</view>
+			<loading wx:if="{{loading}}" />
 		</scroll-view>
 	</view>
 	<view class="select-footer" id="select-footer">

@@ -1,0 +1,17 @@
+<!--components/loading/index.wxml-->
+<view class="custom-class loading {{ vertical ? 'loading--vertical' : '' }}">
+  <view
+    class="loading__spinner loading__spinner--{{ type }}"
+    style="color: {{ color }}; width: {{ sizeWithUnit }}; height: {{ sizeWithUnit }}"
+  >
+    <view
+      wx:if="{{ type === 'spinner' }}"
+      wx:for="item in 12"
+      wx:key="index"
+      class="loading__dot"
+    />
+  </view>
+  <view class="loading__text" style="font-size: {{ textSizeWithUnit }};">
+    <slot />
+  </view>
+</view>

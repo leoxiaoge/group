@@ -59,7 +59,7 @@
 			</view>
 		</view>
 		<view class="fill-piece">
-			<view class="fill-title">
+			<view class="fill-title" bindtap="showActionSheet">
 				<text class="fill-tag">*</text>
 				<text class="fill-title-text">身份证有效期</text>
 			</view>

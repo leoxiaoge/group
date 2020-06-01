@@ -161,6 +161,27 @@ const showModal = content => {
   })
 }
 
+const showActionSheet = itemList => {
+  return new Promise((resolve, reject) => {
+    try {
+      wx.showActionSheet({
+        itemList: itemList,
+        success (res) {
+          console.log(res.tapIndex)
+          resolve(res)
+        },
+        fail (res) {
+          reject(res)
+          console.log(res.errMsg)
+        }
+      })
+    } catch (error) {
+      console.error(error)
+      reject(error)
+    }
+  })
+}
+
 module.exports = {
   formatTime: formatTime,
   navigateTo: navigateTo,
@@ -169,5 +190,6 @@ module.exports = {
   switchTab: switchTab,
   showToast: showToast,
   showErrorToast: showErrorToast,
-  showModal: showModal
+  showModal: showModal,
+  showActionSheet: showActionSheet
 }

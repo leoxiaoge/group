@@ -38,6 +38,7 @@
   "usingComponents": {
     "navigation-bar": "/components/navigationBar/index",
     "suggestions": "/components/suggestions/index",
+    "loading": "/components/loading/index",
     "red-packet": "/components/red-packet/index"
   },
   "networkTimeout": {

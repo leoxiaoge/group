@@ -48,16 +48,25 @@ Page({
 
   },
 
+  // 选择有效期类型
+  showActionSheet: function () {
+    let itemList = ['非长期有效', '长期有效']
+    util.showActionSheet(itemList).then((res) => {
+      console.log(res)
+      console.log(res.tapIndex)
+    })
+  },
+
   // 开始时间选择器
-  bindStartDateChange: function(e) {
+  bindStartDateChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       startDate: e.detail.value
     })
   },
-  
+
   // 结束时间选择器
-  bindEndDateChange: function(e) {
+  bindEndDateChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       endDate: e.detail.value
