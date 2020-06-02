@@ -9,8 +9,8 @@ Page({
    */
   data: {
     active: 1,
-    positiveCard: '/static/images/logo.png',
-    reverseCard: '/static/images/logo.png',
+    positiveCard: '/static/images/positive_card.png',
+    reverseCard: '/static/images/reverse_card.png',
     cameraIcon: '/static/images/logo.png'
   },
 

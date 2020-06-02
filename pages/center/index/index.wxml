@@ -1,10 +1,35 @@
 <!--pages/center/index/index.wxml-->
 <view class="container">
-	<view class="userinfo">
-		<button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-		<block wx:else>
-			<image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-			<text class="userinfo-nickname">{{userInfo.nickName}}</text>
-		</block>
+	<view class="center">
+		<view>
+			<view>
+				<view class="userinfo">
+					<view class="userinfo-avatar">
+						<open-data type="userAvatarUrl"></open-data>
+					</view>
+					<view class="userinfo-name">
+						<open-data type="userNickName"></open-data>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="navigation-grid">
+			<view class="navigation-grid-content">
+				<button class="navigation-grid-item" open-type="getUserInfo" wx:for="{{navigation}}" wx:for-item="item" wx:key="index" data-url="{{item.url}}" bindtap="navigationTap">
+					<view class="navigation-grid-info-image">
+						<image class="navigation-grid-image" src="{{item.icon}}" mode="widthFix"></image>
+						<text class="navigation-grid-info" wx:if="{{item.dot}}">{{item.info}}</text>
+					</view>
+					<text class="navigation-grid-text">{{item.text}}</text>
+				</button>
+			</view>
+		</view>
+	</view>
+	<view>
+		<view>
+			<image src="{{}}" mode="widthFix"></image>
+			<text>资料设置</text>
+		</view>
+		<view></view>
 	</view>
 </view>

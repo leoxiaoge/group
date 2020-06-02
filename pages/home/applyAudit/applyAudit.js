@@ -9,7 +9,7 @@ Page({
    */
   data: {
     active: 3,
-    passedIcon: '/static/images/logo.png'
+    passedIcon: '/static/images/passed_icon.png'
   },
 
   /**

@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    name: '我是小小宝',
+    successIcon: '/static/images/success_icon.png',
+    searchIcon: '/static/images/search_icon.png',
     share: '/static/images/share.png',
 
     list: [{

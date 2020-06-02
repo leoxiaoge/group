@@ -1,6 +1,5 @@
 // 以下是业务服务器API地址
-// 本机开发时使用
-const WxApiRoot = 'http://localhost:8080/';
 module.exports = {
-  IndexUrl: WxApiRoot + 'home/index', //首页数据接口
+  // 平台API - Platform(全局相关API接口)
+  Login: 'API.Platform.Login', //首页数据接口
 };

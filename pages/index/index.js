@@ -112,6 +112,10 @@ Page({
 
   // 申请团长
   applyTap: function () {
+    let data = {}
+    util.request(api.Login, data).then((res) => {
+      console.log(res)
+    })
     util.navigateTo('/pages/home/applyFill/applyFill')
   },
 

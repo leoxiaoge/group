@@ -22,7 +22,7 @@
 		<text class="select-title-text">选择小区</text>
 	</view>
 	<view class="select-content">
-		<scroll-view scroll-y="true" class="scroll-view" style="height:{{scrollHeight}}px">
+		<scroll-view scroll-y="true" class="scroll-view" style="height:{{scrollHeight}}px" bindscrolltoupper="upper" bindscrolltolower="lower">
 			<view class="select-radio-group">
 				<radio-group bindchange="radioChange">
 					<label class="select-label" wx:for="{{items}}" wx:key="index">

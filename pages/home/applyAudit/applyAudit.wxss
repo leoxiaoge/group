@@ -1,4 +1,8 @@
 /* pages/home/applyAudit/applyAudit.wxss */
+page {
+  background-color: #fff;
+}
+
 .audit {
   position: absolute;
   left: 50%;

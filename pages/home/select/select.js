@@ -101,6 +101,20 @@ Page({
 
   },
 
+  // 上拉刷新
+  upper: function () {
+    console.log('upper')
+    wx.startPullDownRefresh()
+  },
+
+  //下拉加载
+  lower: function () {
+    console.log('lower')
+    this.setData({
+      loading: true
+    })
+  },
+
   // 计算scroll-view高度
   calculateScrollViewHeight: function () {
     let query = wx.createSelectorQuery()

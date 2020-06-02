@@ -1,4 +1,8 @@
 /* pages/home/applyUpload/applyUpload.wxss */
+page {
+  background-color: #fff;
+}
+
 .upload {
   background-color: #fff;
   padding: 30rpx 30rpx 30rpx 30rpx;
@@ -14,8 +18,8 @@
 }
 
 .upload-user-info-card {
-  width: 400rpx;
-  height: 280rpx;
+  width: 80%;
+  height: 100%;
 }
 
 .upload-user-info-camera {

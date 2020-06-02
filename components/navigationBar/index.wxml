@@ -1,8 +1,5 @@
 <!--components/navigationBar/index.wxml-->
 <view class="container">
-  <view wx:if="{{show}}">
-    <suggestions />
-  </view>
   <view class="empty"></view>
   <view class="navigation">
     <button class="navigation-bar-button" bindtap="centerTap">
@@ -13,5 +10,8 @@
       <image class="navigation-bar-image" src="{{suggestions}}"></image>
       <text class="navigation-bar-text">{{suggestionsText}}</text>
     </button>
+  </view>
+  <view wx:if="{{show}}">
+    <suggestions bindmyevent="suggestionsTap" />
   </view>
 </view>

@@ -1,2 +1,11 @@
 <!--components/suggestions/index.wxml-->
-<text>components/suggestions/suggestions.wxml</text>
+<view class="suggestions" bindtap="showPupop">
+  <view class="suggestions-content" catchtap="catchTap">
+    <view class="suggestions-textarea">
+      <textarea placeholder="投诉与建议"></textarea>
+    </view>
+    <view class="suggestions-button">
+      <button bindtap="submitTap">提交</button> 
+    </view>
+  </view>
+</view>

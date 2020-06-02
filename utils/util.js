@@ -20,9 +20,9 @@ export const processing = (api, data) => {
   return new Promise((resolve, reject) => {
     try {
       const sessionkey = wx.getStorageSync('SessionKey')
-      let Appkey = '3957399'
-      let AppSecert = '2d2c443086630f6c2c804d11983729c8'
-      let url = 'https://api.tengpaisc.com/Rest.ashx'
+      let Appkey = '3709249'
+      let AppSecert = '6a7466bbbcbe47db1d446dd8278599fc'
+      let url = 'https://api.tuan399.com/rest.ashx'
       let paramkey = Object.keys(data),
         paramdata = '',
         sign = ''
@@ -184,6 +184,7 @@ const showActionSheet = itemList => {
 
 module.exports = {
   formatTime: formatTime,
+  request: request,
   navigateTo: navigateTo,
   navigateBack: navigateBack,
   redirectTo: redirectTo,

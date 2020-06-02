@@ -1,17 +1,26 @@
 <!--pages/home/myJoin/myJoin.wxml-->
-<text>pages/home/myJoin/myJoin.wxml</text>
-<view>
-  <view>
-    <view></view>
-    <view></view>
-    <view></view>
-    <view>已实名认证</view>
-  </view>
-  <view>
-    <view></view>
-    <view></view>
-  </view>
-  <view class="main-content">
+<view class="container">
+	<view class="jion">
+		<view class="jion-user">
+			<image src="{{successIcon}}" mode="aspectFill"></image>
+		</view>
+		<view class="jion-user-name">{{name}}</view>
+		<view class="jion-success">
+			<view class="jion-success-image">
+				<image src="{{successIcon}}" mode="aspectFill"></image>
+			</view>
+			<view class="jion-success-text">已实名认证</view>
+		</view>
+	</view>
+	<view class="jion-search">
+		<view class="jion-search-input">
+			<input placeholder="搜索接龙活动"></input>
+		</view>
+		<view class="jion-search-icon">
+			<image src="{{searchIcon}}"></image>
+		</view>
+	</view>
+	<view class="main-content">
 		<view class="main-list-item" wx:for="{{list}}" wx:for-item="item" wx:key="index">
 			<view class="main-list-head">
 				<view class="main-list-info">

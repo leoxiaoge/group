@@ -14,8 +14,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    wechat: '/static/images/logo.png',
-    poster: '/static/images/logo.png'
+    wechat: '/static/images/wechat_icon.png',
+    poster: '/static/images/poster_icon.png'
   },
 
   /**

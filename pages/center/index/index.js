@@ -6,6 +6,42 @@ Page({
    */
   data: {
 
+    navigation: [{
+      text: '我要开团', // 文字
+      icon: '/static/images/all_orders.png', // 图标名称或图片链接
+      dot: true, // 是否显示图标右上角小红点
+      info: '99', // 图标右上角徽标的内容
+      url: '/pages/home/order/order', // 点击后跳转的链接地址
+      linkType: 'navigateTo' // 链接跳转类型，可选值为 redirectTo switchTab reLaunch
+    }, {
+      text: '待付款',
+      icon: '/static/images/pending_payment.png',
+      dot: false,
+      info: '99',
+      url: '/pages/home/order/order',
+      linkType: 'navigateTo'
+    }, {
+      text: '待收货',
+      icon: '/static/images/to_receipt.png',
+      dot: false,
+      info: '99',
+      url: '/pages/home/order/order',
+      linkType: 'navigateTo'
+    }, {
+      text: '我的参团',
+      icon: '/static/images/my_jion.png',
+      dot: false,
+      info: '99',
+      url: '/pages/home/join/join',
+      linkType: 'navigateTo'
+    }, {
+      text: '我要开团',
+      icon: '/static/images/to_application.png',
+      dot: false,
+      info: '99',
+      url: '/pages/home/applyUpload/applyUpload',
+      linkType: 'navigateTo'
+    }],
   },
 
   /**
