@@ -53,8 +53,8 @@
 				<text class="fill-tag">*</text>
 				<text class="fill-title-text">身份证有效期</text>
 			</view>
-			<view class="fill-region">
-				<input placeholder="请选择身份证有效期" disabled="true" bindtap="showActionSheet"></input>
+			<view class="fill-region" bindtap="showActionSheet">
+				<input placeholder="请选择身份证有效期" disabled="true"></input>
 				<image class="fill-arrow" src="{{arrowIcon}}" mode="widthFix"></image>
 			</view>
 		</view>
