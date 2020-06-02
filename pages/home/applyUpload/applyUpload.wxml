@@ -21,8 +21,8 @@
 			<view class="upload-card-text">上传国徽面</view>
 		</view>
 	</view>
+	<view class="empty"></view>
 	<view class="upload-submit">
 		<button bindtap="submitTap">提交</button>
 	</view>
-	<navigation-bar />
 </view>

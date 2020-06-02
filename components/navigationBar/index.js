@@ -25,11 +25,12 @@ Component({
    */
   methods: {
     // 跳转到团长中心页面
-    centerTa() {
+    centerTap () {
       util.navigateTo('/pages/center/index/index')
     },
+
     // 控制投诉与建议组件显示
-    suggestionsTap() {
+    suggestionsTap () {
       let show = !this.data.show
       this.setData({
         show: show

@@ -38,7 +38,9 @@
 					</label>
 				</radio-group>
 			</view>
-			<loading wx:if="{{loading}}" />
+			<view class="loading">
+				<loading wx:if="{{loading}}" type="spinner" color="#ff5c27" size="24px">加载中...</loading>
+			</view>
 		</scroll-view>
 	</view>
 	<view class="select-footer" id="select-footer">

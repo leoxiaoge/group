@@ -9,6 +9,7 @@
       wx:for="item in 12"
       wx:key="index"
       class="loading__dot"
+      style="color: {{ color }}"
     />
   </view>
   <view class="loading__text" style="font-size: {{ textSizeWithUnit }};">
