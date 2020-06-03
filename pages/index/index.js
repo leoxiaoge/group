@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const user = require('../../utils/user.js');
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 
@@ -88,7 +89,21 @@ Page({
     })
   },
   onLoad: function () {
+    let data = {}
+    util.request(api.UserHomePageGet, data).then((res) => {
+      console.log(res)
+    })
+  },
 
+  onShow: function () {
+
+  },
+
+  // 获取用户信息
+  getuserinfo: async function (e) {
+    console.log('getUserInfo', e)
+    app.userInfo = e.detail.userInfo
+    await user.loginByWeixin(app.userInfo)
   },
 
   // 选择小区
@@ -112,11 +127,10 @@ Page({
 
   // 申请团长
   applyTap: function () {
-    let data = {}
-    util.request(api.Login, data).then((res) => {
-      console.log(res)
-    })
-    util.navigateTo('/pages/home/applyFill/applyFill')
+    let userInfo = app.userInfo
+    if (userInfo) {
+      util.navigateTo('/pages/home/applyFill/applyFill')
+    }
   },
 
   // 用户的团购

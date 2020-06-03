@@ -32,7 +32,7 @@
 				<button class="invite-button" open-type="share">邀请一个</button>
 			</view>
 			<view class="content-application-button">
-				<button class="application-button" open-type="getUserInfo" bindtap="applyTap">申请团长</button>
+				<button class="application-button" open-type="getUserInfo" bindgetuserinfo="getuserinfo" bindtap="applyTap">申请团长</button>
 			</view>
 		</view>
 	</view>

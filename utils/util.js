@@ -1,4 +1,4 @@
-const Md5 = require('../config/md5.js')
+const md5handler = require('../config/md5.js')
 
 const formatTime = date => {
   const year = date.getFullYear()
@@ -37,7 +37,8 @@ export const processing = (api, data) => {
         paramdata += data[item]
       })
       paramdata = `${AppSecert}${paramdata}${AppSecert}`
-      sign = Md5.hashStr(paramdata).toString()
+      //生成签名
+      sign = md5handler.md5(paramdata).toLocaleLowerCase()
       let systemdata = {
         Appkey: Appkey,
         V: 1,

@@ -11,7 +11,7 @@ Page({
     active: 1,
     positiveCard: '/static/images/positive_card.png',
     reverseCard: '/static/images/reverse_card.png',
-    cameraIcon: '/static/images/logo.png'
+    cameraIcon: '/static/images/camera_icon.png'
   },
 
   /**
