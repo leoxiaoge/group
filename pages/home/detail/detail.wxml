@@ -1,0 +1,26 @@
+<!--pages/home/detail/detail.wxml-->
+<view class="container">
+  <view>
+    <image src="" mode=""></image>
+  </view>
+  <view>
+    <view>
+      <view></view>
+      <view></view>
+    </view>
+    <view>
+      <view></view>
+      <view></view>
+    </view>
+  </view>
+  <view>
+    <view>
+      <view></view>
+      <view></view>
+    </view>
+    <view>
+      <view></view>
+      <view></view>
+    </view>
+  </view>
+</view>

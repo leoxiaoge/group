@@ -77,8 +77,8 @@ export const request = async (api, data) => {
       success: res => {
         if (res.statusCode === 200) {
           if (res.data.IsError) {
-            if (res.data.ErrCode === 'Missing_Session') {
-              redirectTo('../../ucenter/login/login')
+            if (res.data.ErrCode === '-100') {
+              redirectTo('../../index/index')
             } else {
               if (res.data.ErrCode === '-2000') {
                 wx.clearStorageSync()
