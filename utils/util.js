@@ -128,18 +128,18 @@ const switchTab = url => {
   })
 }
 
-const showToast = msg => {
+const showToast = title => {
   wx.showToast({
-    title: msg,
+    title: title,
     icon: 'none',
     duration: 2000,
     mask: true
   })
 }
 
-const showErrorToast = msg => {
+const showErrorToast = title => {
   wx.showToast({
-    title: msg,
+    title: title,
     image: '/static/images/icon_error.png',
     duration: 2000
   })
