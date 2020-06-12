@@ -1,90 +1,29 @@
 // pages/home/select/select.js
+const util = require('../../../utils/util.js')
+const api = require('../../../config/api.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    loading: true,
+    longitude: '', // 经纬度
+    latitude: '', // 经纬度
+    keyword: '', // 搜索词
+    locate: '', // 小区名称
+    distID: 0, // 小区id
+    districts: [], // 搜索列表
     selectIcon: '/static/images/select_icon.png',
     locateIcon: '/static/images/locate_icon.png',
-    locate: '龙胜市场',
-    items: [{
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }, {
-      value: 0,
-      name: '龙胜市场',
-      distance: 110
-    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.location()
   },
 
   /**
@@ -101,18 +40,99 @@ Page({
 
   },
 
+  // 获取搜索词的值
+  getkeyword: function (e) {
+    let keyword = e.detail.value
+    this.setData({
+      keyword: keyword
+    })
+  },
+
+  // 清除搜索框
+  closeTap: function () {
+    this.setData({
+      keyword: ''
+    })
+  },
+
+  // 定位
+  location: async function () {
+    wx.showLoading({
+      title: '定位中...',
+    })
+    await util.location().then((res) => {
+      let locat = res
+      wx.hideLoading()
+      this.setData({
+        longitude: locat.longitude,
+        latitude: locat.latitude
+      })
+      if (locat) {
+        this.selectTap()
+      }
+    }).catch((err) => {
+      console.log(err)
+      util.showToast('更好的体验，请授权设置！')
+    })
+  },
+
+  // 搜索列表
+  selectTap: function () {
+    let LngLat = `${this.data.longitude},${this.data.latitude}`
+    let keyword = this.data.keyword
+    let data = {
+      LngLat: LngLat,
+      keyword: keyword
+    }
+    util.request(api.DistSearchListGet, data).then((res) => {
+      console.log(res)
+      let districts = res.Districts
+      let correct = false
+      districts.forEach(item => {
+        if (this.data.distID === item.DistrictID) {
+          correct = true
+        }
+      })
+      if (!correct) {
+        this.setData({
+          locate: '',
+          distID: 0,
+          checked: false
+        })
+      }
+      this.setData({
+        districts: districts
+      })
+    })
+  },
+
+  // 选择小区
+  radioChange: function (e) {
+    console.log(e)
+    let index = e.detail.value
+    let locate = this.data.districts[index].DistrictName
+    let distID = this.data.districts[index].DistrictID
+    let data = {
+      DistID: distID
+    }
+    util.request(api.UserDistSelect, data).then((res) => {
+      console.log(res)
+      let title = `选择${locate}成功！`
+      util.showToast(title)
+      util.navigateBack('-1')
+    }).catch((err) => {
+      console.log(err)
+    })
+  },
+
   // 上拉刷新
   upper: function () {
     console.log('upper')
-    wx.startPullDownRefresh()
   },
 
   //下拉加载
   lower: function () {
     console.log('lower')
-    this.setData({
-      loading: true
-    })
   },
 
   // 计算scroll-view高度

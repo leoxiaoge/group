@@ -16,6 +16,9 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+// AppID(小程序ID) wx7daab11d3506e257
+// AppSecret(小程序密钥) 77e6c6c774c10b94379e7f1f977bdb1a
+
 export const processing = (api, data) => {
   return new Promise((resolve, reject) => {
     try {

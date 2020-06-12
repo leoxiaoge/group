@@ -7,15 +7,25 @@ const api = require('../../config/api.js')
 
 Page({
   data: {
+    waitPayOrders: '', // 待付款的订单笔数
+    waitRecviveGoodsOrders: '', // 待收货订单笔数，需要在按钮右上角做角标
+    myBuyings: '', // 用户已参与，但尚未完成的团购活动数量（即我的团购右上角徽章显示的数字），指用户有参与，但订单尚未完成的团购活动数量
+    teams: [], // 附近的团长列表，用于指定和当前用户所在小区关联的团长的列表
+    buyings: [], // 附近的团购列表，用于指定和当前用户所在小区关联的、正在进行中、和已结束的团购活动列表，API已排好序，进行中的排在前面，结束的排后面
+    userInfo: '', // 用户信息
+    distInfo: '', // 用户所在的小区信息
+    isTeam: false, // 是否团长、或者某个团队的成员
+    hasLogin: false, // 是否登录
+    userLocation: false, // 是否开启定位
     locateIcon: '/static/images/locate_icon.png',
     dropDownIcon: '/static/images/drop_down.png',
     empty: '/static/images/empty_home.png',
     share: '/static/images/share.png',
-    autoplay: true,
-    indicatorDots: false,
-    circular: true,
-    isOpen: true, // 红包组件是否显示
-    isShare: false, // 分享组件是否显示
+    autoplay: true, // 是否自动切换
+    indicatorDots: false, // 是否显示面板指示点
+    circular: true, // 是否采用衔接滑动
+    isOpen: true, // 是否显示红包组件
+    isShare: false, // 是否显示分享组件
     navigation: [{
       text: '全部订单', // 文字
       icon: '/static/images/all_orders.png', // 图标名称或图片链接
@@ -82,28 +92,153 @@ Page({
       number: 8
     }]
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function () {
+    this.location()
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    let sessionKey = wx.getStorageSync('SessionKey')
+    if (!sessionKey) {
+      this.setData({
+        hasLogin: true
+      })
+    } else {
+      this.getUserHomePage()
+    }
+    this.getSetting()
+  },
+
+  // 获取当前用户信息
+  getUser: function () {
+    let data = {}
+    util.request(api.UserGet, data).then((res) => {
+      console.log(res)
+      let userInfo = res.UserInfo
+      let distInfo = res.DistInfo
+      wx.setStorageSync('userInfo', userInfo)
+      wx.setStorageSync('distInfo', distInfo)
+      let isTeam = res.IsTeam
+      if (distInfo) {
+        this.setData({
+          distInfo: distInfo
+        })
+      }
+      this.setData({
+        userInfo: userInfo,
+        isTeam: isTeam,
+        hasLogin: false
+      })
+    }).catch((err) => {
+      console.log(err)
+      this.setData({
+        hasLogin: true
+      })
     })
   },
-  onLoad: function () {
+
+  // 获取首页相关信息
+  getUserHomePage: function () {
     let data = {}
     util.request(api.UserHomePageGet, data).then((res) => {
       console.log(res)
+      let waitPayOrders = res.WaitPayOrders
+      let waitRecviveGoodsOrders = res.WaitRecviveGoodsOrders
+      let myBuyings = res.MyBuyings
+      let teams = res.Teams
+      let buyings = res.Buyings
+      this.setData({
+        waitPayOrders: waitPayOrders,
+        waitRecviveGoodsOrders: waitRecviveGoodsOrders,
+        myBuyings: myBuyings,
+        teams: teams,
+        buyings: buyings
+      })
+    }).catch((err) => {
+      console.log(err)
+      this.setData({
+        show: false
+      })
     })
   },
 
-  onShow: function () {
-
+  // 获取定位
+  location: async function () {
+    wx.showLoading({
+      title: '定位中...',
+    })
+    await util.location().then((res) => {
+      console.log(res)
+      wx.hideLoading()
+      this.setData({
+        userLocation: false
+      })
+    }).catch((err) => {
+      console.log(err)
+      util.showToast('更好的体验，请授权设置！')
+      this.setData({
+        userLocation: true
+      })
+    })
   },
 
-  // 获取用户信息
+  // 获取系统设置
+  getSetting: function () {
+    wx.getSetting({
+      success: res => {
+        console.log(res)
+        if (res.authSetting['scope.userLocation']) {
+          this.setData({
+            userLocation: false
+          })
+        }
+        if (!res.authSetting['scope.userLocation']) {
+          this.setData({
+            userLocation: true
+          })
+        }
+      }
+    })
+  },
+
+  // 系统设置
+  openSettingTap: function () {
+    wx.openSetting({
+      success (res) {
+        console.log(res.authSetting)
+      }
+    })
+  },
+
+  // 登录获取用户信息
   getuserinfo: async function (e) {
-    console.log('getUserInfo', e)
-    app.userInfo = e.detail.userInfo
-    await user.loginByWeixin(app.userInfo)
+    let userInfo = e.detail.userInfo
+    if (userInfo) {
+      await user.loginByWeixin(userInfo)
+      this.getUser()
+      this.getUserHomePage()
+    } else {
+      util.showToast('更好的体验，请授权登录！')
+    }
+  },
+
+  // 暂不登录
+  notgetuserinfo: function (e) {
+    console.log(e)
+    util.showToast('更好的体验，请进行授权登录！')
   },
 
   // 选择小区
@@ -141,5 +276,40 @@ Page({
   // 详情页
   detailTap: function () {
     util.navigateTo('/pages/home/detail/detail')
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function (e) {
+    return util.onShareAppMessage(e)
   }
 })

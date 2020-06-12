@@ -1,8 +1,8 @@
 <!--components/suggestions/index.wxml-->
-<view class="suggestions" bindtap="showPupop">
+<view class="suggestions" bindtap="showPupop" catchtouchmove="preventdefault">
   <view class="suggestions-content" catchtap="catchTap">
     <view class="suggestions-textarea">
-      <textarea placeholder="投诉与建议"></textarea>
+      <textarea placeholder="投诉与建议" bindinput="feedBackInput"></textarea>
     </view>
     <view class="suggestions-button">
       <button bindtap="submitTap">提交</button> 

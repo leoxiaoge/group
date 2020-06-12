@@ -9,7 +9,7 @@
 	</view>
 	<view class="navigation-grid">
 		<view class="navigation-grid-content">
-			<button class="navigation-grid-item" open-type="getUserInfo" wx:for="{{navigation}}" wx:key="index" data-url="{{item.url}}" bindtap="navigationTap">
+			<button class="navigation-grid-item" open-type="getUserInfo" wx:for="{{navigation}}" wx:key="index" data-url="{{item.url}}" bindgetuserinfo="navigationTap">
 				<view class="navigation-grid-info-image">
 					<image class="navigation-grid-image" src="{{item.icon}}" mode="widthFix"></image>
 					<text class="navigation-grid-info" wx:if="{{item.dot}}">{{item.info}}</text>
@@ -18,22 +18,45 @@
 			</button>
 		</view>
 	</view>
+  <view class="select-dist" wx:if="{{hasDist}}">
+	  <button class="dist-button" bindtap="selectTap">选择小区</button>
+	</view>
+  <view class="select-dist" wx:if="{{userLocation}}">
+	  <button class="dist-button" bindtap="openSettingTap">授权设置</button>
+	</view>
 	<view class="content-empty">
 		<view class="content-empty-head">
 			<image class="content-empty-image" src="{{empty}}" mode="widthFix"></image>
-			<text class="content-empty-text">您所在的小区目前还没有团长哦！</text>
+      <block wx:if="{{hasLogin}}">
+        <text class="content-empty-text">您所在的小区目前还没有团长哦！</text>
+      </block>
+      <block wx:else>
+        <text class="content-empty-text">登录后体验更多服务</text>
+      </block>
 		</view>
 		<view class="content-can">
 			<text class="content-can-text">您可以</text>
 		</view>
-		<view class="content-button">
-			<view class="content-invite-button">
-				<button class="invite-button" open-type="share">邀请一个</button>
-			</view>
-			<view class="content-application-button">
-				<button class="application-button" open-type="getUserInfo" bindgetuserinfo="getuserinfo" bindtap="applyTap">申请团长</button>
-			</view>
-		</view>
+    <block wx:if="{{hasLogin}}">
+      <view class="content-button">
+        <view class="content-invite-button">
+          <button class="invite-button" open-type="share">邀请一个</button>
+        </view>
+        <view class="content-application-button">
+          <button class="application-button" open-type="getUserInfo" bindgetuserinfo="applyTap">申请团长</button>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="content-button">
+        <view class="content-invite-button">
+          <button class="getuser-button" open-type="getUserInfo" bindgetuserinfo="getuserinfo">微信授权</button>
+        </view>
+        <view class="content-application-button">
+          <button class="getuser-no" open-type="getUserInfo" bindgetuserinfo="notgetuserinfo">暂不登录</button>
+        </view>
+      </view>
+    </block>
 	</view>
 	<view class="main-content" bindtap="detailTap">
 		<view class="main-list-item" wx:for="{{list}}" wx:key="index">
