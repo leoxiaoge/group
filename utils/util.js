@@ -81,9 +81,9 @@ export const request = async (api, data) => {
               wx.clearStorageSync()
               switchTab('/pages/index/index')
             } else {
-              reject(res.errMsg)
               showToast(res.data.ErrMsg)
             }
+            reject(res.errMsg)
           } else {
             resolve(res.data)
           }
