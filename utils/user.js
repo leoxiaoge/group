@@ -1,9 +1,8 @@
 /**
  * 用户相关服务
  */
-const util = require('../utils/util.js');
-const api = require('../config/api.js');
-
+const util = require('../utils/util.js')
+const api = require('../config/api.js')
 
 /**
  * Promise封装wx.checkSession
@@ -12,13 +11,13 @@ function checkSession () {
   return new Promise(function (resolve, reject) {
     wx.checkSession({
       success: function () {
-        resolve(true);
+        resolve(true)
       },
       fail: function () {
-        reject(false);
+        reject(false)
       }
     })
-  });
+  })
 }
 
 /**
@@ -29,16 +28,16 @@ function login () {
     wx.login({
       success: function (res) {
         if (res.code) {
-          resolve(res);
+          resolve(res)
         } else {
-          reject(res);
+          reject(res)
         }
       },
       fail: function (err) {
-        reject(err);
+        reject(err)
       }
-    });
-  });
+    })
+  })
 }
 
 /**
@@ -48,7 +47,7 @@ function loginByWeixin (userInfo) {
   return new Promise(function (resolve, reject) {
     return login().then((res) => {
       let JsCode = res.code
-      let nickName = userInfo.nickName
+      let nickName = encodeURIComponent(userInfo.nickName)
       let avatarUrl = userInfo.avatarUrl
       let gender = userInfo.gender
       //登录远程服务器
@@ -58,21 +57,15 @@ function loginByWeixin (userInfo) {
         avatarUrl: avatarUrl,
         gender: gender
       }, 'POST').then(res => {
-        if (res.errno === 0) {
-          //存储用户信息
-          wx.setStorageSync('userInfo', res.data.userInfo);
-          wx.setStorageSync('token', res.data.token);
-          resolve(res);
-        } else {
-          reject(res);
-        }
+        wx.setStorageSync('SessionKey', res.SessionKey)
+        resolve(res)
       }).catch((err) => {
-        reject(err);
+        reject(err)
       });
     }).catch((err) => {
-      reject(err);
+      reject(err)
     })
-  });
+  })
 }
 
 /**
@@ -80,19 +73,19 @@ function loginByWeixin (userInfo) {
  */
 function checkLogin () {
   return new Promise(function (resolve, reject) {
-    if (wx.getStorageSync('userInfo') && wx.getStorageSync('token')) {
+    if (wx.getStorageSync('userInfo')) {
       checkSession().then(() => {
-        resolve(true);
+        resolve(true)
       }).catch(() => {
-        reject(false);
+        reject(false)
       });
     } else {
-      reject(false);
+      reject(false)
     }
-  });
+  })
 }
 
 module.exports = {
   loginByWeixin,
   checkLogin,
-};
+}
