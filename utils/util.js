@@ -77,14 +77,12 @@ export const request = async (api, data) => {
       success: res => {
         if (res.statusCode === 200) {
           if (res.data.IsError) {
-            if (res.data.ErrCode === '-100') {
-              redirectTo('../../index/index')
+            if (res.data.ErrCode === '-2000') {
+              wx.clearStorageSync()
+              switchTab('/pages/index/index')
             } else {
-              if (res.data.ErrCode === '-2000') {
-                wx.clearStorageSync()
-              } else {
-                showToast(res.data.ErrMsg)
-              }
+              reject(res.errMsg)
+              showToast(res.data.ErrMsg)
             }
           } else {
             resolve(res.data)

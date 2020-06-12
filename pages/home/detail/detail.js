@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    shopImage: '/static/images/logo.png',
+    userImage: '/static/images/logo.png'
   },
 
   /**

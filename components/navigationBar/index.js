@@ -26,7 +26,7 @@ Component({
   methods: {
     // 跳转到团长中心页面
     centerTap () {
-      util.navigateTo('/pages/center/index/index')
+      util.navigateTo('/pages/ucenter/index/index')
     },
 
     // 控制投诉与建议组件显示

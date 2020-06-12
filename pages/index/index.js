@@ -1,9 +1,9 @@
 //index.js
 //获取应用实例
 const app = getApp()
-const user = require('../../utils/user.js');
-const util = require('../../utils/util.js');
-const api = require('../../config/api.js');
+const user = require('../../utils/user.js')
+const util = require('../../utils/util.js')
+const api = require('../../config/api.js')
 
 Page({
   data: {
@@ -136,5 +136,10 @@ Page({
   // 用户的团购
   userTap: function () {
     util.navigateTo('/pages/home/myJoin/myJoin')
+  },
+
+  // 详情页
+  detailTap: function () {
+    util.navigateTo('/pages/home/detail/detail')
   }
 })

@@ -19,7 +19,7 @@
       ]
     },
     {
-      "root": "pages/center",
+      "root": "pages/ucenter",
       "pages": [
         "index/index"
       ]

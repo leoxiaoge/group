@@ -1,26 +1,28 @@
 <!--pages/home/detail/detail.wxml-->
 <view class="container">
-  <view>
-    <image src="" mode=""></image>
-  </view>
-  <view>
-    <view>
-      <view></view>
-      <view></view>
-    </view>
-    <view>
-      <view></view>
-      <view></view>
-    </view>
-  </view>
-  <view>
-    <view>
-      <view></view>
-      <view></view>
-    </view>
-    <view>
-      <view></view>
-      <view></view>
-    </view>
-  </view>
+	<view class="detail">
+		<view class="detail-">
+			<image src="{{shopImage}}" mode=""></image>
+		</view>
+		<view class="detail-">
+			<view class="detail-">
+				<view class="detail-"></view>
+				<view class="detail-"></view>
+			</view>
+			<view class="detail-">
+				<view class="detail-"></view>
+				<view class="detail-"></view>
+			</view>
+		</view>
+		<view class="detail-">
+			<view class="detail-">
+				<view class="detail-"></view>
+				<view class="detail-"></view>
+			</view>
+			<view class="detail-">
+				<view class="detail-"></view>
+				<view class="detail-"></view>
+			</view>
+		</view>
+	</view>
 </view>
