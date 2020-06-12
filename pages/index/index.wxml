@@ -48,7 +48,7 @@
 						<text class="main-list-time">{{item.time}}</text>
 					</view>
 				</view>
-				<button class="main-list-share" bindtap="shareTap">
+				<button class="main-list-share" catchtap="shareTap">
 					<image class="main-list-share-image" src="{{share}}" mode="widthFix"></image>
 				</button>
 			</view>
