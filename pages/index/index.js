@@ -1,6 +1,4 @@
 //index.js
-//获取应用实例
-const app = getApp()
 const user = require('../../utils/user.js')
 const util = require('../../utils/util.js')
 const api = require('../../config/api.js')
@@ -249,8 +247,13 @@ Page({
   // 菜单导航
   navigationTap: function (e) {
     console.log(e)
-    let url = e.currentTarget.dataset.url
-    util.navigateTo(url)
+    let userInfo = e.detail.userInfo
+    if (userInfo) {
+      let url = e.currentTarget.dataset.url
+      util.navigateTo(url)
+    } else {
+      util.showToast('更好的体验，请授权登录！')
+    }
   },
 
   // 分享事件
@@ -261,10 +264,12 @@ Page({
   },
 
   // 申请团长
-  applyTap: function () {
-    let userInfo = app.userInfo
+  applyTap: function (e) {
+    let userInfo = e.detail.userInfo
     if (userInfo) {
       util.navigateTo('/pages/home/applyFill/applyFill')
+    } else {
+      util.showToast('更好的体验，请授权登录！')
     }
   },
 

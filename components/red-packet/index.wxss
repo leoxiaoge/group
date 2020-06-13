@@ -36,7 +36,7 @@
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-.content {
+.red-packet {
   position: fixed;
   top: 0;
   left: 0;
@@ -50,7 +50,7 @@
   background: rgba(0,0,0,0.60);
 }
 
-.red-packet {
+.red-packet-content {
   position: relative;
 }
 

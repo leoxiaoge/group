@@ -105,6 +105,26 @@ export const request = async (api, data) => {
   })
 }
 
+export const uploadFile = async (api, data) => {
+  let handle = await processing(api, data)
+  return new Promise((resolve, reject) => {
+    try {
+      wx.uploadFile({
+        url: handle.url,
+        filePath: data,
+        name: 'file',
+        formData: handle.postdata,
+        success (res){
+          const data = res.data
+          resolve(data)
+        }
+      })
+    } catch (e) {
+      reject(e)
+    }
+  })
+}
+
 const location = () => {
   return new Promise((resolve, reject) => {
     try {

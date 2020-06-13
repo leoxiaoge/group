@@ -48,6 +48,26 @@ Page({
 
   },
 
+  // 微信获取手机号
+  handleGetPhoneNumber (e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+    let iv =  e.detail.iv
+    let encryptedData = e.detail.encryptedData
+    let data = {
+      iv: iv,
+      encryptedData: encryptedData
+    }
+    util.request(api.WxPhoneNumberGet, data).then((res) => {
+      console.log(res)
+      let mobile = res.MobileInfo.phoneNumber
+      this.setData({
+        mobile: mobile
+      })
+    })
+  },
+
   // 选择有效期类型
   showActionSheet: function () {
     let itemList = ['非长期有效', '长期有效']

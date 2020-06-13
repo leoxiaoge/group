@@ -1,9 +1,9 @@
 <!--index.wxml-->
 <view class="container">
-	<view class="header">
+	<view class="header" wx:if="{{distInfo}}">
 		<view class="map" bindtap="selectTap">
 			<image class="map-icon" src="{{locateIcon}}" mode="widthFix"></image>
-			<text class="map-text">龙华阳关花园</text>
+			<text class="map-text">{{distInfo}}</text>
 			<image class="map-down" src="{{dropDownIcon}}" mode="widthFix"></image>
 		</view>
 	</view>

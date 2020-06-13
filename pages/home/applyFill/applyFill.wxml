@@ -9,7 +9,7 @@
 			</view>
 			<view class="fill-region">
 				<input placeholder="请填写手机号码"></input>
-				<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+				<button open-type="getPhoneNumber" bindgetphonenumber="handleGetPhoneNumber">获取手机号</button>
 			</view>
 		</view>
 		<view class="fill-piece">

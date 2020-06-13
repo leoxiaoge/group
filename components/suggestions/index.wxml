@@ -1,6 +1,6 @@
 <!--components/suggestions/index.wxml-->
-<view class="suggestions" bindtap="showPupop" catchtouchmove="preventdefault">
-  <view class="suggestions-content" catchtap="catchTap">
+<view class="suggestions" wx:if="{{show}}" bindtap="showPupop" catchtouchmove="preventdefault">
+  <view class="suggestions-content {{show?'fadelogIn':'fadeIn'}}" catchtap="catchTap">
     <view class="suggestions-textarea">
       <textarea placeholder="投诉与建议" bindinput="feedBackInput"></textarea>
     </view>

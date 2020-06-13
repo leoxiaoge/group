@@ -1,6 +1,6 @@
 <!--components/share-popup/index.wxml-->
-<view class="content" wx:if="{{show}}" bindtap="popupTap" catchtouchmove="preventdefault">
-  <view class="share-content">
+<view class="share" wx:if="{{show}}" bindtap="popupTap" catchtouchmove="preventdefault">
+  <view class="share-content {{show?'fadelogIn':'fadeIn'}}">
     <view class="share-main">
       <button class="share-wechat" open-type="share">
         <image src="{{wechat}}" mode="widthFix"></image>

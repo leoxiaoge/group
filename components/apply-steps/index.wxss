@@ -1,11 +1,14 @@
 /* components/apply-steps/index.wxss */
 .steps {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #f7f7f7;
   padding: 40rpx 30rpx 80rpx 30rpx;
   position: relative;
+}
+
+.steps-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .steps-item {

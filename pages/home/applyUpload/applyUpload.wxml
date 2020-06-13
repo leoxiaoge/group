@@ -2,7 +2,7 @@
 <view class="container">
 	<apply-steps active="{{active}}" />
 	<view class="upload">
-		<view class="upload-user">
+		<view class="upload-user" bindtap="chooseFaceImage">
 			<view class="upload-user-info">
 				<image class="upload-user-info-card" src="{{positiveCard}}" mode="widthFix"></image>
 				<view>
@@ -11,7 +11,7 @@
 			</view>
 			<view class="upload-card-text">上传头像面</view>
 		</view>
-		<view class="upload-user">
+		<view class="upload-user" bindtap="chooseBackImage">
 			<view class="upload-user-info">
 				<image class="upload-user-info-card" src="{{reverseCard}}" mode="widthFix"></image>
 				<view>
