@@ -5,7 +5,7 @@
 			<view class="select-icon">
 				<image src="{{selectIcon}}" mode="aspectFit"></image>
 			</view>
-			<input placeholder="请输入小区名称"></input>
+			<input placeholder="请输入小区名称" value="{{keyword}}" bindinput="getkeyword"></input>
       <view class="select-icon" wx:if="{{keyword}}">
 				<image src="{{closeIcon}}" mode="aspectFit" bindtap="closeTap"></image>
 			</view>
@@ -16,7 +16,7 @@
 	</view>
 	<view class="select-locate" id="select-locate">
 		<view class="select-locate-text">{{locate}}</view>
-		<view class="select-re" bindtap="location">>
+		<view class="select-re" bindtap="location">
 			<image class="select-re-locate-icon" src="{{locateIcon}}" mode="widthFix"></image>
 			<text class="select-re-locate">重新定位</text>
 		</view>
@@ -43,7 +43,7 @@
 			</view>
 		</scroll-view>
 	</view>
-	<view class="select-footer" id="select-footer">
+	<view class="select-footer" id="select-footer" wx:if="{{isSubmit}}">
 		<view class="select-submit">
 			<button>提交</button>
 		</view>

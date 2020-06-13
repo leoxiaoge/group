@@ -105,6 +105,25 @@ export const request = async (api, data) => {
   })
 }
 
+const location = () => {
+  return new Promise((resolve, reject) => {
+    try {
+      wx.getLocation({
+        type: 'wgs84',
+        success (res) {
+          console.log(res)
+          resolve(res)
+        },
+        fail: function (err) {
+          reject(err)
+        }
+      })
+    } catch (e) {
+      console.error(e)
+    }
+  })
+}
+
 const navigateTo = url => {
   wx.navigateTo({
     url: url
@@ -187,6 +206,7 @@ const showActionSheet = itemList => {
 module.exports = {
   formatTime: formatTime,
   request: request,
+  location: location,
   navigateTo: navigateTo,
   navigateBack: navigateBack,
   redirectTo: redirectTo,

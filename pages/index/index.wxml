@@ -28,32 +28,32 @@
 		<view class="content-empty-head">
 			<image class="content-empty-image" src="{{empty}}" mode="widthFix"></image>
       <block wx:if="{{hasLogin}}">
-        <text class="content-empty-text">您所在的小区目前还没有团长哦！</text>
+			  <text class="content-empty-text">登录后体验更多服务</text>
       </block>
       <block wx:else>
-        <text class="content-empty-text">登录后体验更多服务</text>
+        <text class="content-empty-text">您所在的小区目前还没有团长哦！</text>
       </block>
 		</view>
 		<view class="content-can">
 			<text class="content-can-text">您可以</text>
 		</view>
     <block wx:if="{{hasLogin}}">
-      <view class="content-button">
+		  <view class="content-button">
         <view class="content-invite-button">
-          <button class="invite-button" open-type="share">邀请一个</button>
+          <button class="getuser-button" open-type="getUserInfo" bindgetuserinfo="getuserinfo">微信授权</button>
         </view>
         <view class="content-application-button">
-          <button class="application-button" open-type="getUserInfo" bindgetuserinfo="applyTap">申请团长</button>
+          <button class="getuser-no" open-type="getUserInfo" bindgetuserinfo="notgetuserinfo">暂不登录</button>
         </view>
       </view>
     </block>
     <block wx:else>
       <view class="content-button">
         <view class="content-invite-button">
-          <button class="getuser-button" open-type="getUserInfo" bindgetuserinfo="getuserinfo">微信授权</button>
+          <button class="invite-button" open-type="share">邀请一个</button>
         </view>
         <view class="content-application-button">
-          <button class="getuser-no" open-type="getUserInfo" bindgetuserinfo="notgetuserinfo">暂不登录</button>
+          <button class="application-button" open-type="getUserInfo" bindgetuserinfo="applyTap">申请团长</button>
         </view>
       </view>
     </block>

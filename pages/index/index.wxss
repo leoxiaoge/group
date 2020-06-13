@@ -145,7 +145,6 @@ page {
   line-height: 88rpx;
   font-size: 32rpx;
   border-radius: 44rpx;
-  color: #fff;
   text-align: center;
   letter-spacing: 3rpx;
 }
@@ -156,6 +155,7 @@ page {
 
 .invite-button {
   padding: 0 60rpx;
+  color: #fff;
   background-color: #2fdcc9;
 }
 
@@ -165,7 +165,21 @@ page {
 
 .application-button {
   padding: 0 60rpx;
+  color: #fff;
   background-color: #ff5c27;
+}
+
+.getuser-button {
+  padding: 0 60rpx;
+  color: #fff;
+  background-color: #ff5c27;
+}
+
+.getuser-no {
+  padding: 0 60rpx;
+  color: #ff5c27;
+  border: 2rpx solid #ff5c27;
+  background-color: #fff;
 }
 
 .main-content {

@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isSubmit: false, // 是否显示按钮
     longitude: '', // 经纬度
     latitude: '', // 经纬度
     keyword: '', // 搜索词
@@ -15,6 +16,7 @@ Page({
     distID: 0, // 小区id
     districts: [], // 搜索列表
     selectIcon: '/static/images/select_icon.png',
+    closeIcon: '/static/images/close_icon.png',
     locateIcon: '/static/images/locate_icon.png',
   },
 
@@ -78,6 +80,7 @@ Page({
 
   // 搜索列表
   selectTap: function () {
+    console.log(api)
     let LngLat = `${this.data.longitude},${this.data.latitude}`
     let keyword = this.data.keyword
     let data = {
@@ -112,6 +115,9 @@ Page({
     let index = e.detail.value
     let locate = this.data.districts[index].DistrictName
     let distID = this.data.districts[index].DistrictID
+    this.setData({
+      locate: locate
+    })
     let data = {
       DistID: distID
     }
@@ -137,25 +143,48 @@ Page({
 
   // 计算scroll-view高度
   calculateScrollViewHeight: function () {
+    let isSubmit = this.data.isSubmit
     let query = wx.createSelectorQuery()
     //根据节点id查询节点部分的高度（px单位）
     query.select('#select-header').boundingClientRect()
     query.select('#select-locate').boundingClientRect()
     query.select('#select-title').boundingClientRect()
-    query.select('#select-footer').boundingClientRect()
-    query.exec((res) => {
-      // 分别取出节点的高度
-      let imageHeight = res[0].height;
-      let groupInfoHeight = res[1].height;
-      let dividerHeight = res[2].height;
-      let bottomHeight = res[3].height;
-      // 然后窗口高度（wx.getSystemInfoSync().windowHeight）减去其他不滑动界面的高度
-      let scrollViewHeight = wx.getSystemInfoSync().windowHeight - imageHeight - groupInfoHeight - dividerHeight - bottomHeight
-      // 算出来之后存到data对象里面
-      this.setData({
-        scrollHeight: scrollViewHeight
+    if (isSubmit) {
+      query.select('#select-header').boundingClientRect()
+      query.select('#select-locate').boundingClientRect()
+      query.select('#select-title').boundingClientRect()
+      query.select('#select-footer').boundingClientRect()
+      query.exec((res) => {
+        // 分别取出节点的高度
+        let imageHeight = res[0].height;
+        let groupInfoHeight = res[1].height;
+        let dividerHeight = res[2].height;
+        let bottomHeight = res[3].height;
+        // 然后窗口高度（wx.getSystemInfoSync().windowHeight）减去其他不滑动界面的高度
+        let scrollViewHeight = wx.getSystemInfoSync().windowHeight - imageHeight - groupInfoHeight - dividerHeight - bottomHeight
+        // 算出来之后存到data对象里面
+        this.setData({
+          scrollHeight: scrollViewHeight
+        })
       })
-    })
+    } else {
+      query.select('#select-header').boundingClientRect()
+      query.select('#select-locate').boundingClientRect()
+      query.select('#select-title').boundingClientRect()
+      query.exec((res) => {
+        // 分别取出节点的高度
+        let imageHeight = res[0].height;
+        let groupInfoHeight = res[1].height;
+        let dividerHeight = res[2].height;
+        // 然后窗口高度（wx.getSystemInfoSync().windowHeight）减去其他不滑动界面的高度
+        let scrollViewHeight = wx.getSystemInfoSync().windowHeight - imageHeight - groupInfoHeight - dividerHeight
+        // 算出来之后存到data对象里面
+        this.setData({
+          scrollHeight: scrollViewHeight
+        })
+      })
+    }
+    
   },
 
   /**

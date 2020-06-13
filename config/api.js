@@ -1,7 +1,16 @@
 // 以下是业务服务器API地址
 module.exports = {
   // 平台API - Platform(全局相关API接口)
-  Login: 'API.Platform.Login', //首页数据接口
+  Login: 'API.Platform.Login', // 小程序登录
+  DistSearchListGet: 'API.Platform.DistSearchListGet', // 小区搜索列表API接口
+  UserDistSelect: 'API.Platform.UserDistSelect', // 用户选择小区API
+  WxPhoneNumberGet: 'API.Platform.WxPhoneNumberGet', // 根据微信返回加密信息获取手机号码API
+  ImageVideoUpload: 'API.Platform.ImageVideoUpload', // 图片、视频上传API
+  ImageVideoStoreListGet: 'API.Platform.ImageVideoStoreListGet', // 分页获取团长素材库素材列表API
+  UserFeedBackCreate: 'API.Platform.UserFeedBackCreate', // 用户意见反馈API
+  UserComplainReport: 'API.Platform.UserComplainReport', // 用户举报投诉API
+  UserGet: 'API.Platform.UserGet', // 获取当前用户信息API
+  IDCardImageUpload: 'API.Platform.IDCardImageUpload', // 身份证上传API
 
   // 商品API - Products(和商品操作相关的API接口)
   CategorysListGet: 'API.Products.CategorysListGet', // 提供获取商品类别列表的API接口
