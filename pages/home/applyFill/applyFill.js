@@ -17,6 +17,12 @@ Page({
     locateIcon: '/static/images/locate_icon.png',
     startDate: '', // 开始时间
     endDate: '', // 结束时间
+    mobile: '', // 手机号码
+    TeamTitle: '', // 团队名称
+    RealName: '', // 团长、创建人真实姓名
+    Email: '', // 团长电子邮箱地址
+    IDNumber: '', // 团长、创建人身份证号
+    IDNumberValidType: 0, // 身份证有效期类型
 
     list: [{
       name: '万科鲸鱼小区',
@@ -106,9 +112,32 @@ Page({
     })
   },
 
-  // 下一步
+  // 提交信息
   submitTap: function () {
-    util.navigateTo('/pages/home/applyAudit/applyAudit')
+    let Mobile = this.data.mobile
+    let TeamTitle = this.data.teamTitle
+    let RealName = this.data.realName
+    let Email = this.data.email
+    let IDNumber = this.data.cardInfo.IDNumber
+    let IDNumberValidType = this.data.cardInfo.IDNumberValidType
+    let IDNumberRanges = this.data.cardInfo.IDNumberRanges
+    let IDNumberFace = this.data.faceUrl
+    let IDNumberBack = this.data.backUrl
+    let data = {
+      Mobile: Mobile,
+      TeamTitle: TeamTitle,
+      RealName: RealName,
+      Email: Email,
+      IDNumber: IDNumber,
+      IDNumberValidType: IDNumberValidType,
+      IDNumberRanges: IDNumberRanges,
+      IDNumberFace: IDNumberFace,
+      IDNumberBack: IDNumberBack
+    }
+    util.request(api.IDCardImageUpload, data).then((res) => {
+      console.log(res)
+      util.navigateTo('/pages/home/applyAudit/applyAudit')
+    })
   },
 
   /**

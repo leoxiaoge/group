@@ -5,6 +5,7 @@ const api = require('../../config/api.js')
 
 Page({
   data: {
+    distName: '', // 小区名称
     waitPayOrders: '', // 待付款的订单笔数
     waitRecviveGoodsOrders: '', // 待收货订单笔数，需要在按钮右上角做角标
     myBuyings: '', // 用户已参与，但尚未完成的团购活动数量（即我的团购右上角徽章显示的数字），指用户有参与，但订单尚未完成的团购活动数量
@@ -28,35 +29,35 @@ Page({
       text: '全部订单', // 文字
       icon: '/static/images/all_orders.png', // 图标名称或图片链接
       dot: true, // 是否显示图标右上角小红点
-      info: '99', // 图标右上角徽标的内容
+      info: '', // 图标右上角徽标的内容
       url: '/pages/home/order/order', // 点击后跳转的链接地址
       linkType: 'navigateTo' // 链接跳转类型，可选值为 redirectTo switchTab reLaunch
     }, {
       text: '待付款',
       icon: '/static/images/pending_payment.png',
-      dot: false,
-      info: '99',
+      dot: true,
+      info: '',
       url: '/pages/home/order/order',
       linkType: 'navigateTo'
     }, {
       text: '待收货',
       icon: '/static/images/to_receipt.png',
-      dot: false,
-      info: '99',
+      dot: true,
+      info: '',
       url: '/pages/home/order/order',
       linkType: 'navigateTo'
     }, {
       text: '我的参团',
       icon: '/static/images/my_jion.png',
       dot: false,
-      info: '99',
+      info: '',
       url: '/pages/home/join/join',
       linkType: 'navigateTo'
     }, {
       text: '我要开团',
       icon: '/static/images/to_application.png',
       dot: false,
-      info: '99',
+      info: '',
       url: '/pages/home/applyUpload/applyUpload',
       linkType: 'navigateTo'
     }],
@@ -115,6 +116,7 @@ Page({
         hasLogin: true
       })
     } else {
+      this.getUser()
       this.getUserHomePage()
     }
     this.getSetting()
@@ -130,9 +132,11 @@ Page({
       wx.setStorageSync('userInfo', userInfo)
       wx.setStorageSync('distInfo', distInfo)
       let isTeam = res.IsTeam
+      let distName = res.DistInfo.DistName
       if (distInfo) {
         this.setData({
-          distInfo: distInfo
+          distInfo: distInfo,
+          distName: distName
         })
       }
       this.setData({
@@ -158,12 +162,25 @@ Page({
       let myBuyings = res.MyBuyings
       let teams = res.Teams
       let buyings = res.Buyings
+      let navigation = this.data.navigation
+      navigation.forEach((item, i) => {
+        if (i === 0) {
+          item.info = myBuyings
+        }
+        if (i === 1) {
+          item.info = waitPayOrders
+        }
+        if (i === 2) {
+          item.info = waitRecviveGoodsOrders
+        }
+      })
       this.setData({
         waitPayOrders: waitPayOrders,
         waitRecviveGoodsOrders: waitRecviveGoodsOrders,
         myBuyings: myBuyings,
         teams: teams,
-        buyings: buyings
+        buyings: buyings,
+        navigation: navigation
       })
     }).catch((err) => {
       console.log(err)
@@ -301,7 +318,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getUserHomePage()
   },
 
   /**

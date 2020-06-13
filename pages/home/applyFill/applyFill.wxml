@@ -8,7 +8,7 @@
 				<text class="fill-title-text">手机号码（与微信绑定一致）</text>
 			</view>
 			<view class="fill-region">
-				<input placeholder="请填写手机号码"></input>
+				<input placeholder="请获取手机号码" disabled="true"></input>
 				<button open-type="getPhoneNumber" bindgetphonenumber="handleGetPhoneNumber">获取手机号</button>
 			</view>
 		</view>

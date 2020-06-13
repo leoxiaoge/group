@@ -100,6 +100,7 @@ export const request = async (api, data) => {
       },
       complete: () => {
         wx.hideNavigationBarLoading()
+        wx.stopPullDownRefresh()
       }
     })
   })

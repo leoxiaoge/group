@@ -52,6 +52,10 @@ Component({
     // 提交按钮
     submitTap () {
       let FeedBackContext = this.data.feedBackContext
+      if (!FeedBackContext) {
+        util.showToast('请填写内容！')
+        return
+      }
       let data = {
         FeedBackContext: FeedBackContext
       }
