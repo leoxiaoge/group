@@ -3,22 +3,36 @@
 	<apply-steps active="{{active}}" />
 	<view class="upload">
 		<view class="upload-user" bindtap="chooseFaceImage">
-			<view class="upload-user-info">
-				<image class="upload-user-info-card" src="{{positiveCard}}" mode="widthFix"></image>
-				<view>
-					<image class="upload-user-info-camera" src="{{cameraIcon}}" mode="widthFix"></image>
-				</view>
-			</view>
-			<view class="upload-card-text">上传头像面</view>
+      <block wx:if="{{!positiveImage}}">
+        <view class="upload-user-info">
+          <image class="upload-user-info-card" src="{{positiveCard}}" mode="widthFix"></image>
+          <view>
+            <image class="upload-user-info-camera" src="{{cameraIcon}}" mode="widthFix"></image>
+          </view>
+        </view>
+      </block>
+			<block wx:else>
+        <view class="upload-user-info">
+          <image class="upload-user-info-card" src="{{positiveImage}}" mode="widthFix"></image>
+        </view>
+      </block>
+			<view class="upload-card-text">{{positiveMsg}}</view>
 		</view>
 		<view class="upload-user" bindtap="chooseBackImage">
-			<view class="upload-user-info">
-				<image class="upload-user-info-card" src="{{reverseCard}}" mode="widthFix"></image>
-				<view>
-					<image class="upload-user-info-camera" src="{{cameraIcon}}" mode="widthFix"></image>
-				</view>
-			</view>
-			<view class="upload-card-text">上传国徽面</view>
+      <block wx:if="{{!reverseImage}}">
+        <view class="upload-user-info">
+          <image class="upload-user-info-card" src="{{reverseCard}}" mode="widthFix"></image>
+          <view>
+            <image class="upload-user-info-camera" src="{{cameraIcon}}" mode="widthFix"></image>
+          </view>
+        </view>
+      </block>
+			<block wx:else>
+        <view class="upload-user-info">
+          <image class="upload-user-info-card" src="{{reverseImage}}" mode="widthFix"></image>
+        </view>
+      </block>
+			<view class="upload-card-text">{{reverseMsg}}</view>
 		</view>
 	</view>
 	<view class="empty"></view>

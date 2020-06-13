@@ -10,6 +10,10 @@ Page({
   data: {
     faceImage: '', // 人像面身份证图片
     backImage: '', // 国徽面身份证照片
+    positiveImage: '', // 上传后的人像面身份证图片
+    reverseImage: '', // 上传后的国徽面身份证照片
+    positiveMsg: '上传头像面', // 提示
+    reverseMsg: '上传国徽面', // 提示
     active: 1, // 步骤数
     positiveCard: '/static/images/positive_card.png',
     reverseCard: '/static/images/reverse_card.png',
@@ -46,13 +50,18 @@ Page({
       success: (res) => {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths
-        let data = {
-          file: tempFilePaths[0]
-        }
-        util.uploadFile(api.IDCardImageUpload, data).then((res) => {
+        console.log('tempFilePaths', tempFilePaths)
+        let data = {}
+        let path = tempFilePaths[0]
+        util.uploadFile(api.ImageVideoUpload, data, path).then((res) => {
           console.log(res)
+          let data = JSON.parse(res)
+          let faceImage = data.UploadFiles[0].Value
+          console.log(data)
+          console.log(faceImage)
           this.setData({
-            backImage: tempFilePaths
+            positiveImage: tempFilePaths,
+            faceImage: faceImage
           })
         })
       }
@@ -68,13 +77,15 @@ Page({
       success: (res) => {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         let tempFilePaths = res.tempFilePaths
-        let data = {
-          file: tempFilePaths[0]
-        }
-        util.uploadFile(api.IDCardImageUpload, data).then((res) => {
+        let data = {}
+        let path = tempFilePaths[0]
+        util.uploadFile(api.ImageVideoUpload, data, path).then((res) => {
           console.log(res)
+          let data = JSON.parse(res)
+          let backImage = data.UploadFiles[0].Value
           this.setData({
-            backImage: tempFilePaths
+            reverseImage: tempFilePaths,
+            backImage: backImage
           })
         })
       }
@@ -85,6 +96,16 @@ Page({
   submitTap: function () {
     let FaceImage = this.data.faceImage
     let BackImage = this.data.backImage
+    if (!FaceImage) {
+      util.showToast('请上传头像面！')
+      return
+    }
+    if (!BackImage) {
+      util.showToast('请上传国徽面！')
+      return
+    }
+    console.log(FaceImage)
+    console.log(BackImage)
     let data = {
       FaceImage: FaceImage,
       BackImage: BackImage

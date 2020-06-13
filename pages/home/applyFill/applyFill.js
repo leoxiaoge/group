@@ -8,12 +8,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: 2,
+    cardInfo: '', // 身份证识别信息
+    faceUrl: '', // 身份证人像面
+    backUrl: '', // 身份证国徽面
+    active: 2, // 步骤数
     arrowIcon: '/static/images/arrow_icon.png',
     dateIcon: '/static/images/date_icon.png',
     locateIcon: '/static/images/locate_icon.png',
-    startDate: '',
-    endDate: '',
+    startDate: '', // 开始时间
+    endDate: '', // 结束时间
 
     list: [{
       name: '万科鲸鱼小区',
@@ -32,6 +35,16 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    let cardInfo = options.cardInfo
+    let faceUrl = options.faceUrl
+    let backUrl = options.backUrl
+    if (cardInfo) {
+      this.setData({
+        cardInfo: cardInfo,
+        faceUrl: faceUrl,
+        backUrl: backUrl
+      })
+    }
   },
 
   /**

@@ -105,16 +105,17 @@ export const request = async (api, data) => {
   })
 }
 
-export const uploadFile = async (api, data) => {
+export const uploadFile = async (api, data, path) => {
   let handle = await processing(api, data)
   return new Promise((resolve, reject) => {
     try {
       wx.uploadFile({
         url: handle.url,
-        filePath: data,
+        filePath: path,
         name: 'file',
         formData: handle.postdata,
         success (res){
+          console.log(res)
           const data = res.data
           resolve(data)
         }
@@ -226,6 +227,7 @@ const showActionSheet = itemList => {
 module.exports = {
   formatTime: formatTime,
   request: request,
+  uploadFile: uploadFile,
   location: location,
   navigateTo: navigateTo,
   navigateBack: navigateBack,
