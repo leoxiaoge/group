@@ -1,0 +1,20 @@
+<!--pages/ucenter/inventorySettings/inventorySettings.wxml-->
+<view class="container">
+	<view class="inventory">
+		<radio-group bindchange="radioChange">
+			<label class="inventory-label" wx:for="{{inventory}}" wx:key="index">
+				<view class="inventory-content">
+					<view class="inventory-content-title">{{item.title}}</view>
+				  <view class="inventory-content-remark">{{item.remark}}</view>
+				</view>
+				<view class="inventory-radio">
+					<radio value="{{index}}" color="#ff5c27" checked="{{paraValue == index}}" />
+				</view>
+			</label>
+		</radio-group>
+	</view>
+  <view class="empty"></view>
+	<view class="submit-button">
+		<button bindtap="submitTap">确定</button>
+	</view>
+</view>

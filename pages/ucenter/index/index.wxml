@@ -1,8 +1,8 @@
 <!--pages/center/index/index.wxml-->
 <view class="container">
 	<view class="center">
-		<view>
-			<view>
+		<view class="center-content">
+			<view class="center-header">
 				<view class="userinfo">
 					<view class="userinfo-avatar">
 						<open-data type="userAvatarUrl"></open-data>
@@ -25,11 +25,66 @@
 			</view>
 		</view>
 	</view>
-	<view>
-		<view>
-			<image src="{{}}" mode="widthFix"></image>
-			<text>资料设置</text>
+	<view class="cell-group">
+	  <view class="cell" bindtap="dataSettingsTap">
+		  <view class="cell-left">
+				<image src="{{dataSettingsIcon}}" mode="widthFix"></image>
+				<text class="cell-left-text">资料设置</text>
+			</view>
+			<view class="cell-right">
+			  <text class="cell-right-text">{{dataSettingsTitle}}</text>
+				<image src="{{arrowIcon}}" mode="widthFix"></image>
+			</view>
 		</view>
-		<view></view>
+		<view class="cell" bindtap="communityManagementTap">
+		  <view class="cell-left">
+				<image src="{{communityManagementIcon}}" mode="widthFix"></image>
+				<text class="cell-left-text">小区管理</text>
+			</view>
+			<view class="cell-right">
+			  <text class="cell-right-text">{{communityManagementTitle}}</text>
+				<image src="{{arrowIcon}}" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="cell" bindtap="leagueManagementTap">
+		  <view class="cell-left">
+				<image src="{{leagueManagementIcon}}" mode="widthFix"></image>
+				<text class="cell-left-text">团员管理</text>
+			</view>
+			<view class="cell-right">
+			  <text class="cell-right-text">{{leagueManagementTitle}}</text>
+				<image src="{{arrowIcon}}" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="cell" bindtap="inventorySettingsTap">
+		  <view class="cell-left">
+				<image src="{{inventorySettingsIcon}}" mode="widthFix"></image>
+				<text class="cell-left-text">库存设置</text>
+			</view>
+			<view class="cell-right">
+			  <text class="cell-right-text">{{inventorySettingsTitle}}</text>
+				<image src="{{arrowIcon}}" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="cell" bindtap="collectionCodeTap">
+		  <view class="cell-left">
+				<image src="{{collectionCodeIcon}}" mode="widthFix"></image>
+				<text class="cell-left-text">我的收款码</text>
+			</view>
+			<view class="cell-right">
+			  <text class="cell-right-text">{{collectionCodeTitle}}</text>
+				<image src="{{arrowIcon}}" mode="widthFix"></image>
+			</view>
+		</view>
+		<button class="cell" open-type="contact" bindtap="dataSettingsTap">
+		  <view class="cell-left">
+				<image src="{{contactCenterIcon}}" mode="widthFix"></image>
+				<text class="cell-left-text">客服中心</text>
+			</view>
+			<view class="cell-right">
+			  <text class="cell-right-text"></text>
+				<image src="{{arrowIcon}}" mode="widthFix"></image>
+			</view>
+		</button>
 	</view>
 </view>

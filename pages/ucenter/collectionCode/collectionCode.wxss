@@ -1,0 +1,47 @@
+/* pages/ucenter/collectionCode/collectionCode.wxss */
+page {
+  background-color: #fff;
+}
+
+.code {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.code-image {
+  width: 80%;
+}
+
+.empty {
+  height: 100rpx;
+}
+
+.remark-text {
+  font-size: 20rpx;
+  line-height: 1.6;
+  color: #898989;
+  padding: 20rpx 0 40rpx 0;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 0 30rpx 20rpx 30rpx;
+}
+
+.change-button {
+  width: 100%;
+}
+
+.change-button button {
+  height: 80rpx;
+  font-size: 36rpx;
+  line-height: 80rpx;
+  color: #fff;
+  background-color: #ff5c27;
+  border-radius: 100rpx;
+}

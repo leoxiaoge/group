@@ -15,14 +15,18 @@ Page({
     arrowIcon: '/static/images/arrow_icon.png',
     dateIcon: '/static/images/date_icon.png',
     locateIcon: '/static/images/locate_icon.png',
-    startDate: '', // 开始时间
+    beginDate: '', // 开始时间
     endDate: '', // 结束时间
     mobile: '', // 手机号码
-    TeamTitle: '', // 团队名称
-    RealName: '', // 团长、创建人真实姓名
-    Email: '', // 团长电子邮箱地址
-    IDNumber: '', // 团长、创建人身份证号
-    IDNumberValidType: 0, // 身份证有效期类型
+    teamTitle: '', // 团队名称
+    realName: '', // 团长、创建人真实姓名
+    email: '', // 团长电子邮箱地址
+    idNumber: '', // 团长、创建人身份证号
+    idNumberValidType: 0, // 身份证有效期类型
+    idNumberValidTypeText: '',  // 身份证有效期文字
+    distId: '', // 已选择小区id
+    distList: [], // 已选择小区
+    itemList: ['非长期有效', '长期有效'],
 
     list: [{
       name: '万科鲸鱼小区',
@@ -41,15 +45,27 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    let cardInfo = options.cardInfo
     let faceUrl = options.faceUrl
     let backUrl = options.backUrl
-    if (cardInfo) {
-      this.setData({
-        cardInfo: cardInfo,
-        faceUrl: faceUrl,
-        backUrl: backUrl
-      })
+    if (options.cardInfo) {
+      let cardInfo = JSON.parse(options.cardInfo)
+      if (cardInfo.beginDate && cardInfo.endDate) {
+        this.setData({
+          idNumberValidType: 0
+        })
+        this.showActionSheetText()
+      }
+      if (cardInfo) {
+        this.setData({
+          cardInfo: cardInfo,
+          realName: cardInfo.name,
+          idNumber: cardInfo.IdNumber,
+          beginDate: cardInfo.beginDate,
+          endDate: cardInfo.endDate,
+          faceUrl: faceUrl,
+          backUrl: backUrl
+        })
+      }
     }
   },
 
@@ -87,12 +103,63 @@ Page({
     })
   },
 
+  // 团队名称输入
+  getTeamTitle: function (e) {
+    console.log(e)
+    let teamTitle = e.detail.value
+    this.setData({
+      teamTitle: teamTitle
+    })
+  },
+
+  // 创建人输入
+  getRealName: function (e) {
+    let realName = e.detail.value
+    this.setData({
+      realName: realName
+    })
+  },
+
+  // 电子邮箱输入
+  getEmail: function (e) {
+    let email = e.detail.value
+    this.setData({
+      email: email
+    })
+  },
+
+  // 身份证号输入
+  getIDNumber: function (e) {
+    let idNumber = e.detail.value
+    this.setData({
+      idNumber: idNumber
+    })
+  },
+
   // 选择有效期类型
   showActionSheet: function () {
-    let itemList = ['非长期有效', '长期有效']
+    let itemList = this.data.itemList
     util.showActionSheet(itemList).then((res) => {
       console.log(res)
       console.log(res.tapIndex)
+      let idNumberValidType = res.tapIndex
+      this.setData({
+        idNumberValidType: idNumberValidType
+      })
+      this.showActionSheetText()
+    })
+  },
+
+  showActionSheetText: function () {
+    let idNumberValidType = this.data.idNumberValidType
+    let itemList = this.data.itemList
+    itemList.forEach((item, i) => {
+      if (idNumberValidType === i) {
+        let idNumberValidTypeText = itemList[i]
+        this.setData({
+          idNumberValidTypeText: idNumberValidTypeText
+        })
+      }
     })
   },
 
@@ -100,7 +167,7 @@ Page({
   bindStartDateChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      startDate: e.detail.value
+      beginDate: e.detail.value
     })
   },
 
@@ -112,17 +179,26 @@ Page({
     })
   },
 
+  // 选择小区
+  selectTap: function () {
+    let isCheckbox = true
+    let isFrom = true
+    let url =  `/pages/home/select/select?isCheckbox=${isCheckbox}&isFrom=${isFrom}`
+    util.navigateTo(url)
+  },
+
   // 提交信息
   submitTap: function () {
     let Mobile = this.data.mobile
     let TeamTitle = this.data.teamTitle
     let RealName = this.data.realName
     let Email = this.data.email
-    let IDNumber = this.data.cardInfo.IDNumber
-    let IDNumberValidType = this.data.cardInfo.IDNumberValidType
-    let IDNumberRanges = this.data.cardInfo.IDNumberRanges
+    let IDNumber = this.data.idNumber
+    let IDNumberValidType = this.data.idNumberValidType
+    let IDNumberRanges = `${this.data.beginDate},${this.data.endDate}`
     let IDNumberFace = this.data.faceUrl
     let IDNumberBack = this.data.backUrl
+    let DistIDs = this.data.distId
     let data = {
       Mobile: Mobile,
       TeamTitle: TeamTitle,
@@ -132,11 +208,15 @@ Page({
       IDNumberValidType: IDNumberValidType,
       IDNumberRanges: IDNumberRanges,
       IDNumberFace: IDNumberFace,
-      IDNumberBack: IDNumberBack
+      IDNumberBack: IDNumberBack,
+      DistIDs: DistIDs
     }
-    util.request(api.IDCardImageUpload, data).then((res) => {
+    util.request(api.TeamAdd, data).then((res) => {
       console.log(res)
-      util.navigateTo('/pages/home/applyAudit/applyAudit')
+      util.showToast('提交成功，等待审核！')
+      let isAutoAudit = res.IsAutoAudit
+      let url = `/pages/home/applyAudit/applyAudit?isAutoAudit=${isAutoAudit}`
+      util.navigateTo(url)
     })
   },
 

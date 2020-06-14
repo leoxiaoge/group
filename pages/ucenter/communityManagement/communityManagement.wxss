@@ -1,0 +1,135 @@
+/* pages/ucenter/communityManagement/communityManagement.wxss */
+page {
+  background-color: #fff;
+}
+
+.community {
+  margin: 0 30rpx;
+}
+
+.community-title {
+  font-size: 30rpx;
+  line-height: 1.6;
+  color: #636363;
+  border-bottom: 2rpx solid #ededed;
+  padding: 20rpx 0;
+}
+
+.community-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.community-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.community-content image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.community-name-address {
+  padding-left: 8rpx;
+}
+
+.community-name {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #636363;
+}
+
+.community-address {
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #7f7f7f;
+}
+
+.community-delete {
+  font-size: 18rpx;
+  line-height: 1.6;
+  color: #ff5c27;
+}
+
+.empty {
+  height: 100rpx;
+}
+
+.community-add {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 0 30rpx 20rpx 30rpx;
+}
+
+.community-add button {
+  height: 80rpx;
+  font-size: 36rpx;
+  line-height: 80rpx;
+  color: #fff;
+  background-color: #ff5c27;
+  border-radius: 100rpx;
+}
+
+.touch-item {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden
+}
+
+.content {
+  width: 100%;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(50px);
+  transform: translateX(50px);
+  margin-left: -50px
+}
+
+.del {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.touch-move-active .content,
+.touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.delete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100rpx;
+  height: 100rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  line-height: 100rpx;
+  z-index: 1;
+  text-align: center;
+  background-color: #f8f8f8;
+  border-radius: 50%;
+}
+
+.delete-btn image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44rpx;
+  height: 44rpx;
+}

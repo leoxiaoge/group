@@ -1,0 +1,31 @@
+<!--pages/ucenter/communityManagement/communityManagement.wxml-->
+<view class="container">
+  <block wx:if="{{!isContent}}">
+    <view class="community">
+      <view class="community-title">已选择小区</view>
+      <block wx:for="{{items}}" wx:key="index">
+        <view class="community-item touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+          <view class="community-content content">
+            <view>
+              <image src="{{locateIcon}}" mode="widthFix"></image>
+            </view>
+            <view class="community-name-address">
+              <view class="community-name">{{item.DistName}}</view>
+              <view class="community-address" bindtap="openLocationTap" data-index="{{index}}">{{item.Address}}</view>
+            </view>
+          </view>
+          <view class="community-delete del delete-btn" bindtap="deleteTap" data-index="{{index}}" data-id="{{item.DistID}}">
+            <image src="{{deleteIcon}}" mode="aspectFit"></image>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:else>
+    <empty icon="{{emptyIcon}}" text="{{emptyText}}" />
+  </block>
+  <view class="empty"></view>
+  <view class="community-add" bindtap="selectTap">
+    <button>添加小区</button>
+  </view>
+</view>

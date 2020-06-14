@@ -1,0 +1,38 @@
+<!--pages/ucenter/dataSettings/dataSettings.wxml-->
+<view class="container">
+  <view class="setting-item" bindtap="chooseFaceImage">
+    <view class="setting-item-left">
+      <image class="setting-item-avatar-image" src="{{avatar}}"></image>
+    </view>
+    <view class="setting-item-right">
+      <text class="setting-item-right-text">团队头像</text>
+      <image class="setting-item-arrow" src="{{arrowIcon}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="setting-item" bindtap="popupTap">
+    <view class="setting-item-left">
+      <text class="setting-item-text">{{teamTitle}}</text>
+    </view>
+    <view class="setting-item-right">
+      <text class="setting-item-right-text">团队名称</text>
+      <image class="setting-item-arrow" src="{{arrowIcon}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="setting-item-textarea">
+    <view class="setting-textarea">
+      <textarea placeholder="团队介绍" bindinput="textareaInput"></textarea>
+    </view>
+  </view>
+  <popup show="{{showPopup}}">
+		<view class="popup-slot" slot="content" catchtap="catchtap">
+			<view class="popup-input">
+				<input placeholder="请输入团队名称" value="{{teamTitle}}" catchinput="catchInput"></input>
+			</view>
+			<button class="popup-button" catchtap="popupTap">确定</button>
+		</view>
+	</popup>
+  <view class="empty"></view>
+  <view class="submit">
+    <button bindtap="submitTap">提交</button>
+  </view>
+</view>

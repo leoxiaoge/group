@@ -1,10 +1,10 @@
 <!--pages/home/detail/detail.wxml-->
 <view class="container">
 	<view class="detail">
-		<view class="detail-">
-			<image src="{{shopImage}}" mode=""></image>
+		<view class="detail-banner">
+			<image src="{{shopImage}}" mode="aspectFit"></image>
 		</view>
-		<view class="detail-">
+		<view class="detail-color">
 			<view class="detail-">
 				<view class="detail-"></view>
 				<view class="detail-"></view>

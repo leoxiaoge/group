@@ -21,7 +21,17 @@
     {
       "root": "pages/ucenter",
       "pages": [
-        "index/index"
+        "index/index",
+        "openGroup/openGroup",
+        "orderCenter/orderCenter",
+        "myGroup/myGroup",
+        "commodityLibrary/commodityLibrary",
+        "dataAnalysis/dataAnalysis",
+        "dataSettings/dataSettings",
+        "communityManagement/communityManagement",
+        "leagueManagement/leagueManagement",
+        "inventorySettings/inventorySettings",
+        "collectionCode/collectionCode"
       ]
     }
   ],
@@ -40,6 +50,9 @@
     "navigation-bar": "/components/navigationBar/index",
     "suggestions": "/components/suggestions/index",
     "loading": "/components/loading/index",
+    "empty": "/components/empty/index",
+    "popup": "/components/popup/index",
+    "popup-modal": "/components/popup-modal/index",
     "red-packet": "/components/red-packet/index"
   },
   "networkTimeout": {

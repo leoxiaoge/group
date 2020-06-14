@@ -2,15 +2,19 @@
 <view class="container">
 	<apply-steps active="{{active}}" />
 	<view class="audit">
-	  <view class="audit-submitted">
-		  <text class="audit-submitted-text">资料已提交审核中</text>
-		</view>
-		<view class="audit-passed">
-		  <image src="{{passedIcon}}" mode=""></image>
-			<view class="audit-passed-text">审核通过</view>
-			<view class="audit-center">
-			  <button bindtap="centerTap">进入团长中心</button>
+	  <block wx:if="{{isAutoAudit}}">
+	  	<view class="audit-passed">
+				<image src="{{passedIcon}}" mode=""></image>
+				<view class="audit-passed-text">审核通过</view>
+				<view class="audit-center">
+					<button bindtap="centerTap">进入团长中心</button>
+				</view>
 			</view>
-		</view>
+		</block>
+	  <block wx:else>
+			<view class="audit-submitted">
+				<text class="audit-submitted-text">{{auditText}}</text>
+			</view>
+		</block>
 	</view>
 </view>

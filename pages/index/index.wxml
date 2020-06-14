@@ -1,11 +1,11 @@
 <!--index.wxml-->
 <view class="container">
-	<view class="header" wx:if="{{distName}}">
-		<view class="map" bindtap="selectTap">
+	<view class="header">
+		<button class="map" open-type="getUserInfo" bindgetuserinfo="selectTap">
 			<image class="map-icon" src="{{locateIcon}}" mode="widthFix"></image>
 			<text class="map-text">{{distName}}</text>
 			<image class="map-down" src="{{dropDownIcon}}" mode="widthFix"></image>
-		</view>
+		</button>
 	</view>
 	<view class="navigation-grid">
 		<view class="navigation-grid-content">

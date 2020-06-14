@@ -82,7 +82,7 @@ export const request = async (api, data) => {
           if (res.data.IsError) {
             if (res.data.ErrCode === '-2000') {
               wx.clearStorageSync()
-              switchTab('/pages/index/index')
+              reLaunch('/pages/index/index')
             } else {
               showToast(res.data.ErrMsg)
             }
@@ -166,6 +166,12 @@ const redirectTo = url => {
 
 const switchTab = url => {
   wx.switchTab({
+    url: url
+  })
+}
+
+const reLaunch = url => {
+  wx.reLaunch({
     url: url
   })
 }

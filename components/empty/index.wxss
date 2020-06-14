@@ -1,0 +1,27 @@
+/* components/empty/index.wxss */
+
+.empty-data {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.no-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-image image {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.np-text {
+  font-size: 32rpx;
+  line-height: 1,6;
+  text-align: center;
+  color: #7f7f7f;
+  padding: 20rpx 0;
+}

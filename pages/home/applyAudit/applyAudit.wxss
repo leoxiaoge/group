@@ -41,7 +41,6 @@ page {
 }
 
 .audit-center button {
-  width: 32%;
   height: 74rpx;
   font-size: 24rpx;
   line-height: 74rpx;

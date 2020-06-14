@@ -1,0 +1,4 @@
+<!--pages/ucenter/myGroup/myGroup.wxml-->
+<view class="container">
+  <view></view>
+</view>

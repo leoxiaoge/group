@@ -1,0 +1,9 @@
+<!--components/popup/index.wxml-->
+<view class="content" wx:if="{{show}}" catchtouchmove="preventdefault">
+  <view class="page-content">
+    <slot name="content" />
+    <view class="close">
+      <image class="close-image" src="{{closeIcon}}" catchtap="popupTap"></image>
+    </view>
+  </view>
+</view>

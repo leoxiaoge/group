@@ -1,0 +1,33 @@
+<!--pages/ucenter/leagueManagement/leagueManagement.wxml-->
+<view class="container">
+  <block wx:if="{{!isContent}}">
+    <view class="league">
+      <view class="league-title">{{title}}</view>
+      <block wx:for="{{items}}" wx:key="index">
+        <view class="league-item touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+          <view class="league-content content">
+            <image src="{{item.userFace}}"></image>
+            <text class="league-name-text">{{item.userNick}}</text>
+          </view>
+          <block wx:if="{{isSuper}}">
+            <view class="league-delete del delete-btn" bindtap="deleteTap" data-index="{{index}}" data-id="{{item.UserID}}">
+              <image src="{{deleteIcon}}" mode="aspectFit"></image>
+            </view>
+          </block>
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:else>
+    <empty icon="{{emptyIcon}}" text="{{emptyText}}" />
+  </block>
+  <view class="empty"></view>
+  <view class="invite-members">
+    <block wx:if="{{isSuper}}">
+      <button open-type="share">邀请团员</button>
+    </block>
+    <block wx:else>
+      <button bindtap="quitTap" wx:if="{{!isContent}}">退出团队</button>
+    </block>
+  </view>
+</view>

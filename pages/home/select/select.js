@@ -8,13 +8,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isSubmit: false, // 是否显示按钮
+    isCheckbox: false, // 是否多选
+    isFrom: false, // 是否表单
+    isDisabled: false, // 是否可点击
     longitude: '', // 经纬度
     latitude: '', // 经纬度
     keyword: '', // 搜索词
     locate: '', // 小区名称
     distID: 0, // 小区id
     districts: [], // 搜索列表
+    detailValue: [], // 多选列表id值
+    distList: [], // 多选列表
+    detailValueChange: [], // 多选列表新id值
+    distListChange: [], // 多选新列表
     selectIcon: '/static/images/select_icon.png',
     closeIcon: '/static/images/close_icon.png',
     locateIcon: '/static/images/locate_icon.png',
@@ -26,9 +32,14 @@ Page({
   onLoad: function (options) {
     console.log(options)
     // 选择小区显示提交按钮
-    if (options.isSubmit) {
+    if (options.isCheckbox) {
       this.setData({
-        isSubmit: options.isSubmit
+        isCheckbox: options.isCheckbox
+      })
+    }
+    if (options.isFrom) {
+      this.setData({
+        isFrom: options.isFrom
       })
     }
     this.location()
@@ -112,6 +123,9 @@ Page({
       this.setData({
         districts: districts
       })
+      if (this.data.isCheckbox) {
+        this.checkboxChangeValue()
+      }
     })
   },
 
@@ -132,8 +146,88 @@ Page({
       let title = `选择${locate}成功！`
       util.showToast(title)
       util.navigateBack('-1')
-    }).catch((err) => {
-      console.log(err)
+    })
+  },
+
+  // 多选小区
+  checkboxChange: function (e) {
+    console.log(e)
+    let detailValue = e.detail.value
+    this.setData({
+      detailValue: detailValue
+    })
+    this.checkboxChangeValue()
+  },
+
+  // 多选处理
+  checkboxChangeValue: function () {
+    let districts = this.data.districts
+    let detailValue = this.data.detailValue
+    let distListData = []
+    districts.forEach(item => {
+      detailValue.forEach(ele => {
+        if (item.DistrictID == ele) {
+          item.checked = true
+          distListData.push(item)
+        }
+      })
+    })
+    let distList = this.data.distList.concat(distListData)
+    console.log(detailValue)
+    if (distList.length > 0) {
+      this.setData({
+        isDisabled: true
+      })
+    } else {
+      this.setData({
+        isDisabled: false
+      })
+    }
+    console.log(distList)
+    this.setData({
+      districts: districts,
+      distList: distList
+    })
+  },
+
+  // 确定
+  definiteTap: function () {
+    this.checkboxChangeValue()
+    let distList = this.data.distList
+    let value = this.data.detailValue.join(',')
+    let pages = getCurrentPages() // 获取页面栈
+    let currPage = pages[pages.length - 1] // 当前页面
+    let prevPage = pages[pages.length - 2] // 上一个页面
+    prevPage.setData({
+      distId: value,
+      distList: distList
+    })
+    util.navigateBack('-1')
+  },
+
+  // 提交
+  submitTap: function () {
+    let DistIDs = this.data.detailValue.join(',')
+    let data = {
+      DistIDs: DistIDs
+    }
+    util.request(api.TeamDistAdd, data).then((res) => {
+      console.log(res)
+      util.showToast('提交成功！')
+      util.navigateBack('-1')
+    })
+  },
+
+  // 全国销售
+  submitAllTap: function () {
+    let DistIDs = 0
+    let data = {
+      DistIDs: DistIDs
+    }
+    util.request(api.TeamDistAdd, data).then((res) => {
+      console.log(res)
+      util.showToast('提交成功！')
+      util.navigateBack('-1')
     })
   },
 

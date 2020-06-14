@@ -1,0 +1,53 @@
+/* pages/ucenter/inventorySettings/inventorySettings.wxss */
+page {
+  background-color: #fff;
+}
+
+radio {
+  transform: scale(0.8);
+}
+
+.inventory {
+  margin: 0 30rpx;
+}
+
+.inventory-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #ededed;
+  padding: 20rpx;
+}
+
+.inventory-content-title {
+  font-size: 30rpx;
+  line-height: 1.6;
+  color: #7f7f7f;
+}
+
+.inventory-content-remark {
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #9a9a9a;
+}
+
+.empty {
+  height: 100rpx;
+}
+
+.submit-button {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 0 30rpx 20rpx 30rpx;
+}
+
+.submit-button button {
+  height: 80rpx;
+  font-size: 36rpx;
+  line-height: 80rpx;
+  color: #fff;
+  background-color: #ff5c27;
+  border-radius: 100rpx;
+}

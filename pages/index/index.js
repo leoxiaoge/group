@@ -5,7 +5,7 @@ const api = require('../../config/api.js')
 
 Page({
   data: {
-    distName: '', // 小区名称
+    distName: '选择小区', // 小区名称
     waitPayOrders: '', // 待付款的订单笔数
     waitRecviveGoodsOrders: '', // 待收货订单笔数，需要在按钮右上角做角标
     myBuyings: '', // 用户已参与，但尚未完成的团购活动数量（即我的团购右上角徽章显示的数字），指用户有参与，但订单尚未完成的团购活动数量
@@ -28,36 +28,36 @@ Page({
     navigation: [{
       text: '全部订单', // 文字
       icon: '/static/images/all_orders.png', // 图标名称或图片链接
-      dot: true, // 是否显示图标右上角小红点
-      info: '', // 图标右上角徽标的内容
+      dot: false, // 是否显示图标右上角小红点
+      info: 0, // 图标右上角徽标的内容
       url: '/pages/home/order/order', // 点击后跳转的链接地址
       linkType: 'navigateTo' // 链接跳转类型，可选值为 redirectTo switchTab reLaunch
     }, {
       text: '待付款',
       icon: '/static/images/pending_payment.png',
-      dot: true,
-      info: '',
+      dot: false,
+      info: 0,
       url: '/pages/home/order/order',
       linkType: 'navigateTo'
     }, {
       text: '待收货',
       icon: '/static/images/to_receipt.png',
-      dot: true,
-      info: '',
+      dot: false,
+      info: 0,
       url: '/pages/home/order/order',
       linkType: 'navigateTo'
     }, {
       text: '我的参团',
       icon: '/static/images/my_jion.png',
       dot: false,
-      info: '',
+      info: 0,
       url: '/pages/home/join/join',
       linkType: 'navigateTo'
     }, {
       text: '我要开团',
       icon: '/static/images/to_application.png',
       dot: false,
-      info: '',
+      info: 0,
       url: '/pages/home/applyUpload/applyUpload',
       linkType: 'navigateTo'
     }],
@@ -117,6 +117,7 @@ Page({
       })
     } else {
       this.getUser()
+      this.getTeam()
       this.getUserHomePage()
     }
     this.getSetting()
@@ -152,6 +153,30 @@ Page({
     })
   },
 
+  // 获取团长注册信息详情
+  getTeam: function () {
+    let navigation = this.data.navigation
+    let data = {}
+    util.request(api.TeamGet, data).then((res) => {
+      console.log(res)
+      let auditStatus = res.TeamInfo.AuditStatus
+      if (auditStatus) {
+        navigation.forEach((item, i) => {
+          if (i === 4) {
+            let url = `/pages/home/applyAudit/applyAudit?auditStatus=${auditStatus}`
+            item.url = url
+          }
+        })
+        this.setData({
+          navigation: navigation
+        })
+      }
+      this.setData({
+        auditStatus: auditStatus
+      })
+    })
+  },
+
   // 获取首页相关信息
   getUserHomePage: function () {
     let data = {}
@@ -166,12 +191,21 @@ Page({
       navigation.forEach((item, i) => {
         if (i === 0) {
           item.info = myBuyings
+          if (myBuyings > 0) {
+            item.dot = true
+          }
         }
         if (i === 1) {
           item.info = waitPayOrders
+          if (waitPayOrders > 0) {
+            item.dot = true
+          }
         }
         if (i === 2) {
           item.info = waitRecviveGoodsOrders
+          if (waitRecviveGoodsOrders > 0) {
+            item.dot = true
+          }
         }
       })
       this.setData({
@@ -257,15 +291,22 @@ Page({
   },
 
   // 选择小区
-  selectTap: function () {
-    util.navigateTo('/pages/home/select/select')
+  selectTap: async function (e) {
+    let userInfo = e.detail.userInfo
+    if (userInfo) {
+      await user.loginByWeixin(userInfo)
+      util.navigateTo('/pages/home/select/select')
+    } else {
+      util.showToast('更好的体验，请授权登录！')
+    }
   },
 
   // 菜单导航
-  navigationTap: function (e) {
+  navigationTap: async function (e) {
     console.log(e)
     let userInfo = e.detail.userInfo
     if (userInfo) {
+      await user.loginByWeixin(userInfo)
       let url = e.currentTarget.dataset.url
       util.navigateTo(url)
     } else {
@@ -281,9 +322,10 @@ Page({
   },
 
   // 申请团长
-  applyTap: function (e) {
+  applyTap: async function (e) {
     let userInfo = e.detail.userInfo
     if (userInfo) {
+      await user.loginByWeixin(userInfo)
       util.navigateTo('/pages/home/applyFill/applyFill')
     } else {
       util.showToast('更好的体验，请授权登录！')

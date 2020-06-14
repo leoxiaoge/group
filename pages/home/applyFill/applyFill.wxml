@@ -8,7 +8,7 @@
 				<text class="fill-title-text">手机号码（与微信绑定一致）</text>
 			</view>
 			<view class="fill-region">
-				<input placeholder="请获取手机号码" disabled="true"></input>
+				<input placeholder="请获取手机号码" value="{{mobile}}" disabled="true"></input>
 				<button open-type="getPhoneNumber" bindgetphonenumber="handleGetPhoneNumber">获取手机号</button>
 			</view>
 		</view>
@@ -18,7 +18,7 @@
 				<text class="fill-title-text">团队名称</text>
 			</view>
 			<view class="fill-region">
-				<input placeholder="请填写团队名称"></input>
+				<input placeholder="请填写团队名称" value="{{teamTitle}}" bindinput="getTeamTitle"></input>
 			</view>
 		</view>
 		<view class="fill-piece">
@@ -27,7 +27,7 @@
 				<text class="fill-title-text">创建人姓名</text>
 			</view>
 			<view class="fill-region">
-				<input placeholder="请填写创建人姓名"></input>
+				<input placeholder="请填写创建人姓名" value="{{realName}}" bindinput="getRealName"></input>
 			</view>
 		</view>
 		<view class="fill-piece">
@@ -36,7 +36,7 @@
 				<text class="fill-title-text">电子邮箱</text>
 			</view>
 			<view class="fill-region">
-				<input placeholder="请填写电子邮箱"></input>
+				<input placeholder="请填写电子邮箱" value="{{email}}" bindinput="getEmail"></input>
 			</view>
 		</view>
 		<view class="fill-piece">
@@ -45,7 +45,7 @@
 				<text class="fill-title-text">身份证号</text>
 			</view>
 			<view class="fill-region">
-				<input placeholder="请填写身份证号"></input>
+				<input placeholder="请填写身份证号" value="{{idNumber}}" bindinput="getIDNumber"></input>
 			</view>
 		</view>
 		<view class="fill-piece">
@@ -54,24 +54,24 @@
 				<text class="fill-title-text">身份证有效期</text>
 			</view>
 			<view class="fill-region" bindtap="showActionSheet">
-				<input placeholder="请选择身份证有效期" disabled="true"></input>
+				<input placeholder="请选择身份证有效期" value="{{idNumberValidTypeText}}" disabled="true"></input>
 				<image class="fill-arrow" src="{{arrowIcon}}" mode="widthFix"></image>
 			</view>
 		</view>
 		<view class="fill-piece">
 			<view class="fill-title" bindtap="showActionSheet">
 				<text class="fill-tag">*</text>
-				<text class="fill-title-text">身份证有效期</text>
+				<text class="fill-title-text">选择有效期</text>
 			</view>
 			<view class="fill-region fill-region-date">
 				<view class="fill-date">
 					<view class="fill-date-icon">
 						<image class="fill-date-image" src="{{dateIcon}}" mode="widthFix"></image>
 					</view>
-					<picker mode="date" value="{{startDate}}" end="{{endDate}}" bindchange="bindStartDateChange">
-						<input class="fill-date-text" wx:if="{{!startDate}}" placeholder="生效日期" disabled="true"></input>
+					<picker mode="date" value="{{beginDate}}" end="{{endDate}}" bindchange="bindStartDateChange">
+						<input class="fill-date-text" wx:if="{{!beginDate}}" placeholder="生效日期" disabled="true"></input>
 						<view class="picker fill-date-text">
-							{{startDate}}
+							{{beginDate}}
 						</view>
 					</picker>
 				</view>
@@ -79,7 +79,7 @@
 					<view class="fill-date-icon">
 						<image class="fill-date-image" src="{{dateIcon}}" mode="widthFix"></image>
 					</view>
-					<picker mode="date" value="{{endDate}}" start="{{startDate}}" bindchange="bindEndDateChange">
+					<picker mode="date" value="{{endDate}}" start="{{beginDate}}" bindchange="bindEndDateChange">
 						<input class="fill-date-text" wx:if="{{!endDate}}" placeholder="到期日期" disabled="true"></input>
 						<view class="picker fill-date-text">
 							{{endDate}}
@@ -88,7 +88,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="fill-piece">
+		<view class="fill-piece" bindtap="selectTap">
 			<view class="fill-title">
 				<text class="fill-tag">*</text>
 				<text class="fill-title-text">选择小区（团长所经营的小区）</text>
@@ -98,13 +98,13 @@
 				<image class="fill-arrow" src="{{arrowIcon}}" mode="widthFix"></image>
 			</view>
 		</view>
-		<view class="fill-piece-item" wx:for="{{list}}" wx:for-item="item" wx:key="index">
+		<view class="fill-piece-item" wx:for="{{distList}}" wx:for-item="item" wx:key="index">
 			<view class="fill-locate">
 				<image class="fill-locate-image" src="{{locateIcon}}" mode="widthFix"></image>
-				<text class="fill-locate-text">{{item.name}}</text>
+				<text class="fill-locate-text">{{item.DistrictName}}</text>
 			</view>
 			<view class="fill-locate">
-				<text class="fill-locate-text">{{item.locate}}</text>
+				<text class="fill-locate-text">{{item.Address}}</text>
 			</view>
 		</view>
 	</view>

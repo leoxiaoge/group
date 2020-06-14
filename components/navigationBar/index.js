@@ -1,5 +1,6 @@
 // components/navigationBar/index.js
-const util = require('../../utils/util.js');
+const util = require('../../utils/util.js')
+const user = require('../../utils/user.js')
 
 Component({
   /**
@@ -25,16 +26,28 @@ Component({
    */
   methods: {
     // 跳转到团长中心页面
-    centerTap () {
-      util.navigateTo('/pages/ucenter/index/index')
+    async centerTap (e) {
+      let userInfo = e.detail.userInfo
+      if (userInfo) {
+        await user.loginByWeixin(userInfo)
+        util.navigateTo('/pages/ucenter/index/index')
+      } else {
+        util.showToast('更好的体验，请授权登录！')
+      }
     },
 
     // 控制投诉与建议组件显示
-    suggestionsTap () {
-      let show = !this.data.show
-      this.setData({
-        show: show
-      })
+    async suggestionsTap (e) {
+      let userInfo = e.detail.userInfo
+      if (userInfo) {
+        await user.loginByWeixin(userInfo)
+        let show = !this.data.show
+        this.setData({
+          show: show
+        })
+      } else {
+        util.showToast('更好的体验，请授权登录！')
+      }
     }
   }
 })

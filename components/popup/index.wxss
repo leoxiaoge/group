@@ -1,0 +1,74 @@
+/* components/popup/index.wxss */
+.content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.60);
+  z-index: 10;
+}
+
+.page-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.close-image {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.popIn {
+  -webkit-animation: fadeleftIn .4s;
+  animation: fadeleftIn .4s;
+  -webkit-animation-name: popIn;
+  animation-name: popIn;
+}
+
+@-webkit-keyframes popIn {
+  0% {
+      -webkit-transform: scale3d(0, 0, 0);
+      transform: scale3d(0.5, 0.5, 0.5);
+      opacity: 0;
+  }
+  50% {
+      -webkit-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+      animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+  }
+  100% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+      -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+      -webkit-transform: scale3d(0, 0, 0);
+      transform: scale3d(0.5, 0.5, 0.5);
+      opacity: 0;
+  }
+  50% {
+      -webkit-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+      animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+  }
+  100% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+      -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      opacity: 1;
+  }
+}

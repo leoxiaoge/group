@@ -26,7 +26,7 @@
 	</view>
 	<view class="select-content">
 		<scroll-view scroll-y="true" class="scroll-view" style="height:{{scrollHeight}}px" bindscrolltoupper="upper" bindscrolltolower="lower">
-			<view class="select-radio-group">
+			<view class="select-radio-group" wx:if="{{!isCheckbox}}">
 				<radio-group bindchange="radioChange">
 					<label class="select-label" wx:for="{{districts}}" wx:key="index">
 						<view class="select-radio-name">
@@ -41,14 +41,38 @@
 					</label>
 				</radio-group>
 			</view>
+			<view class="select-radio-group" wx:else>
+        <checkbox-group bindchange="checkboxChange">
+          <label class="select-label" wx:for="{{districts}}" wx:key="index">
+					  <view class="select-radio-name">
+							<view class="select-radio">
+								<checkbox value="{{item.DistrictID}}" color="#ff5c27" checked="{{item.checked}}"/>
+							</view>
+							<view class="select-locate-name">{{item.DistrictName}}</view>
+						</view>
+						<view class="select-distance">
+							<text class="select-distance-text">{{item.DistanceDescribe}}</text>
+						</view>
+          </label>
+        </checkbox-group>
+      </view>
 		</scroll-view>
 	</view>
-	<view class="select-footer" id="select-footer" wx:if="{{isSubmit}}">
-		<view class="select-submit">
-			<button>提交</button>
+	<block wx:if="{{isFrom}}">
+	  <view class="select-footer" id="select-footer" wx:if="{{isCheckbox}}">
+			<view class="select-definite">
+				<button bindtap="definiteTap" disabled="{{!isDisabled}}">确定</button>
+			</view>
 		</view>
-		<view class="select-nationwide">
-			<button>全国范围销售</button>
+	</block>
+	<block wx:else>
+	  <view class="select-footer" id="select-footer" wx:if="{{isCheckbox}}">
+			<view class="select-nationwide">
+				<button bindtap="submitTap" disabled="{{!isDisabled}}">提交</button>
+			</view>
+			<view class="select-nationwide">
+				<button bindtap="submitAllTap">全国范围销售</button>
+			</view>
 		</view>
-	</view>
+	</block>
 </view>

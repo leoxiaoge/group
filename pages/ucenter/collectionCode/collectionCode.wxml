@@ -1,0 +1,18 @@
+<!--pages/ucenter/collectionCode/collectionCode.wxml-->
+<view class="container">
+  <block wx:if="{{payCode}}">
+    <view class="code">
+      <image class="code-image" src="{{payCode}}" mode=""></image>
+    </view>
+  </block>
+  <block wx:else>
+    <empty icon="{{emptyIcon}}" text="{{emptyText}}" />
+  </block>
+  <view class="empty"></view>
+  <view class="bottom">
+    <view class="remark-text">{{remark}}</view>
+    <view class="change-button">
+      <button bindtap="chooseFaceImage">修改收款码</button>
+    </view>
+  </view>
+</view>

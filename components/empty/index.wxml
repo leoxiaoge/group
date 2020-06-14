@@ -1,0 +1,9 @@
+<!--components/empty/index.wxml-->
+<view class="empty-data">
+	<view class="no-data">
+		<view class="no-image">
+      <image src="{{icon}}" mode="widthFix"></image>
+    </view>
+		<view class="np-text">{{text}}</view>
+	</view>
+</view>

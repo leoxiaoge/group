@@ -112,7 +112,7 @@ Page({
     }
     util.request(api.IDCardImageUpload, data).then((res) => {
       console.log(res)
-      let cardInfo = res.IDCardInfo // 身份证识别信息
+      let cardInfo = JSON.stringify(res.IDCardInfo) // 身份证识别信息
       let faceUrl = res.FaceUrl // 身份证人像面上传后的URL地址
       let backUrl = res.BackUrl // 身份证国徽面图片上传后的URL地址
       // 关闭当前页面，跳转到应用内的某个页面
