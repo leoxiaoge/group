@@ -133,6 +133,7 @@
 		</scroll-view>
 	</view>
 	<navigation-bar />
+	<canvas-modal />
 	<red-packet show="{{!isOpen}}" />
 	<share-popup show="{{isShare}}" />
 </view>

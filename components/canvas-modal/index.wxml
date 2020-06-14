@@ -1,0 +1,11 @@
+<!--components/canvas/index.wxml-->
+<view class="content" catchtap="popupTap" catchtouchmove="preventdefault">
+  <view class="page-content">
+    <view class="canvas-view">
+      <canvas class='canvas' canvas-id="mycanvas" style="height: 485px" />
+    </view>
+    <view class="save">
+      <button class="save-button" catchtap="savePoster">保存到相册</button>
+    </view>
+  </view>
+</view>

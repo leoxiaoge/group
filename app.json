@@ -53,6 +53,7 @@
     "empty": "/components/empty/index",
     "popup": "/components/popup/index",
     "popup-modal": "/components/popup-modal/index",
+    "canvas-modal": "/components/canvas-modal/index",
     "red-packet": "/components/red-packet/index"
   },
   "networkTimeout": {

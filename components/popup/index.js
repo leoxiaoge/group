@@ -38,6 +38,6 @@ Component({
       this.setData({
         show: show
       })
-    },
+    }
   }
 })

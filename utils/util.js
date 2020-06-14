@@ -133,7 +133,6 @@ const location = () => {
       wx.getLocation({
         type: 'wgs84',
         success (res) {
-          console.log(res)
           resolve(res)
         },
         fail: function (err) {
