@@ -1,4 +1,6 @@
 //app.js
+const user = require('./utils/user.js')
+
 App({
   onLaunch: function () {
     const updateManager = wx.getUpdateManager()
@@ -33,11 +35,14 @@ App({
         }
       }
     })
-    let sessionKey = wx.getStorageSync('SessionKey')
-    if (sessionKey) {
-      this.globalData = true
-    }
-    console.log(this.globalData)
+  },
+  onShow: function () {
+    user.checkLogin().then(res => {
+      console.log(res)
+      this.globalData.hasLogin = true
+    }).catch(() => {
+      this.globalData.hasLogin = false
+    })
   },
   globalData: {
     hasLogin: false,
