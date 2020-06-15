@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "团长申请",
   "usingComponents": {
     "apply-steps": "/components/apply-steps/index"
   }

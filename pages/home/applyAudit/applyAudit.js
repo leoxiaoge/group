@@ -25,6 +25,43 @@ Page({
         isAutoAudit: isAutoAudit
       })
     }
+    if (auditStatus) {
+      this.setData({
+        auditStatus: auditStatus
+      })
+      this.statusSwitch()
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  // 获取团长注册信息详情
+  getTeam: function () {
+    let data = {}
+    util.request(api.TeamGet, data).then((res) => {
+      console.log(res)
+      let auditStatus = res.TeamInfo.AuditStatus
+      this.setData({
+        auditStatus: auditStatus
+      })
+      this.statusSwitch()
+    })
+  },
+
+  statusSwitch: function () {
+    let auditStatus = this.data.auditStatus
     // 认证状态，0表示等待审核，1表示审核通过，2表示审核失败，3表示违规封号
     if (auditStatus) {
       if (auditStatus == 1) {
@@ -50,31 +87,6 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  // 获取团长注册信息详情
-  getTeam: function () {
-    let data = {
-      FaceImage: FaceImage,
-      BackImage: BackImage
-    }
-    util.request(api.IDCardImageUpload, data).then((res) => {
-      console.log(res)
-    })
-  },
-
   // 进入团长中心
   centerTap: function () {
     util.navigateTo('/pages/ucenter/index/index')
@@ -98,7 +110,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getTeam()
   },
 
   /**
@@ -111,7 +123,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (e) {
+    return util.onShareAppMessage(e)
   }
 })

@@ -1,0 +1,9 @@
+<!--pages/ucenter/themeSettings/themeSettings.wxml-->
+<view>
+  <view class="page-hd">
+    <view class="page-title">Color picker</view>
+    <view class="page-desc">点击色块取色</view>
+  </view>
+  <view style="background:{{rgb}};" bindtap="toPick" class="color-block">{{rgb}}</view>
+  <color-picker bindchangeColor="pickColor" initColor="{{rgb}}" show="{{pick}}" />
+</view>
