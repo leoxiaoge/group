@@ -18,8 +18,8 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    let isAutoAudit = options.isAutoAudit
-    let auditStatus = options.auditStatus
+    let isAutoAudit = options.isAutoAudit // 是否通过认证
+    let auditStatus = options.auditStatus // 认证状态
     if (isAutoAudit) {
       this.setData({
         isAutoAudit: isAutoAudit
@@ -62,34 +62,39 @@ Page({
 
   statusSwitch: function () {
     let auditStatus = this.data.auditStatus
+    console.log(auditStatus)
     // 认证状态，0表示等待审核，1表示审核通过，2表示审核失败，3表示违规封号
-    if (auditStatus) {
-      if (auditStatus == 1) {
-        this.setData({
-          isAutoAudit: true
-        })
-      } else if (auditStatus == 0) {
-        this.setData({
-          isAutoAudit: false,
-          auditText: '资料已提交审核中'
-        })
-      } else if (auditStatus == 2) {
-        this.setData({
-          isAutoAudit: false,
-          auditText: '审核失败'
-        })
-      } else if (auditStatus == 3) {
-        this.setData({
-          isAutoAudit: false,
-          auditText: '违规封号'
-        })
-      }
+    switch (auditStatus) {
+    case '0':
+      this.setData({
+        isAutoAudit: false,
+        auditText: '资料已提交审核中'
+      })
+      break
+    case '1':
+      this.setData({
+        isAutoAudit: true,
+        auditText: '审核通过'
+      })
+      break
+    case '2':
+      this.setData({
+        isAutoAudit: false,
+        auditText: '审核失败'
+      })
+      break
+    case '3':
+      this.setData({
+        isAutoAudit: false,
+        auditText: '违规封号'
+      })
+      break
     }
   },
 
   // 进入团长中心
   centerTap: function () {
-    util.navigateTo('/pages/ucenter/index/index')
+    util.redirectTo('/pages/ucenter/index/index')
   },
 
   /**

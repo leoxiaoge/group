@@ -1,4 +1,5 @@
 // components/navigationBar/index.js
+const app = getApp()
 const util = require('../../utils/util.js')
 const user = require('../../utils/user.js')
 
@@ -7,7 +8,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    hasLogin: { // 是否已登录
+      type: Boolean,
+      value: false
+    }
   },
 
   /**
@@ -29,7 +33,9 @@ Component({
     async centerTap (e) {
       let userInfo = e.detail.userInfo
       if (userInfo) {
-        await user.loginByWeixin(userInfo)
+        if (!app.globalData.hasLogin) {
+          await user.loginByWeixin(userInfo)
+        }
         util.navigateTo('/pages/ucenter/index/index')
       } else {
         util.showToast('更好的体验，请授权登录！')
@@ -40,7 +46,9 @@ Component({
     async suggestionsTap (e) {
       let userInfo = e.detail.userInfo
       if (userInfo) {
-        await user.loginByWeixin(userInfo)
+        if (!app.globalData.hasLogin) {
+          await user.loginByWeixin(userInfo)
+        }
         let show = !this.data.show
         this.setData({
           show: show

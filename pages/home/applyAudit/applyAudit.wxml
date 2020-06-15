@@ -5,7 +5,7 @@
 	  <block wx:if="{{isAutoAudit}}">
 	  	<view class="audit-passed">
 				<image src="{{passedIcon}}" mode=""></image>
-				<view class="audit-passed-text">审核通过</view>
+				<view class="audit-passed-text">{{auditText}}</view>
 				<view class="audit-center">
 					<button bindtap="centerTap">进入团长中心</button>
 				</view>

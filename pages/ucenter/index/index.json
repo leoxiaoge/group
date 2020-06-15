@@ -1,5 +1,5 @@
 {
-  "enablePullDownRefresh": true,
   "navigationBarTitleText": "团长中心",
+  "enablePullDownRefresh": true,
   "usingComponents": {}
 }

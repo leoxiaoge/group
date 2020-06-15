@@ -1,3 +1,5 @@
 {
+  "navigationBarTitleText": "我要开团",
+  "enablePullDownRefresh": true,
   "usingComponents": {}
 }

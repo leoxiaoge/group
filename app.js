@@ -33,8 +33,14 @@ App({
         }
       }
     })
+    let sessionKey = wx.getStorageSync('SessionKey')
+    if (sessionKey) {
+      this.globalData = true
+    }
+    console.log(this.globalData)
   },
   globalData: {
+    hasLogin: false,
     userInfo: null,
     distInfo: null
   }
