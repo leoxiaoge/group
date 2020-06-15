@@ -1,7 +1,6 @@
 /**
  * 用户相关服务
  */
-var app = getApp()
 const util = require('../utils/util.js')
 const api = require('../config/api.js')
 
@@ -58,11 +57,13 @@ function loginByWeixin (userInfo) {
         avatarUrl: avatarUrl,
         gender: gender
       }, 'POST').then(res => {
-        app.globalData.hasLogin = true
+        console.log('app', getApp())
+        console.log('hasLogin', getApp().globalData.hasLogin)
+        getApp().globalData.hasLogin = true
         wx.setStorageSync('SessionKey', res.SessionKey)
         resolve(res)
       }).catch((err) => {
-        app.globalData.hasLogin = false
+        getApp().globalData.hasLogin = false
         reject(err)
       });
     }).catch((err) => {
