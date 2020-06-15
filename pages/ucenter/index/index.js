@@ -18,7 +18,7 @@ Page({
     communityManagementIcon: '/static/images/community_management.png',
     leagueManagementIcon: '/static/images/league_management.png',
     inventorySettingsIcon: '/static/images/inventory_settings.png',
-    themeSettingsIcon: '/static/images/inventory_settings.png',
+    themeSettingsIcon: '/static/images/theme_settings.png',
     collectionCodeIcon: '/static/images/collection_code.png',
     contactCenterIcon: '/static/images/contact_center.png',
     arrowIcon: '/static/images/arrow_icon.png',

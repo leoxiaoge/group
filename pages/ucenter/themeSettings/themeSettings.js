@@ -1,11 +1,14 @@
 // pages/ucenter/themeSettings/themeSettings.js
+const util = require('../../../utils/util.js')
+const api = require('../../../config/api.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    rgb: 'rgb(7,193,96)',
+    rgb: 'rgb(255,92,39)',
     pick: false
   },
 
@@ -27,7 +30,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.getTeamParaList()
+  },
 
+  // 获取团长相关设置
+  getTeamParaList: function () {
+    let rgb = this.data.rgb
+    let data = {}
+    util.request(api.TeamParaListGet, data).then((res) => {
+      let parament = res.Paraments
+      parament.forEach(item => {
+        if (item.ParaKey === 'SubStockOpt') {
+          rgb = item.ParaValue
+        }
+      })
+      this.setData({
+        rgb: rgb
+      })
+    })
   },
 
   // 弹窗显示
@@ -39,7 +59,7 @@ Page({
 
   // 颜色
   pickColor: function (e) {
-    let rgb = e.detail.color;
+    let rgb = e.detail.color
     this.setData({
       rgb
     })
@@ -57,12 +77,12 @@ Page({
 
   // rgb转hex
   rgb2hex: function (color) {
-    let rgb = color.split(',');
-    let r = parseInt(rgb[0].split('(')[1]);
-    let g = parseInt(rgb[1]);
-    let b = parseInt(rgb[2].split(')')[0]);
-    let hex = '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-    return hex;
+    let rgb = color.split(',')
+    let r = parseInt(rgb[0].split('(')[1])
+    let g = parseInt(rgb[1])
+    let b = parseInt(rgb[2].split(')')[0])
+    let hex = '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
+    return hex
   },
 
   /**

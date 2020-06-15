@@ -10,7 +10,7 @@ Page({
   data: {
     isSuper: false, // 是否是超级管理员
     isContent: false, // 是否有内容
-    title: '',
+    title: '', // 标题
     items: [], // 团队列表
     deleteIcon: '/static/images/delete_icon.png',
     emptyIcon: '/static/images/league_no.png',
@@ -21,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
   },
 
   /**
