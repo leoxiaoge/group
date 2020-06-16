@@ -60,8 +60,11 @@
 	</view>
 	<block wx:if="{{isFrom}}">
 	  <view class="select-footer" id="select-footer" wx:if="{{isCheckbox}}">
-			<view class="select-definite">
+			<view class="select-nationwide">
 				<button bindtap="definiteTap" disabled="{{!isDisabled}}">确定</button>
+			</view>
+      <view class="select-nationwide">
+				<button bindtap="submitAllTap">全国范围销售</button>
 			</view>
 		</view>
 	</block>

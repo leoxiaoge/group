@@ -26,18 +26,8 @@ Page({
     idNumberValidTypeText: '',  // 身份证有效期文字
     distId: '', // 已选择小区id
     distList: [], // 已选择小区
-    itemList: ['非长期有效', '长期有效'],
-
-    list: [{
-      name: '万科鲸鱼小区',
-      locate: '深圳市龙华区小点声001号'
-    }, {
-      name: '万科鲸鱼小区',
-      locate: '深圳市龙华区小点声001号'
-    }, {
-      name: '万科鲸鱼小区',
-      locate: '深圳市龙华区小点声001号'
-    }]
+    distNum: '', // 小区个数
+    itemList: ['非长期有效', '长期有效']
   },
 
   /**
@@ -80,7 +70,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let distList = this.data.distList
+    let distNum = `已选择${distList.length}个小区`
+    this.setData({
+      distNum: distNum
+    })
   },
 
   // 微信获取手机号
@@ -200,9 +194,44 @@ Page({
     let IDNumber = this.data.idNumber
     let IDNumberValidType = this.data.idNumberValidType
     let IDNumberRanges = `${this.data.beginDate},${this.data.endDate}`
+    if (IDNumberValidType === 1) {
+      IDNumberRanges = `${this.data.beginDate}`
+    }
     let IDNumberFace = this.data.faceUrl
     let IDNumberBack = this.data.backUrl
     let DistIDs = this.data.distId
+    if (!Mobile) {
+      util.showToast('请获取手机号！')
+      return
+    }
+    if (!TeamTitle) {
+      util.showToast('请填写团队名称！')
+      return
+    }
+    if (!RealName) {
+      util.showToast('请填写创建人姓名！')
+      return
+    }
+    if (!Email) {
+      util.showToast('请填写电子邮箱！')
+      return
+    }
+    if (!IDNumber) {
+      util.showToast('请填写身份证号！')
+      return
+    }
+    if (!IDNumberValidType) {
+      util.showToast('请选择身份证有效期！')
+      return
+    }
+    if (!IDNumberRanges) {
+      util.showToast('请选择有效期！')
+      return
+    }
+    if (!DistIDs) {
+      util.showToast('请选择小区！')
+      return
+    }
     let data = {
       Mobile: Mobile,
       TeamTitle: TeamTitle,

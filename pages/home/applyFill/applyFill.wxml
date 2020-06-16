@@ -58,7 +58,7 @@
 				<image class="fill-arrow" src="{{arrowIcon}}" mode="widthFix"></image>
 			</view>
 		</view>
-		<view class="fill-piece">
+		<view class="fill-piece" wx:if="{{idNumberValidType == 0}}">
 			<view class="fill-title" bindtap="showActionSheet">
 				<text class="fill-tag">*</text>
 				<text class="fill-title-text">选择有效期</text>
@@ -94,7 +94,7 @@
 				<text class="fill-title-text">选择小区（团长所经营的小区）</text>
 			</view>
 			<view class="fill-region">
-				<input placeholder="请选择" disabled="true"></input>
+				<input placeholder="请选择" value="{{distNum}}" disabled="true"></input>
 				<image class="fill-arrow" src="{{arrowIcon}}" mode="widthFix"></image>
 			</view>
 		</view>

@@ -1,2 +1,9 @@
 <!--components/popup-picker/index.wxml-->
-<text>components/popup-picker/index.wxml</text>
+<view class="content" wx:if="{{show}}" catchtouchmove="preventdefault">
+  <view class="page-content">
+    <view class="close">
+      <image class="close-image" src="{{closeIcon}}" catchtap="popupTap"></image>
+    </view>
+    <slot name="content" />
+  </view>
+</view>

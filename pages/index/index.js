@@ -311,6 +311,7 @@ Page({
     if (userInfo) {
       if (!app.globalData.hasLogin) {
         await user.loginByWeixin(userInfo)
+        await this.getTeam()
       }
       let url = e.currentTarget.dataset.url
       util.navigateTo(url)
@@ -333,6 +334,7 @@ Page({
     if (userInfo) {
       if (!app.globalData.hasLogin) {
         await user.loginByWeixin(userInfo)
+        await this.getTeam()
       }
       let auditStatus = this.data.auditStatus
       if (auditStatus) {
