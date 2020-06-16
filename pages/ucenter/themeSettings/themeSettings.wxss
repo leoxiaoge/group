@@ -1,0 +1,24 @@
+/* pages/ucenter/themeSettings/themeSettings.wxss */
+.color-block {
+  width:400rpx;height:200rpx;margin:0 auto;
+  text-align: center;
+  line-height: 200rpx;
+  color: white;
+}
+
+.page-hd {
+  padding: 40px;
+}
+
+.page-title {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.page-desc {
+  margin-top: 5px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: left;
+  font-size: 14px;
+}

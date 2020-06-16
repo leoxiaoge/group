@@ -66,6 +66,16 @@
 				<image src="{{arrowIcon}}" mode="widthFix"></image>
 			</view>
 		</view>
+    <view class="cell" bindtap="themeSettingsTap">
+		  <view class="cell-left">
+				<image src="{{themeSettingsIcon}}" mode="widthFix"></image>
+				<text class="cell-left-text">主题设置</text>
+			</view>
+			<view class="cell-right">
+			  <text class="cell-right-text">{{themeSettingsTitle}}</text>
+				<image src="{{arrowIcon}}" mode="widthFix"></image>
+			</view>
+		</view>
 		<view class="cell" bindtap="collectionCodeTap">
 		  <view class="cell-left">
 				<image src="{{collectionCodeIcon}}" mode="widthFix"></image>

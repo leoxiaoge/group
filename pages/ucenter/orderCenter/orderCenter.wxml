@@ -1,2 +1,4 @@
 <!--pages/ucenter/orderCenter/orderCenter.wxml-->
-<text>pages/ucenter/orderCenter/orderCenter.wxml</text>
+<view class="container">
+  
+</view>

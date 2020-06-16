@@ -106,12 +106,12 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100rpx;
-  height: 100rpx;
+  width: 88rpx;
+  height: 88rpx;
   font-family: PingFangSC-Regular;
   font-size: 24rpx;
   color: #FFFFFF;
-  line-height: 100rpx;
+  line-height: 88rpx;
   z-index: 1;
   text-align: center;
   background-color: #f8f8f8;
@@ -122,6 +122,6 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 44rpx;
-  height: 44rpx;
+  width: 36rpx;
+  height: 36rpx;
 }

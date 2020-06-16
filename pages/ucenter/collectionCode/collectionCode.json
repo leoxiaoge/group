@@ -1,5 +1,5 @@
 {
+  "navigationBarTitleText": "我的收款码",
   "enablePullDownRefresh": true,
-  "navigationBarTitleText": "收款码",
   "usingComponents": {}
 }

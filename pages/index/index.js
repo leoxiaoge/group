@@ -1,4 +1,5 @@
 //index.js
+const app = getApp()
 const user = require('../../utils/user.js')
 const util = require('../../utils/util.js')
 const api = require('../../config/api.js')
@@ -110,10 +111,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let sessionKey = wx.getStorageSync('SessionKey')
-    if (!sessionKey) {
+    if (!app.globalData.hasLogin) {
       this.setData({
-        hasLogin: true
+        hasLogin: false
       })
     } else {
       this.getUser()
@@ -143,12 +143,7 @@ Page({
       this.setData({
         userInfo: userInfo,
         isTeam: isTeam,
-        hasLogin: false
-      })
-    }).catch((err) => {
-      console.log(err)
-      this.setData({
-        hasLogin: true
+        hasLogin: app.globalData.hasLogin
       })
     })
   },
@@ -164,6 +159,9 @@ Page({
         navigation.forEach((item, i) => {
           if (i === 4) {
             let url = `/pages/home/applyAudit/applyAudit?auditStatus=${auditStatus}`
+            if (auditStatus == 1) {
+              url = '/pages/ucenter/openGroup/openGroup'
+            }
             item.url = url
           }
         })
@@ -280,6 +278,7 @@ Page({
       this.getUser()
       this.getUserHomePage()
     } else {
+      app.globalData.hasLogin = false
       util.showToast('更好的体验，请授权登录！')
     }
   },
@@ -287,6 +286,7 @@ Page({
   // 暂不登录
   notgetuserinfo: function (e) {
     console.log(e)
+    app.globalData.hasLogin = false
     util.showToast('更好的体验，请进行授权登录！')
   },
 
@@ -294,9 +294,12 @@ Page({
   selectTap: async function (e) {
     let userInfo = e.detail.userInfo
     if (userInfo) {
-      await user.loginByWeixin(userInfo)
+      if (!app.globalData.hasLogin) {
+        await user.loginByWeixin(userInfo)
+      }
       util.navigateTo('/pages/home/select/select')
     } else {
+      app.globalData.hasLogin = false
       util.showToast('更好的体验，请授权登录！')
     }
   },
@@ -306,10 +309,13 @@ Page({
     console.log(e)
     let userInfo = e.detail.userInfo
     if (userInfo) {
-      await user.loginByWeixin(userInfo)
+      if (!app.globalData.hasLogin) {
+        await user.loginByWeixin(userInfo)
+      }
       let url = e.currentTarget.dataset.url
       util.navigateTo(url)
     } else {
+      app.globalData.hasLogin = false
       util.showToast('更好的体验，请授权登录！')
     }
   },
@@ -325,9 +331,18 @@ Page({
   applyTap: async function (e) {
     let userInfo = e.detail.userInfo
     if (userInfo) {
-      await user.loginByWeixin(userInfo)
-      util.navigateTo('/pages/home/applyFill/applyFill')
+      if (!app.globalData.hasLogin) {
+        await user.loginByWeixin(userInfo)
+      }
+      let auditStatus = this.data.auditStatus
+      if (auditStatus) {
+        let url = `/pages/home/applyAudit/applyAudit?auditStatus=${auditStatus}`
+        util.navigateTo(url)
+      } else {
+        util.navigateTo('/pages/home/applyFill/applyFill')
+      }
     } else {
+      app.globalData.hasLogin = false
       util.showToast('更好的体验，请授权登录！')
     }
   },

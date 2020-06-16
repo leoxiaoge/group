@@ -243,13 +243,13 @@ Page({
 
   // 计算scroll-view高度
   calculateScrollViewHeight: function () {
-    let isSubmit = this.data.isSubmit
+    let isCheckbox = this.data.isCheckbox
     let query = wx.createSelectorQuery()
     //根据节点id查询节点部分的高度（px单位）
     query.select('#select-header').boundingClientRect()
     query.select('#select-locate').boundingClientRect()
     query.select('#select-title').boundingClientRect()
-    if (isSubmit) {
+    if (isCheckbox) {
       query.select('#select-header').boundingClientRect()
       query.select('#select-locate').boundingClientRect()
       query.select('#select-title').boundingClientRect()

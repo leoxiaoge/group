@@ -57,9 +57,13 @@ function loginByWeixin (userInfo) {
         avatarUrl: avatarUrl,
         gender: gender
       }, 'POST').then(res => {
+        console.log('app', getApp())
+        console.log('hasLogin', getApp().globalData.hasLogin)
+        getApp().globalData.hasLogin = true
         wx.setStorageSync('SessionKey', res.SessionKey)
         resolve(res)
       }).catch((err) => {
+        getApp().globalData.hasLogin = false
         reject(err)
       });
     }).catch((err) => {

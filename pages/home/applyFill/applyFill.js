@@ -90,17 +90,21 @@ Page({
     console.log(e.detail.encryptedData)
     let iv =  e.detail.iv
     let encryptedData = e.detail.encryptedData
-    let data = {
-      iv: iv,
-      encryptedData: encryptedData
-    }
-    util.request(api.WxPhoneNumberGet, data).then((res) => {
-      console.log(res)
-      let mobile = res.MobileInfo.phoneNumber
-      this.setData({
-        mobile: mobile
+    if (iv && encryptedData) {
+      let data = {
+        iv: iv,
+        encryptedData: encryptedData
+      }
+      util.request(api.WxPhoneNumberGet, data).then((res) => {
+        console.log(res)
+        let mobile = res.MobileInfo.phoneNumber
+        this.setData({
+          mobile: mobile
+        })
       })
-    })
+    } else {
+      util.showToast('请授权获取手机号！')
+    }
   },
 
   // 团队名称输入
@@ -251,7 +255,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (e) {
+    return util.onShareAppMessage(e)
   }
 })

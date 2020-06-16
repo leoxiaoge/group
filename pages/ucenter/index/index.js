@@ -12,11 +12,13 @@ Page({
     communityManagementTitle: '',
     leagueManagementTitle: '',
     inventorySettingsTitle: '',
+    themeSettingsTitle: '',
     collectionCodeTitle: '',
     dataSettingsIcon: '/static/images/data_settings.png',
     communityManagementIcon: '/static/images/community_management.png',
     leagueManagementIcon: '/static/images/league_management.png',
     inventorySettingsIcon: '/static/images/inventory_settings.png',
+    themeSettingsIcon: '/static/images/theme_settings.png',
     collectionCodeIcon: '/static/images/collection_code.png',
     contactCenterIcon: '/static/images/contact_center.png',
     arrowIcon: '/static/images/arrow_icon.png',
@@ -153,6 +155,11 @@ Page({
   // 库存设置
   inventorySettingsTap: function () {
     util.navigateTo('/pages/ucenter/inventorySettings/inventorySettings')
+  },
+
+  // 主题设置
+  themeSettingsTap: function () {
+    util.navigateTo('/pages/ucenter/themeSettings/themeSettings')
   },
 
   // 我的收款码

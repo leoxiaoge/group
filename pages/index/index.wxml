@@ -37,7 +37,7 @@
 		<view class="content-can">
 			<text class="content-can-text">您可以</text>
 		</view>
-    <block wx:if="{{hasLogin}}">
+    <block wx:if="{{!hasLogin}}">
 		  <view class="content-button">
         <view class="content-invite-button">
           <button class="getuser-button" open-type="getUserInfo" bindgetuserinfo="getuserinfo">微信授权</button>
@@ -132,8 +132,7 @@
 			</block>
 		</scroll-view>
 	</view>
-	<navigation-bar />
-	<canvas-modal />
+	<navigation-bar hasLogin="{{hasLogin}}" />
 	<red-packet show="{{!isOpen}}" />
 	<share-popup show="{{isShare}}" />
 </view>

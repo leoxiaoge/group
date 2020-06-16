@@ -18,35 +18,18 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    let isAutoAudit = options.isAutoAudit
-    let auditStatus = options.auditStatus
+    let isAutoAudit = options.isAutoAudit // 是否通过认证
+    let auditStatus = options.auditStatus // 认证状态
     if (isAutoAudit) {
       this.setData({
         isAutoAudit: isAutoAudit
       })
     }
-    // 认证状态，0表示等待审核，1表示审核通过，2表示审核失败，3表示违规封号
     if (auditStatus) {
-      if (auditStatus == 1) {
-        this.setData({
-          isAutoAudit: true
-        })
-      } else if (auditStatus == 0) {
-        this.setData({
-          isAutoAudit: false,
-          auditText: '资料已提交审核中'
-        })
-      } else if (auditStatus == 2) {
-        this.setData({
-          isAutoAudit: false,
-          auditText: '审核失败'
-        })
-      } else if (auditStatus == 3) {
-        this.setData({
-          isAutoAudit: false,
-          auditText: '违规封号'
-        })
-      }
+      this.setData({
+        auditStatus: auditStatus
+      })
+      this.statusSwitch()
     }
   },
 
@@ -66,18 +49,52 @@ Page({
 
   // 获取团长注册信息详情
   getTeam: function () {
-    let data = {
-      FaceImage: FaceImage,
-      BackImage: BackImage
-    }
-    util.request(api.IDCardImageUpload, data).then((res) => {
+    let data = {}
+    util.request(api.TeamGet, data).then((res) => {
       console.log(res)
+      let auditStatus = res.TeamInfo.AuditStatus
+      this.setData({
+        auditStatus: auditStatus
+      })
+      this.statusSwitch()
     })
+  },
+
+  statusSwitch: function () {
+    let auditStatus = this.data.auditStatus
+    console.log(auditStatus)
+    // 认证状态，0表示等待审核，1表示审核通过，2表示审核失败，3表示违规封号
+    switch (auditStatus) {
+    case '0':
+      this.setData({
+        isAutoAudit: false,
+        auditText: '资料已提交审核中'
+      })
+      break
+    case '1':
+      this.setData({
+        isAutoAudit: true,
+        auditText: '审核通过'
+      })
+      break
+    case '2':
+      this.setData({
+        isAutoAudit: false,
+        auditText: '审核失败'
+      })
+      break
+    case '3':
+      this.setData({
+        isAutoAudit: false,
+        auditText: '违规封号'
+      })
+      break
+    }
   },
 
   // 进入团长中心
   centerTap: function () {
-    util.navigateTo('/pages/ucenter/index/index')
+    util.redirectTo('/pages/ucenter/index/index')
   },
 
   /**
@@ -98,7 +115,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getTeam()
   },
 
   /**
@@ -111,7 +128,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (e) {
+    return util.onShareAppMessage(e)
   }
 })
