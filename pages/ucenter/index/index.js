@@ -103,6 +103,7 @@ Page({
   getTeamParaList: function () {
     let inventorySettingsTitle = this.data.inventorySettingsTitle
     let collectionCodeTitle = this.data.collectionCodeTitle
+    let themeSettingsTitle = this.data.themeSettingsTitle
     let data = {}
     util.request(api.TeamParaListGet, data).then((res) => {
       console.log(res)
@@ -123,10 +124,18 @@ Page({
             collectionCodeTitle = '待上传'
           }
         }
+        if (item.ParaKey === 'SharedPageColor') {
+          if (item.ParaValue) {
+            themeSettingsTitle = '已设置'
+          } else {
+            themeSettingsTitle = '未设置'
+          }
+        }
       })
       this.setData({
         inventorySettingsTitle: inventorySettingsTitle,
-        collectionCodeTitle: collectionCodeTitle
+        collectionCodeTitle: collectionCodeTitle,
+        themeSettingsTitle: themeSettingsTitle
       })
     })
   },
