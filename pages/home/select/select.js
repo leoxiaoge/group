@@ -198,6 +198,7 @@ Page({
     let pages = getCurrentPages() // 获取页面栈
     let currPage = pages[pages.length - 1] // 当前页面
     let prevPage = pages[pages.length - 2] // 上一个页面
+    console.log(currPage)
     prevPage.setData({
       distId: value,
       distList: distList

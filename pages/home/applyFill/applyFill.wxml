@@ -58,7 +58,7 @@
 				<image class="fill-arrow" src="{{arrowIcon}}" mode="widthFix"></image>
 			</view>
 		</view>
-		<view class="fill-piece" wx:if="{{idNumberValidType == 0}}">
+		<view class="fill-piece">
 			<view class="fill-title" bindtap="showActionSheet">
 				<text class="fill-tag">*</text>
 				<text class="fill-title-text">选择有效期</text>
@@ -75,7 +75,7 @@
 						</view>
 					</picker>
 				</view>
-				<view class="fill-date">
+				<view class="fill-date" wx:if="{{idNumberValidType == 0}}">
 					<view class="fill-date-icon">
 						<image class="fill-date-image" src="{{dateIcon}}" mode="widthFix"></image>
 					</view>

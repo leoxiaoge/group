@@ -13,9 +13,9 @@ git commit -m "commit"
 git push -u origin master
 ```
 
-## **组织结构**
+## **目录结构**
 
-下面是整个项目的组织结构。
+下面是整个项目的目录结构。
 
 ```
 ┌─components            存放小程序组件的目录，详见

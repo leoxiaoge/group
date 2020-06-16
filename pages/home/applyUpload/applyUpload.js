@@ -25,6 +25,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.getTeam()
   },
 
   /**
@@ -39,6 +40,19 @@ Page({
    */
   onShow: function () {
 
+  },
+
+  // 获取团长注册信息详情
+  getTeam: function () {
+    let data = {}
+    util.request(api.TeamGet, data).then((res) => {
+      console.log(res)
+      let auditStatus = res.TeamInfo.AuditStatus
+      if (auditStatus) {
+        let url = `/pages/home/applyAudit/applyAudit?auditStatus=${auditStatus}`
+        util.redirectTo(url)
+      }
+    })
   },
 
   // 上传头像面

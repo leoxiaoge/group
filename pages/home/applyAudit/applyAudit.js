@@ -9,7 +9,7 @@ Page({
    */
   data: {
     active: 3, // 步骤数
-    auditText: '资料已提交审核中', // 审核提示
+    auditText: '', // 审核提示
     passedIcon: '/static/images/passed_icon.png'
   },
 

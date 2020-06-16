@@ -311,7 +311,6 @@ Page({
     if (userInfo) {
       if (!app.globalData.hasLogin) {
         await user.loginByWeixin(userInfo)
-        await this.getTeam()
       }
       let url = e.currentTarget.dataset.url
       util.navigateTo(url)
@@ -334,14 +333,13 @@ Page({
     if (userInfo) {
       if (!app.globalData.hasLogin) {
         await user.loginByWeixin(userInfo)
-        await this.getTeam()
       }
       let auditStatus = this.data.auditStatus
       if (auditStatus) {
         let url = `/pages/home/applyAudit/applyAudit?auditStatus=${auditStatus}`
         util.navigateTo(url)
       } else {
-        util.navigateTo('/pages/home/applyFill/applyFill')
+        util.navigateTo('/pages/home/applyUpload/applyUpload')
       }
     } else {
       app.globalData.hasLogin = false
