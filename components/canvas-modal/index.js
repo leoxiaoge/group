@@ -15,10 +15,10 @@ Component({
    */
   data: {
     _width: 0, //手机屏宽
-    _heigth: 0,//手机屏高
-    swiperHeight: 300,//主图图片高度
-    canvasType: false,//canvas是否显示
-    loadImagePath: '',//下载的图片
+    _heigth: 0, //手机屏高
+    swiperHeight: 300, //主图图片高度
+    canvasType: false, //canvas是否显示
+    loadImagePath: '', //下载的图片
     imageUrl: 'https://cos.myfaka.com/car/service/1.jpg', //主图网络路径
     codeUrl: 'https://cos.myfaka.com/car/service/1.jpg',//二维码网络路径
     localImageUrl: '', //绘制的商品图片本地路径
@@ -26,7 +26,7 @@ Component({
   },
 
   ready () {
-    console.log("初始化")
+    console.log('初始化')
     this.creatQrcodePictures()
   },
 
@@ -56,7 +56,7 @@ Component({
       let imgUrl = this.data.imageUrl
       let qrcodeUrl = this.data.codeUrl
       wx.getSystemInfo({
-        success(res) {
+        success (res) {
           that.setData({
             _width: res.windowWidth,
             _heigth: res.windowHeight,
@@ -72,7 +72,7 @@ Component({
       let that = this;
       console.log(urlArr, _type)
       wx.getImageInfo({
-        src: urlArr[_type], 
+        src: urlArr[_type],
         success: function (res) {
           //res.path是网络图片的本地地址
           if (_type === 0) { //商品图片
@@ -96,12 +96,12 @@ Component({
       });
     },
     drawImage () {
+      that = this;
       // 使用 wx.createContext 获取绘图上下文 context
       let _width = this.data._width,
         _heigth = this.data._heigth; //屏幕宽与高
       let imgHeigth = this.data.swiperHeight, //原图片高度
         scale = (_width - 40) / _width, //缩小比例
-        that = this;
       let imgH = imgHeigth * scale; //绘制时图片显示高度  
       let ctx = wx.createCanvasContext('mycanvas', this);
       // 绘制背景
@@ -149,7 +149,8 @@ Component({
       if (this.poster) {
         wx.saveImageToPhotosAlbum({
           filePath: this.poster,
-          success: (result) => {
+          success: (res) => {
+            console.log(res)
             wx.showToast({
               title: '海报已保存，快去分享给好友吧。',
               icon: 'none'
