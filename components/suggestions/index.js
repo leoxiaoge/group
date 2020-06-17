@@ -36,10 +36,9 @@ Component({
 
     // 弹窗显示隐藏
     showPupop () {
-      let show = !this.data.show
-      this.setData({
-        show: show
-      })
+      var myEventDetail = {} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('myevent', myEventDetail, myEventOption)
     },
 
     // 文本内容
@@ -62,8 +61,8 @@ Component({
       }
       util.request(api.UserFeedBackCreate, data).then((res) => {
         console.log(res)
-        util.showToast('提交成功！')
         this.showPupop()
+        util.showToast('提交成功！')
       })
     }
   }

@@ -10,6 +10,7 @@ Page({
   data: {
     payCode: '',
     remark: '',
+    isContent: false,
     emptyIcon: '/static/images/league_no.png',
     emptyText: '暂无收款码'
   },
@@ -50,6 +51,11 @@ Page({
           remark = item.ParaRemark
         }
       })
+      if (payCode) {
+        this.setData({
+          isContent: true
+        })
+      }
       this.setData({
         payCode: payCode,
         remark: remark

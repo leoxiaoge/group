@@ -11,7 +11,7 @@ page {
 }
 
 .code-image {
-  width: 80%;
+  width: 640rpx;
 }
 
 .empty {

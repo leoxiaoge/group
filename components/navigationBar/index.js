@@ -56,6 +56,14 @@ Component({
       } else {
         util.showToast('更好的体验，请授权登录！')
       }
+    },
+
+    // 子组件事件
+    myeventTap () {
+      let show = !this.data.show
+      this.setData({
+        show: show
+      })
     }
   }
 })

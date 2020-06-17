@@ -12,6 +12,10 @@
   <view class="commodity">
     <scroll-view class="nav" scroll-y="true">
       <view class="item {{ currentCategory.id == item.id ? 'active' : ''}}" wx:for="{{categoryList}}" wx:key="id" data-id="{{item.id}}" data-index="{{index}}" bindtap="switchCate">{{item.name}}</view>
+      <view class="item">
+        <image src="{{categorySettingIcon}}" mode="aspectFit"></image>
+        <text>分页管理</text>
+      </view>
     </scroll-view>
     <scroll-view class="cate" scroll-y="true">
       <radio-group bindchange="radioChange">

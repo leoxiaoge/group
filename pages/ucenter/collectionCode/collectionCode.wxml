@@ -1,8 +1,8 @@
 <!--pages/ucenter/collectionCode/collectionCode.wxml-->
 <view class="container">
-  <block wx:if="{{payCode}}">
+  <block wx:if="{{isContent}}">
     <view class="code">
-      <image class="code-image" src="{{payCode}}" mode=""></image>
+      <image class="code-image" src="{{payCode}}" mode="aspectFit"></image>
     </view>
   </block>
   <block wx:else>

@@ -12,6 +12,6 @@
         <text class="navigation-bar-text">{{suggestionsText}}</text>
       </button>
     </view>
-    <suggestions bindmyevent="suggestionsTap" show="{{show}}" />
+    <suggestions bindmyevent="myeventTap" show="{{show}}" />
   </view>
 </view>
