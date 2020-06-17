@@ -32,7 +32,9 @@
         "leagueManagement/leagueManagement",
         "inventorySettings/inventorySettings",
         "themeSettings/themeSettings",
-        "collectionCode/collectionCode"
+        "collectionCode/collectionCode",
+        "categoryManagement/categoryManagement",
+        "addingGoods/addingGoods"
       ]
     }
   ],

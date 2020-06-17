@@ -10,7 +10,7 @@ Page({
   data: {
     isContent: false,
     locateIcon: '/static/images/locate_icon.png',
-    deleteIcon: '/static/images/delete_icon.png',
+    deleteIcon: '/static/images/delete_operating_icon.png',
     emptyIcon: '/static/images/league_no.png',
     emptyText: '暂无小区，马上添加小区吧',
     items: []
@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
   },
 
   /**

@@ -12,7 +12,7 @@ Page({
     isContent: false, // 是否有内容
     title: '', // 标题
     items: [], // 团队列表
-    deleteIcon: '/static/images/delete_icon.png',
+    deleteIcon: '/static/images/delete_operating_icon.png',
     emptyIcon: '/static/images/league_no.png',
     emptyText: '团队暂无团员，马上邀请吧'
   },

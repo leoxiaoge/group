@@ -4,7 +4,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    cancel: {
+      type: String,
+      value: '取消'
+    },
+    confirm: {
+      type: String,
+      value: '确定'
+    }
   },
 
   /**

@@ -15,27 +15,46 @@
     </scroll-view>
     <scroll-view class="cate" scroll-y="true">
       <radio-group bindchange="radioChange">
-        <label class="label" wx:for="{{currentSubCategoryList}}" wx:key="index">
-          <view class="commodity-item-image">
-            <image src="{{item}}" mode="aspectFill"></image>
-          </view>
-          <view class="commodity-item-library">
-            <view class="commodity-item-radio">
-              <text class="commodity-item-title">{{item.name}}</text>
-              <radio value="{{item.value}}" color="#ff5c27" checked="true"/>
-            </view>
-            <view class="commodity-item-color">颜色： 红色、黄色、黑色</view>
-            <view class="commodity-item-size">尺寸：SMLXLSSL</view>
-            <view class="commodity-item-price-num">
-              <view class="commodity-item-price">¥19.2～¥99.2</view>
-              <view class="commodity-item-num">
-                <text class="commodity-item-num-text">参团人次</text>
-                <text class="commodity-item-num-count">123456</text>
+        <label class="label" wx:for="{{items}}" wx:key="index">
+          <view class="commodity-item touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+            <view class="commodity-content content">
+              <view class="commodity-item-image">
+                <image src="{{deleteIcon}}" mode="aspectFill"></image>
               </view>
+              <view class="commodity-item-library">
+                <view class="commodity-item-radio">
+                  <text class="commodity-item-title">{{item.name}}</text>
+                  <radio value="{{item.value}}" color="#ff5c27" checked="true"/>
+                </view>
+                <view class="commodity-item-color">颜色： 红色、黄色、黑色</view>
+                <view class="commodity-item-size">尺寸：SMLXLSSL</view>
+                <view class="commodity-item-price-num">
+                  <view class="commodity-item-price">¥19.2～¥99.2</view>
+                  <view class="commodity-item-num">
+                    <text class="commodity-item-num-text">参团人次</text>
+                    <text class="commodity-item-num-count">123456</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="del">
+            <view class="edit-btn">
+              <image src="{{editIcon}}" mode="aspectFit"></image>
+            </view>
+            <view class="delete-btn">
+              <image src="{{deleteIcon}}" mode="aspectFit"></image>
             </view>
           </view>
         </label>
       </radio-group>
     </scroll-view>
+  </view>
+  <view class="empty"></view>
+  <view class="position">
+    <view class="position-button">
+      <button class="cancel">{{cancelButton}}</button>
+      <button class="confirm">{{confirmButoon}}</button>
+    </view>
   </view>
 </view>

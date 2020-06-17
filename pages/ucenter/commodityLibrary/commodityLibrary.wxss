@@ -89,6 +89,14 @@ radio {
   margin: 0 0 20rpx 0;
 }
 
+.commodity-item {
+  width: 100%;
+}
+
+.commodity-content {
+  display: flex;
+}
+
 .commodity-item-image image {
   width: 168rpx;
   height: 168rpx;
@@ -147,4 +155,86 @@ radio {
   line-height: 1.6;
   color: #ff5c27;
   margin: 0 0 20rpx 0;
+}
+
+.touch-item {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden
+}
+
+.content {
+  width: 100%;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(50px);
+  transform: translateX(50px);
+  margin-left: -50px
+}
+
+.del {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.touch-move-active .content,
+.touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.edit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 88rpx;
+  height: 88rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  line-height: 88rpx;
+  z-index: 1;
+  text-align: center;
+  background-color: #f8f8f8;
+  border-radius: 50%;
+}
+
+.edit-btn image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.delete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 88rpx;
+  height: 88rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  line-height: 88rpx;
+  z-index: 1;
+  text-align: center;
+  background-color: #f8f8f8;
+  border-radius: 50%;
+}
+
+.delete-btn image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36rpx;
+  height: 36rpx;
 }
