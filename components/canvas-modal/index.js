@@ -101,7 +101,7 @@ Component({
       let _width = this.data._width,
         _heigth = this.data._heigth; //屏幕宽与高
       let imgHeigth = this.data.swiperHeight, //原图片高度
-        scale = (_width - 40) / _width, //缩小比例
+        scale = (_width - 40) / _width; //缩小比例
       let imgH = imgHeigth * scale; //绘制时图片显示高度  
       let ctx = wx.createCanvasContext('mycanvas', this);
       // 绘制背景

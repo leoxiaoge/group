@@ -1,4 +1,41 @@
 <!--pages/ucenter/commodityLibrary/commodityLibrary.wxml-->
 <view class="container">
-  
+  <view class="commodity-header">
+    <view class="search">
+      <input placeholder="商品名称搜索"></input>
+      <image src="{{searchIcon}}" mode="aspectFit"></image>
+    </view>
+    <view class="add-commodity">
+      <button>添加新商品</button>
+    </view>
+  </view>
+  <view class="commodity">
+    <scroll-view class="nav" scroll-y="true">
+      <view class="item {{ currentCategory.id == item.id ? 'active' : ''}}" wx:for="{{categoryList}}" wx:key="id" data-id="{{item.id}}" data-index="{{index}}" bindtap="switchCate">{{item.name}}</view>
+    </scroll-view>
+    <scroll-view class="cate" scroll-y="true">
+      <radio-group bindchange="radioChange">
+        <label class="label" wx:for="{{currentSubCategoryList}}" wx:key="index">
+          <view class="commodity-item-image">
+            <image src="{{item}}" mode="aspectFill"></image>
+          </view>
+          <view class="commodity-item-library">
+            <view class="commodity-item-radio">
+              <text class="commodity-item-title">{{item.name}}</text>
+              <radio value="{{item.value}}" color="#ff5c27" checked="true"/>
+            </view>
+            <view class="commodity-item-color">颜色： 红色、黄色、黑色</view>
+            <view class="commodity-item-size">尺寸：SMLXLSSL</view>
+            <view class="commodity-item-price-num">
+              <view class="commodity-item-price">¥19.2～¥99.2</view>
+              <view class="commodity-item-num">
+                <text class="commodity-item-num-text">参团人次</text>
+                <text class="commodity-item-num-count">123456</text>
+              </view>
+            </view>
+          </view>
+        </label>
+      </radio-group>
+    </scroll-view>
+  </view>
 </view>

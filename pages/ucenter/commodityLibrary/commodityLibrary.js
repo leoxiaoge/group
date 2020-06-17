@@ -5,7 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    categoryList: [{
+      name: '1223321'
+    },{
+      name: '1223321'
+    },{
+      name: '1223321'
+    }],
+    currentCategory: {},
+    currentSubCategoryList: [{
+      name: '1232131eee'
+    }],
+    scrollLeft: 0,
+    scrollTop: 0,
+    goodsCount: 0,
+    scrollHeight: 0,
+    searchIcon: '/static/images/search_icon.png',
   },
 
   /**
@@ -27,6 +42,14 @@ Page({
    */
   onShow: function () {
 
+  },
+
+  switchCate: function(e) {
+    var currentTarget = e.currentTarget;
+    if (this.data.currentCategory.id == event.currentTarget.dataset.id) {
+      return false;
+    }
+    this.getCurrentCategory(e.currentTarget.dataset.id);
   },
 
   /**
