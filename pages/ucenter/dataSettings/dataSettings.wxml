@@ -26,7 +26,7 @@
   <popup show="{{showPopup}}">
 		<view class="popup-slot" slot="content" catchtap="catchtap">
 			<view class="popup-input">
-				<input placeholder="请输入团队名称" value="{{teamTitle}}" catchinput="catchInput"></input>
+				<input placeholder="请输入团队名称" focus="{{showPopup}}" value="{{teamTitle}}" catchinput="catchInput"></input>
 			</view>
 			<button class="popup-button" catchtap="popupTap">确定</button>
 		</view>

@@ -1,64 +1,65 @@
 <!--pages/ucenter/commodityLibrary/commodityLibrary.wxml-->
 <view class="container">
-  <view class="commodity-header">
-    <view class="search">
-      <input placeholder="商品名称搜索"></input>
-      <image src="{{searchIcon}}" mode="aspectFit"></image>
-    </view>
-    <view class="add-commodity">
-      <button>添加新商品</button>
-    </view>
-  </view>
-  <view class="commodity">
-    <scroll-view class="nav" scroll-y="true">
-      <view class="item {{ currentCategory.id == item.id ? 'active' : ''}}" wx:for="{{categoryList}}" wx:key="id" data-id="{{item.id}}" data-index="{{index}}" bindtap="switchCate">{{item.name}}</view>
-      <view class="item">
-        <image src="{{categorySettingIcon}}" mode="aspectFit"></image>
-        <text>分页管理</text>
-      </view>
-    </scroll-view>
-    <scroll-view class="cate" scroll-y="true">
-      <radio-group bindchange="radioChange">
-        <label class="label" wx:for="{{items}}" wx:key="index">
-          <view class="commodity-item touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
-            <view class="commodity-content content">
-              <view class="commodity-item-image">
-                <image src="{{deleteIcon}}" mode="aspectFill"></image>
-              </view>
-              <view class="commodity-item-library">
-                <view class="commodity-item-radio">
-                  <text class="commodity-item-title">{{item.name}}</text>
-                  <radio value="{{item.value}}" color="#ff5c27" checked="true"/>
-                </view>
-                <view class="commodity-item-color">颜色： 红色、黄色、黑色</view>
-                <view class="commodity-item-size">尺寸：SMLXLSSL</view>
-                <view class="commodity-item-price-num">
-                  <view class="commodity-item-price">¥19.2～¥99.2</view>
-                  <view class="commodity-item-num">
-                    <text class="commodity-item-num-text">参团人次</text>
-                    <text class="commodity-item-num-count">123456</text>
-                  </view>
-                </view>
-              </view>
-            </view>
-          </view>
-          <view class="del">
-            <view class="edit-btn">
-              <image src="{{editIcon}}" mode="aspectFit"></image>
-            </view>
-            <view class="delete-btn">
-              <image src="{{deleteIcon}}" mode="aspectFit"></image>
-            </view>
-          </view>
-        </label>
-      </radio-group>
-    </scroll-view>
-  </view>
-  <view class="empty"></view>
-  <view class="position">
-    <view class="position-button">
-      <button class="cancel">{{cancelButton}}</button>
-      <button class="confirm">{{confirmButoon}}</button>
-    </view>
-  </view>
+	<view class="commodity-header">
+		<view class="search">
+			<input placeholder="商品名称搜索" bindinput="productInput" bindblur="productBlur"></input>
+			<image src="{{searchIcon}}" mode="aspectFit" bindtap="productBlur"></image>
+		</view>
+		<view class="add-commodity" bindtap="addGoodsTap">
+			<button>添加新商品</button>
+		</view>
+	</view>
+	<view class="commodity">
+		<scroll-view class="nav" scroll-y="true">
+		  <view class="nav-item nav-item-all {{ categoryID == 0 ? 'nav-item-active' : ''}}" bindtap="switchCate" data-id="0">全部</view>
+			<view class="nav-item {{ categoryID == item.ID ? 'nav-item-active' : ''}}" wx:for="{{categorys}}" wx:key="index" data-id="{{item.ID}}" bindtap="switchCate">{{item.CategoryTitle}}</view>
+			<view class="nav-item" bindtap="categoryTap">
+				<image class="category-setting-image" src="{{categorySettingIcon}}" mode="widthFix"></image>
+				<text class="nav-item-setting-text">分页管理</text>
+			</view>
+		</scroll-view>
+		<scroll-view class="cate" scroll-y="true">
+			<view>
+				<view class="label" wx:for="{{items}}" wx:key="index">
+					<view class="commodity-item touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+						<label class="commodity-content content" bindtap="radioChange" data-index="{{index}}">
+							<view class="commodity-item-image">
+								<image src="{{deleteIcon}}" mode="aspectFill"></image>
+							</view>
+							<view class="commodity-item-library">
+								<view class="commodity-item-radio">
+									<text class="commodity-item-title">{{item.name}}</text>
+									<radio color="#ff5c27" checked="{{item.checked}}" />
+								</view>
+								<view class="commodity-item-color">颜色： 红色、黄色、黑色</view>
+								<view class="commodity-item-size">尺寸：SMLXLSSL</view>
+								<view class="commodity-item-price-num">
+									<view class="commodity-item-price">¥19.2～¥99.2</view>
+									<view class="commodity-item-num">
+										<text class="commodity-item-num-text">参团人次</text>
+										<text class="commodity-item-num-count">123456</text>
+									</view>
+								</view>
+							</view>
+						</label>
+						<view class="del operating">
+							<view class="edit-btn">
+								<image src="{{editIcon}}" mode="aspectFit"></image>
+							</view>
+							<view class="delete-btn">
+								<image src="{{deleteIcon}}" mode="aspectFit"></image>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+	<view class="empty"></view>
+	<view class="position">
+		<view class="position-button">
+			<button class="cancel">{{cancelButton}}</button>
+			<button class="confirm">{{confirmButoon}}</button>
+		</view>
+	</view>
 </view>

@@ -1,4 +1,40 @@
 <!--pages/ucenter/categoryManagement/categoryManagement.wxml-->
 <view class="container">
-  
+	<view class="category-header">
+		<view class="category-header-title">已添加项目</view>
+		<button class="category-add-button" bindtap="popupTap">添加项目</button>
+	</view>
+	<view class="category-content">
+		<block wx:for="{{categorys}}" wx:key="index">
+			<view class="category-item">
+				<view class="category-item-content">
+					<view class="category-left">
+						<view class="category-item-index">{{index + 1}}</view>
+						<view class="category-item-title">{{item.CategoryTitle}}</view>
+					</view>
+					<view class="category-right">
+						<view class="category-operating" bindtap="operatingTap" data-id="{{item.ID}}" data-title="{{item.CategoryTitle}}">
+							<image class="category-operating-image" src="{{operatingIcon}}" mode="aspectFit"></image>
+						</view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+	<view class="category-tags" wx:if="{{tags.length > 0}}">
+		<view class="category-tags-title">常见项目(点击添加)</view>
+    <view class="category-tags-content">
+      <block wx:for="{{tags}}" wx:key="index">
+        <view class="category-tags-item" bindtap="addTagTap" data-item="{{item}}">{{item}}</view>
+      </block>
+    </view>
+	</view>
+	<popup show="{{showPopup}}">
+		<view class="popup-slot" slot="content" catchtap="catchtap">
+			<view class="popup-input">
+				<input placeholder="请输入项目名称" focus="{{showPopup}}" maxlength="8" value="{{categoryTitle}}" catchinput="catchInput"></input>
+			</view>
+			<button class="popup-button" catchtap="addCategorysTap">确定</button>
+		</view>
+	</popup>
 </view>

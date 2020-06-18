@@ -15,20 +15,16 @@ Page({
     teamID: 0, // 要查询类别列表的团队ID，如果TeamID传0且当前用户身份是团长身份，则获取当前团队的商品类别列表，否则获取对应团队ID的商品类别列表
     cancelButton: '取消选择', // 取消选择文字
     confirmButoon: '确定选择', // 确定选择文字
-    categorySettingIcon: '/static/images/category_setting_icon',
+    categorySettingIcon: '/static/images/category_setting_icon.png',
     deleteIcon: '/static/images/delete_icon.png',
     editIcon: '/static/images/edit_icon.png',
     emptyIcon: '/static/images/league_no.png',
-    emptyText: '团队暂无团员，马上邀请吧',
-    categoryList: [{
-      name: '1223321'
-    },{
-      name: '1223321'
-    },{
-      name: '1223321'
-    }],
+    emptyText: '暂无商品，马上添加吧',
+    categorys: [], // 分类列表
     currentCategory: {},
     items: [{
+      name: '1232131eee'
+    },{
       name: '1232131eee'
     }],
     scrollLeft: 0,
@@ -56,7 +52,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getProductsList()
   },
 
   // 获取团长注册信息
@@ -64,7 +60,7 @@ Page({
     let data = {}
     util.request(api.TeamGet, data).then((res) => {
       console.log(res)
-      let teamID = res.TeamInfo.teamID
+      let teamID = res.TeamInfo.ID
       this.setData({
         teamID: teamID
       })
@@ -80,6 +76,10 @@ Page({
     }
     util.request(api.CategorysListGet, data).then((res) => {
       console.log(res)
+      let categorys = res.Categorys
+      this.setData({
+        categorys: categorys
+      })
     })
   },
 
@@ -89,7 +89,23 @@ Page({
     this.setData({
       categoryID: categoryID
     })
-    this.getCurrentCategory()
+    this.ProductsListGet()
+  },
+
+  // 搜索输入
+  productInput: function (e) {
+    let productTitle = e.detail.value
+    this.setData({
+      productTitle: productTitle
+    })
+  },
+
+  // 搜索确定
+  productBlur: function () {
+    this.setData({
+      pageNum: 1
+    })
+    this.ProductsListGet()
   },
 
   // 获取商品相关基本信息
@@ -104,9 +120,29 @@ Page({
       ProductTitle: ProductTitle,
       CategoryID: CategoryID
     }
-    util.request(api.CategorysListGet, data).then((res) => {
+    util.request(api.ProductsListGet, data).then((res) => {
       console.log(res)
     })
+  },
+
+  // 选择商品
+  radioChange: function (e) {
+    let index = e.currentTarget.dataset.index
+    let items = this.data.items
+    items[index].checked = !items[index].checked
+    this.setData({
+      items: items
+    })
+  },
+
+  // 添加新商品
+  addGoodsTap: function () {
+    util.navigateTo('/pages/ucenter/addingGoods/addingGoods')
+  },
+
+  // 分类管理
+  categoryTap: function () {
+    util.navigateTo('/pages/ucenter/categoryManagement/categoryManagement')
   },
 
   //手指触摸动作开始 记录起点X坐标

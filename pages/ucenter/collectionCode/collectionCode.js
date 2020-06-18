@@ -47,11 +47,11 @@ Page({
       parament.forEach(item => {
         console.log(item)
         if (item.ParaKey === 'WXPayCodeUrl') {
-          payCode = item.ParaValue
+          payCode = [item.ParaValue]
           remark = item.ParaRemark
         }
       })
-      if (payCode) {
+      if (!payCode) {
         this.setData({
           isContent: true
         })
@@ -102,6 +102,18 @@ Page({
     util.request(api.TeamParaSet, data).then((res) => {
       console.log(res)
       util.showToast('修改成功！')
+    })
+  },
+
+  // 预览图片
+  previewImage: function (e) {
+    let current = e.currentTarget.dataset.item
+    let urls = this.data.payCode
+    console.log(current)
+    console.log(urls)
+    wx.previewImage({
+      current: current, // 当前显示图片的http链接
+      urls: urls // 需要预览的图片http链接列表
     })
   },
 
