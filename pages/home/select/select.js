@@ -17,10 +17,8 @@ Page({
     locate: '', // 小区名称
     distID: 0, // 小区id
     districts: [], // 搜索列表
-    detailValue: [], // 多选列表id值
     distList: [], // 多选列表
-    detailValueChange: [], // 多选列表新id值
-    distListChange: [], // 多选新列表
+    detailValue: [], // 多选列表id
     selectIcon: '/static/images/select_icon.png',
     closeIcon: '/static/images/close_icon.png',
     locateIcon: '/static/images/locate_icon.png',
@@ -56,7 +54,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (this.data.isFrom) {
+      let pages = getCurrentPages() // 获取页面栈
+      let prevPage = pages[pages.length - 2] // 上一个页面
+      let distList = prevPage.data.distList
+      if (distList.length > 0) {
+        this.setData({
+          isDisabled: true
+        })
+      } else {
+        this.setData({
+          isDisabled: false
+        })
+      }
+      this.setData({
+        distList: distList
+      })
+      this.districtsPrevPage()
+    }
   },
 
   // 获取搜索词的值
@@ -109,6 +124,7 @@ Page({
       let districts = res.Districts
       let correct = false
       districts.forEach(item => {
+        item.checked = false
         if (this.data.distID === item.DistrictID) {
           correct = true
         }
@@ -123,9 +139,26 @@ Page({
       this.setData({
         districts: districts
       })
-      if (this.data.isCheckbox) {
-        this.checkboxChangeValue()
-      }
+      this.districtsPrevPage()
+    })
+  },
+
+  // 处理列表跟上个对比
+  districtsPrevPage: function () {
+    let districts = this.data.districts
+    let pages = getCurrentPages() // 获取页面栈
+    let prevPage = pages[pages.length - 2] // 上一个页面
+    console.log(prevPage)
+    districts.forEach(item => {
+      prevPage.data.distList.forEach(element => {
+        if (item.DistrictID === element.DistrictID) {
+          item.checked = true
+        }
+      })
+    })
+    console.log(districts)
+    this.setData({
+      districts: districts
     })
   },
 
@@ -150,30 +183,22 @@ Page({
   },
 
   // 多选小区
-  checkboxChange: function (e) {
-    console.log(e)
-    let detailValue = e.detail.value
-    this.setData({
-      detailValue: detailValue
-    })
-    this.checkboxChangeValue()
-  },
-
-  // 多选处理
-  checkboxChangeValue: function () {
+  selectRadioTap: function (e) {
+    let index = e.currentTarget.dataset.index
+    let item = this.data.districts[index]
     let districts = this.data.districts
-    let detailValue = this.data.detailValue
-    let distListData = []
-    districts.forEach(item => {
-      detailValue.forEach(ele => {
-        if (item.DistrictID == ele) {
-          item.checked = true
-          distListData.push(item)
+    let distList = this.data.distList
+    districts[index].checked = !districts[index].checked
+    if (districts[index].checked) {
+      distList.push(item)
+    } else {
+      distList.forEach((element, y) => {
+        console.log(element)
+        if (element.DistrictID === item.DistrictID) {
+          distList.splice(y, 1)
         }
       })
-    })
-    let distList = this.data.distList.concat(distListData)
-    console.log(detailValue)
+    }
     if (distList.length > 0) {
       this.setData({
         isDisabled: true
@@ -183,24 +208,29 @@ Page({
         isDisabled: false
       })
     }
-    console.log(distList)
+    let detailValue = []
+    distList.forEach(item => {
+      detailValue.push(item.DistrictID)
+    })
     this.setData({
       districts: districts,
-      distList: distList
+      distList: distList,
+      detailValue: detailValue
     })
   },
 
   // 确定
   definiteTap: function () {
-    this.checkboxChangeValue()
-    let distList = this.data.distList
-    let value = this.data.detailValue.join(',')
+    let distList = this.data.distList // 选中小区列表
+    let distId = this.data.detailValue.join(',') // 选中小区id
     let pages = getCurrentPages() // 获取页面栈
     let currPage = pages[pages.length - 1] // 当前页面
     let prevPage = pages[pages.length - 2] // 上一个页面
     console.log(currPage)
+    console.log(distId)
+    console.log(distList)
     prevPage.setData({
-      distId: value,
+      distId: distId,
       distList: distList
     })
     util.navigateBack('-1')
@@ -208,6 +238,7 @@ Page({
 
   // 提交
   submitTap: function () {
+    console.log(this.data.detailValue)
     let DistIDs = this.data.detailValue.join(',')
     let data = {
       DistIDs: DistIDs

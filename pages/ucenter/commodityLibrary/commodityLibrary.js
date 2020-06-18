@@ -8,8 +8,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loadShow: false, // 是否加载
+    title: '正在加载...',
     pageNum: 1, // 页码
     pageSize: 10, // 每页条数
+    total: 0, // 总个数
+    hasEmpty: false, // 是否没有数据
     productTitle: '', // 搜索的商品名称
     categoryID: 0, // 限定商品类别，如果不指定请传入0
     teamID: 0, // 要查询类别列表的团队ID，如果TeamID传0且当前用户身份是团长身份，则获取当前团队的商品类别列表，否则获取对应团队ID的商品类别列表
@@ -22,11 +26,7 @@ Page({
     emptyText: '暂无商品，马上添加吧',
     categorys: [], // 分类列表
     currentCategory: {},
-    items: [{
-      name: '1232131eee'
-    },{
-      name: '1232131eee'
-    }],
+    items: [],
     scrollLeft: 0,
     scrollTop: 0,
     goodsCount: 0,
@@ -45,7 +45,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.calculateScrollViewHeight()
   },
 
   /**
@@ -53,6 +53,7 @@ Page({
    */
   onShow: function () {
     this.getProductsList()
+    this.ProductsListGet()
   },
 
   // 获取团长注册信息
@@ -122,6 +123,23 @@ Page({
     }
     util.request(api.ProductsListGet, data).then((res) => {
       console.log(res)
+      let curPageData = res.ResultProducts
+      let items = this.data.items
+      if (PageID === 1) {items = []} //如果是第一页需手动制空列表
+      items = items.concat(curPageData) //追加新数据
+      let hasEmpty = this.data.hasEmpty
+      if (items.length <= 0) {
+        hasEmpty = true
+      } else {
+        hasEmpty = false
+      }
+      console.log(items)
+      this.setData({
+        items: items,
+        total: res.Totals,
+        hasEmpty: hasEmpty,
+        loadGroup: false
+      })
     })
   },
 
@@ -135,6 +153,44 @@ Page({
     })
   },
 
+  // 编辑商品
+  editTap: function (e) {
+    let id = e.currentTarget.dataset.id
+    util.navigateTo(`/pages/ucenter/addingGoods/addingGoods?${id}`)
+  },
+
+  // 删除商品
+  deleteTap: function (e) {
+    let ProductID = e.currentTarget.dataset.id
+    let data = {
+      ProductID: ProductID
+    }
+    util.request(api.ProductDelete, data).then((res) => {
+      console.log(res)
+    })
+  },
+
+  // 上拉刷新
+  upper: function () {
+    console.log('upper')
+  },
+
+  //下拉加载
+  lower: function () {
+    console.log('lower')
+    let pageNum = this.data.pageNum
+    let loadGroup = this.data.loadGroup
+    if (this.data.items.length < this.data.total) {
+      pageNum++
+      loadGroup = true
+      this.setData({
+        pageNum: pageNum,
+        loadGroup: loadGroup
+      })
+      this.ProductsListGet()
+    }
+  },
+
   // 添加新商品
   addGoodsTap: function () {
     util.navigateTo('/pages/ucenter/addingGoods/addingGoods')
@@ -143,6 +199,25 @@ Page({
   // 分类管理
   categoryTap: function () {
     util.navigateTo('/pages/ucenter/categoryManagement/categoryManagement')
+  },
+
+  // 计算scroll-view高度
+  calculateScrollViewHeight: function () {
+    let query = wx.createSelectorQuery()
+    //根据节点id查询节点部分的高度（px单位）
+    query.select('#header').boundingClientRect()
+    query.select('#footer').boundingClientRect()
+    query.exec((res) => {
+      // 分别取出节点的高度
+      let headerHeight = res[0].height;
+      let footerHeight = res[1].height;
+      // 然后窗口高度（wx.getSystemInfoSync().windowHeight）减去其他不滑动界面的高度
+      let scrollViewHeight = wx.getSystemInfoSync().windowHeight - headerHeight - footerHeight
+      // 算出来之后存到data对象里面
+      this.setData({
+        scrollHeight: scrollViewHeight
+      })
+    })
   },
 
   //手指触摸动作开始 记录起点X坐标
@@ -221,6 +296,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.setData({
+      pageNum: 1
+    })
     this.ProductsListGet()
   },
 

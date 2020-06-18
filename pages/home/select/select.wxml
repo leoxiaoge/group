@@ -42,11 +42,11 @@
 				</radio-group>
 			</view>
 			<view class="select-radio-group" wx:else>
-        <checkbox-group bindchange="checkboxChange">
-          <label class="select-label" wx:for="{{districts}}" wx:key="index">
+        <block wx:for="{{districts}}" wx:key="index">
+          <label class="select-label" bindtap="selectRadioTap" data-index="{{index}}">
 					  <view class="select-radio-name">
 							<view class="select-radio">
-								<checkbox value="{{item.DistrictID}}" color="#ff5c27" checked="{{item.checked}}"/>
+								<radio value="{{item.DistrictID}}" color="#ff5c27" checked="{{item.checked}}"/>
 							</view>
 							<view class="select-locate-name">{{item.DistrictName}}</view>
 						</view>
@@ -54,7 +54,7 @@
 							<text class="select-distance-text">{{item.DistanceDescribe}}</text>
 						</view>
           </label>
-        </checkbox-group>
+        </block>
       </view>
 		</scroll-view>
 	</view>

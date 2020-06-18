@@ -1,6 +1,6 @@
 <!--pages/ucenter/commodityLibrary/commodityLibrary.wxml-->
 <view class="container">
-	<view class="commodity-header">
+	<view id="header" class="commodity-header">
 		<view class="search">
 			<input placeholder="商品名称搜索" bindinput="productInput" bindblur="productBlur"></input>
 			<image src="{{searchIcon}}" mode="aspectFit" bindtap="productBlur"></image>
@@ -10,7 +10,7 @@
 		</view>
 	</view>
 	<view class="commodity">
-		<scroll-view class="nav" scroll-y="true">
+		<scroll-view class="nav" scroll-y="true" style="height:{{scrollHeight}}px">
 		  <view class="nav-item nav-item-all {{ categoryID == 0 ? 'nav-item-active' : ''}}" bindtap="switchCate" data-id="0">全部</view>
 			<view class="nav-item {{ categoryID == item.ID ? 'nav-item-active' : ''}}" wx:for="{{categorys}}" wx:key="index" data-id="{{item.ID}}" bindtap="switchCate">{{item.CategoryTitle}}</view>
 			<view class="nav-item" bindtap="categoryTap">
@@ -18,8 +18,8 @@
 				<text class="nav-item-setting-text">分页管理</text>
 			</view>
 		</scroll-view>
-		<scroll-view class="cate" scroll-y="true">
-			<view>
+		<scroll-view class="cate" scroll-y="true" style="height:{{scrollHeight}}px" bindscrolltoupper="upper" bindscrolltolower="lower">
+			<block wx:if="{{!hasEmpty}}">
 				<view class="label" wx:for="{{items}}" wx:key="index">
 					<view class="commodity-item touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
 						<label class="commodity-content content" bindtap="radioChange" data-index="{{index}}">
@@ -28,7 +28,7 @@
 							</view>
 							<view class="commodity-item-library">
 								<view class="commodity-item-radio">
-									<text class="commodity-item-title">{{item.name}}</text>
+									<text class="commodity-item-title">{{item.ProductTitle}}</text>
 									<radio color="#ff5c27" checked="{{item.checked}}" />
 								</view>
 								<view class="commodity-item-color">颜色： 红色、黄色、黑色</view>
@@ -43,23 +43,31 @@
 							</view>
 						</label>
 						<view class="del operating">
-							<view class="edit-btn">
+							<view class="edit-btn" bindtap="editTap">
 								<image src="{{editIcon}}" mode="aspectFit"></image>
 							</view>
-							<view class="delete-btn">
+							<view class="delete-btn" bindtap="deleteTap">
 								<image src="{{deleteIcon}}" mode="aspectFit"></image>
 							</view>
 						</view>
 					</view>
 				</view>
-			</view>
+			</block>
+      <block wx:else>
+        <empty icon="{{emptyIcon}}" text="{{emptyText}}" />
+      </block>
+      <view class="loading">
+        <loading-group wx:if="{{loadShow}}" type="spinner" color="#18b3ec" size="24px">{{title}}</loading-group>
+      </view>
 		</scroll-view>
 	</view>
-	<view class="empty"></view>
-	<view class="position">
-		<view class="position-button">
-			<button class="cancel">{{cancelButton}}</button>
-			<button class="confirm">{{confirmButoon}}</button>
-		</view>
-	</view>
+  <view id="footer">
+    <view class="empty"></view>
+    <view class="position">
+      <view class="position-button">
+        <button class="cancel">{{cancelButton}}</button>
+        <button class="confirm">{{confirmButoon}}</button>
+      </view>
+    </view>
+  </view>
 </view>

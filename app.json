@@ -52,10 +52,11 @@
   "usingComponents": {
     "navigation-bar": "/components/navigationBar/index",
     "suggestions": "/components/suggestions/index",
-    "loading": "/components/loading/index",
+    "loading-group": "/components/loading/index",
     "empty": "/components/empty/index",
     "popup": "/components/popup/index",
     "popup-modal": "/components/popup-modal/index",
+    "popup-picker": "/components/popup-picker/index",
     "canvas-modal": "/components/canvas-modal/index",
     "red-packet": "/components/red-packet/index"
   },
