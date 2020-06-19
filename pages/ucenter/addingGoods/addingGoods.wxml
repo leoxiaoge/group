@@ -3,20 +3,20 @@
   <view class="goods-content">
     <view class="goods-item goods-title">
       <text class="sign">*</text>
-      <input class="title-input" placeholder="请输入团购名称" bindinput="titleInput"></input>
+      <input class="title-input" placeholder="请输入团购名称" value="{{productTitle}}" bindinput="titleInput"></input>
     </view>
     <view class="goods-item">
       <view class="goods-desc">
         <text class="sign">*</text>
-        <textarea placeholder="请输入商品介绍" bindinput="descInput"></textarea>
+        <textarea placeholder="请输入商品介绍" value="{{productDesc}}" bindinput="descInput"></textarea>
       </view>
       <view class="goods-image">
         <view class="goods-content-image goods-content-item" bindtap="chooseFaceImage">
           <image class="add-image" src="{{addIcon}}" mode="widthFix"></image>
           <image class="camera-image" src="{{cameraIcon}}" mode="widthFix"></image>
         </view>
-        <view class="goods-content-item">
-          <image class="goods-image-list" src="{{addTagIcon}}" mode="aspectFill"></image>
+        <view class="goods-content-item" wx:for="{{tempFilePaths}}" wx:key="index">
+          <image class="goods-image-list" src="{{item}}" mode="aspectFill"></image>
         </view>
       </view>
     </view>
@@ -27,10 +27,12 @@
           <text class="goods-item-specifications-text">规格</text>
           <input class="goods-item-sku-input" placeholder="规格" bindinput="titleInput" disabled="true"></input>
         </view>
-        <view class="goods-item-specifications-right" bindtap="specificationsTap">
-          <image class="goods-item-specifications-image" src="{{addSpecificationsIcon}}" mode="aspectFill"></image>
-          <text class="goods-item-add-specifications-text">添加多规格</text>
-          <image class="goods-item-specifications-image" src="{{promptIcon}}" mode="aspectFill"></image>
+        <view class="goods-item-specifications-right">
+          <view class="goods-item-specifications-image-text" bindtap="specificationsTap">
+            <image class="goods-item-specifications-image" src="{{addSpecificationsIcon}}" mode="widthFix"></image>
+            <text class="goods-item-add-specifications-text">添加多规格</text>
+          </view>
+          <image class="goods-item-specifications-image" src="{{promptIcon}}" mode="widthFix" bindtap="specificationsPromptTap"></image>
         </view>
       </view>
     </view>
@@ -38,32 +40,35 @@
       <view class="goods-item-content">
         <text class="sign">*</text>
         <text class="goods-item-content-text">团购价（¥）</text>
-        <input class="goods-item-content-input" placeholder="请输入团购名称"></input>
+        <input class="goods-item-content-input" type="digit" value="{{sellerPrice}}" placeholder="商品团购价格，如：9.9" bindinput="sellerPriceInput"></input>
       </view>
     </view>
     <view class="goods-item">
       <view class="goods-item-content">
         <text class="sign">*</text>
         <text class="goods-item-content-text">库存</text>
-        <input class="goods-item-content-input" placeholder="商品团购价格，如：9.9" bindinput="priceInput"></input>
+        <input class="goods-item-content-input" type="number" value="{{stockNum}}" placeholder="请输入库存" bindinput="stockNumInput"></input>
       </view>
     </view>
     <view class="goods-item">
-      <view class="goods-item-content-sort">
-        <view class="goods-item-content-sort-left">
-          <text class="sign">*</text>
-          <text class="goods-item-content-sort-text">分类</text>
+      <picker bindchange="bindPickerChange" value="{{categorys[index]}}" range="{{categorys}}" range-key="CategoryTitle">
+        <view class="goods-item-content-sort">
+          <view class="goods-item-content-sort-left">
+            <text class="sign">*</text>
+            <text class="goods-item-content-sort-text">分类</text>
+          </view>
+          <view class="arrow">
+            <text class="category-title">{{categoryTitle}}</text>
+            <image class="arrow-image" src="{{arrowIcon}}" mode="aspectFill"></image>
+          </view>
         </view>
-        <view class="arrow">
-          <image class="arrow-image" src="{{arrowIcon}}" mode="aspectFill"></image>
-        </view>
-      </view>
+      </picker>
     </view>
     <view class="goods-item-tag">
-      <view class="tag-chosen" wx:if="{{tagsList.length > 0}}">
+      <view class="tag-chosen" wx:if="{{tagsSelectList.length > 0}}">
         <view class="tag-chosen-title">已选择</view>
         <view class="tag-chosen-list">
-          <block wx:for="{{tagsList}}" wx:key="index">
+          <block wx:for="{{tagsSelectList}}" wx:key="index">
             <view class="tag-chosen-item">
               <text class="tag-chosen-text">{{item}}</text>
               <image class="tag-close-image" src="{{closeTagIcon}}" mode="aspectFit" bindtap="closeTagTap" data-index="{{index}}"></image>
@@ -71,26 +76,28 @@
           </block>
         </view>
       </view>
-      <view class="goods-item-tag-content" bindtap="popupTap">
-        <image class="goods-item-tag-image" src="{{addTagIcon}}" mode=""></image>
-        <text class="goods-item-tag-text">添加标签</text>
-        <image class="goods-item-tag-image" src="{{promptIcon}}" mode=""></image>
+      <view class="goods-item-tag-content">
+        <view class="goods-item-specifications-image-text" bindtap="popupTap">
+          <image class="goods-item-tag-image" src="{{addTagIcon}}" mode="widthFix"></image>
+          <text class="goods-item-tag-text">添加标签</text>
+        </view>
+        <image class="goods-item-tag-image" src="{{promptIcon}}" mode="widthFix" bindtap="tagPromptTap"></image>
       </view>
     </view>
   </view>
-  <popup-picker show="{{!showPopup}}">
+  <popup-picker show="{{showPopup}}" bindcancel="cancel">
 		<view class="popup-slot" slot="content" catchtap="catchtap">
 			<view class="tag-header">
         <view class="tag-input-num">
-          <input class="tag-input" placeholder="请输入标签名称" bindinput="tagInput"></input>
-          <text class="tag-num">10{{tagNum}}</text>
+          <input class="tag-input" placeholder="请输入标签名称" value="{{elementsTag}}" maxlength="10" bindinput="tagInput"></input>
+          <text class="tag-num">{{elementsTagNum}}</text>
         </view>
-        <button class="tag-button" disabled="{{disabledTag}}">确定</button>
+        <button class="tag-button" disabled="{{!elementsTag}}" bindtap="determineTap">确定</button>
       </view>
-      <view class="tag-chosen" wx:if="{{tagsList.length > 0}}">
+      <view class="tag-chosen" wx:if="{{tagsSelectList.length > 0}}">
         <view class="tag-chosen-title">已选择</view>
         <view class="tag-chosen-list">
-          <block wx:for="{{tagsList}}" wx:key="index">
+          <block wx:for="{{tagsSelectList}}" wx:key="index">
             <view class="tag-chosen-item">
               <text class="tag-chosen-text">{{item}}</text>
               <image class="tag-close-image" src="{{closeTagIcon}}" mode="aspectFit" bindtap="closeTagTap" data-index="{{index}}"></image>
@@ -98,11 +105,11 @@
           </block>
         </view>
       </view>
-      <view class="tag-common" wx:if="{{tags.length > 0}}">
+      <view class="tag-common" wx:if="{{tagsList.length > 0}}">
         <view class="tag-common-title">常见标签（点击添加）</view>
         <view class="tag-common-list">
-          <block wx:for="{{tags}}" wx:key="index">
-            <view class="tag-common-item {{item.checked?'tag-common-item-active':''}}" catchtap="addTagTap" data-index="{{index}}">
+          <block wx:for="{{tagsList}}" wx:key="index">
+            <view class="tag-common-item" catchtap="addTagTap" data-index="{{index}}">
               <text class="tag-common-text">{{item}}</text>
             </view>
           </block>
@@ -110,6 +117,11 @@
       </view>
 		</view>
 	</popup-picker>
+  <popup show="{{showSlotPopup}}">
+		<view class="popup-image-slot" slot="content" catchtap="catchtap">
+			<image src="{{popupImage}}" mode="aspectFit"></image>
+		</view>
+	</popup>
   <view class="empty"></view>
   <view class="goods-item-button">
     <button class="submit-button" bindtap="addProductsTap">立即发布</button>

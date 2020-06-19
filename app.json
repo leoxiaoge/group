@@ -35,7 +35,8 @@
         "collectionCode/collectionCode",
         "categoryManagement/categoryManagement",
         "addingGoods/addingGoods",
-        "addSpecifications/addSpecifications"
+        "addSpecifications/addSpecifications",
+        "settingSpecifications/settingSpecifications"
       ]
     }
   ],

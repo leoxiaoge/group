@@ -45,9 +45,11 @@ Page({
       let teamInfo = res.TeamInfo
       let teamTitle = teamInfo.TeamTitle
       let avatar = teamInfo.TeamIconUrl
+      let teamFaceUrl = teamInfo.TeamIconUrl
       let aboutText = teamInfo.AboutText
       this.setData({
         avatar: avatar,
+        teamFaceUrl: teamFaceUrl,
         teamTitle: teamTitle,
         aboutText: aboutText
       })
@@ -112,6 +114,10 @@ Page({
     let TeamFaceUrl = this.data.teamFaceUrl
     let TeamTitle = this.data.teamTitle
     let AboutText = this.data.aboutText
+    if (!TeamFaceUrl) {
+      util.showToast('请选择团队头像！')
+      return
+    }
     let data = {
       TeamFaceUrl: TeamFaceUrl,
       TeamTitle: TeamTitle,
@@ -141,7 +147,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getTeam()
   },
 
   /**

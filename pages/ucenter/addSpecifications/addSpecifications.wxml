@@ -1,2 +1,20 @@
 <!--pages/ucenter/addSpecifications/addSpecifications.wxml-->
-<text>pages/ucenter/addSpecifications/addSpecifications.wxml</text>
+<view class="container">
+  <view class="spec-content">
+    <view class="spec-">{{prompt}}</view>
+    <view class="spec-">
+      <block wx:for="{{list}}">
+        <view class="spec-"></view>
+      </block>
+    </view>
+    <view class="spec-">
+      <view class="spec-">
+        <image src="{{}}" mode=""></image>
+        <text></text>
+      </view>
+      <view class="spec-">
+        <image src="{{}}" mode=""></image>
+      </view>
+    </view>
+  </view>
+</view>

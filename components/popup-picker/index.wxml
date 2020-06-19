@@ -2,7 +2,7 @@
 <view class="content" wx:if="{{show}}" catchtap="popupTap" catchtouchmove="preventdefault">
   <view class="page-content">
     <view class="page-item">
-      <button class="cancel" catchtap="popupTap">{{cancel}}</button>
+      <button class="cancel" catchtap="cancelTap">{{cancel}}</button>
       <button class="confirm" catchtap="confirmTap">{{confirm}}</button>
     </view>
     <slot name="content" />

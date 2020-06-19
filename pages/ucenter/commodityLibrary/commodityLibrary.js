@@ -25,12 +25,13 @@ Page({
     emptyIcon: '/static/images/league_no.png',
     emptyText: '暂无商品，马上添加吧',
     categorys: [], // 分类列表
-    currentCategory: {},
-    items: [],
-    scrollLeft: 0,
-    scrollTop: 0,
-    goodsCount: 0,
-    scrollHeight: 0,
+    items: [], // 商品列表
+    productsList: [], // 选中的商品列表
+    hasProduct: false, // 是否有选中的商品
+    scrollLeft: 0, // 区域
+    scrollTop: 0, // 区域
+    goodsCount: 0, // 选中的商品个数
+    scrollHeight: 0, // 区域高度
     searchIcon: '/static/images/search_icon.png',
   },
 
@@ -150,15 +151,37 @@ Page({
     let index = e.currentTarget.dataset.index
     let items = this.data.items
     items[index].checked = !items[index].checked
+    let productsList = this.data.productsList
+    // 如果有选中的商品，则push到列表，或者移除单列表
+    if (items[index].checked) {
+      productsList.push(items[index])
+    } else {
+      productsList.forEach((element, i) => {
+        console.log(element)
+        if (element.ID === items[index].ID) {
+          productsList.splice(i, 1)
+        }
+      })
+    }
+    let hasProduct = this.data.hasProduct
+    if (productsList.length > 0) {
+      hasProduct = true
+    } else {
+      hasProduct = false
+    }
+    console.log(productsList)
     this.setData({
-      items: items
+      items: items,
+      productsList: productsList,
+      hasProduct: hasProduct
     })
+    this.calculateScrollViewHeight()
   },
 
   // 编辑商品
   editTap: function (e) {
     let id = e.currentTarget.dataset.id
-    util.navigateTo(`/pages/ucenter/addingGoods/addingGoods?${id}`)
+    util.navigateTo(`/pages/ucenter/addingGoods/addingGoods?id=${id}`)
   },
 
   // 删除商品
@@ -169,6 +192,7 @@ Page({
     }
     util.request(api.ProductDelete, data).then((res) => {
       console.log(res)
+      util.showToast('删除成功！')
     })
   },
 
@@ -214,7 +238,10 @@ Page({
       let headerHeight = res[0].height;
       let footerHeight = res[1].height;
       // 然后窗口高度（wx.getSystemInfoSync().windowHeight）减去其他不滑动界面的高度
-      let scrollViewHeight = wx.getSystemInfoSync().windowHeight - headerHeight - footerHeight
+      let scrollViewHeight = wx.getSystemInfoSync().windowHeight - headerHeight
+      if (this.data.hasProduct) {
+        scrollViewHeight = wx.getSystemInfoSync().windowHeight - headerHeight - footerHeight
+      }
       // 算出来之后存到data对象里面
       this.setData({
         scrollHeight: scrollViewHeight

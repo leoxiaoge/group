@@ -88,6 +88,7 @@ page {
 
 .category-tags {
   margin: 0 30rpx;
+  padding: 10rpx 0 30rpx 0;
 }
 
 .category-tags-title {

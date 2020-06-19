@@ -1,11 +1,11 @@
-// pages/ucenter/addSpecifications/addSpecifications.js
+// pages/ucenter/settingSpecifications/settingSpecifications.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    prompt: '共1个规格'
+
   },
 
   /**

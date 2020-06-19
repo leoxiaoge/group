@@ -101,17 +101,6 @@ Page({
     })
   },
 
-  // 设置排序
-  sortTap: function () {
-    let OrderLists = this.data.orderLists // 顺序列表，类别ID和类目ID之间使用半角逗号分隔
-    let data = {
-      OrderLists: OrderLists
-    }
-    util.request(api.CategorysOrdersSet, data).then((res) => {
-      console.log(res)
-    })
-  },
-
   // 操作商品类别
   operatingTap: function (e) {
     let that = this;
@@ -143,6 +132,29 @@ Page({
     })
   },
 
+  // 设置排序
+  sortTap: function () {
+    let categoryID = this.data.categoryID // 当前选中的ID
+    let categorys = this.data.categorys
+    let OrderLists = this.data.orderLists // 顺序列表，类别ID和类目ID之间使用半角逗号分隔
+    categorys.forEach(item => {
+      console.log(item)
+      if (item.ID === categoryID) {
+        let previousID = categorys[0].ID // 第一个ID
+        OrderLists = `${previousID},${categoryID}`
+      }
+    })
+    console.log(OrderLists)
+    let data = {
+      OrderLists: OrderLists
+    }
+    util.request(api.CategorysOrdersSet, data).then((res) => {
+      console.log(res)
+      util.showToast('设置成功！')
+      this.getCategorysList()
+    })
+  },
+
   // 修改商品类别
   updateCategorys: function () {
     let CategoryID = this.data.categoryID
@@ -160,7 +172,7 @@ Page({
   },
 
   // 删除商品类别
-  deleteCategorys: function (e) {
+  deleteCategorys: function () {
     let CategoryID = this.data.categoryID // 要删除的商品类别ID，如果该类别下有商品，则不允许进行删除？
     let data = {
       CategoryID: CategoryID

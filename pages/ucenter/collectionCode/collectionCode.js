@@ -9,10 +9,10 @@ Page({
    */
   data: {
     payCode: '',
-    remark: '',
+    remark: '设置收款码用于后付款类团购活动中，在活动收款发货页面，可以方便调出付款码，避免退出小程序显示收款码后再进入发货。',
     isContent: false,
     emptyIcon: '/static/images/league_no.png',
-    emptyText: '暂无收款码'
+    emptyText: '暂无收款码',
   },
 
   /**
@@ -39,7 +39,6 @@ Page({
   // 获取团长相关设置
   getTeamParaList: function () {
     let payCode = this.data.payCode
-    let remark = this.data.remark
     let data = {}
     util.request(api.TeamParaListGet, data).then((res) => {
       console.log(res)
@@ -48,7 +47,6 @@ Page({
         console.log(item)
         if (item.ParaKey === 'WXPayCodeUrl') {
           payCode = [item.ParaValue]
-          remark = item.ParaRemark
         }
       })
       if (!payCode) {
@@ -57,8 +55,7 @@ Page({
         })
       }
       this.setData({
-        payCode: payCode,
-        remark: remark
+        payCode: payCode
       })
     })
   },

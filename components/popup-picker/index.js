@@ -42,14 +42,22 @@ Component({
     },
     // 显示或者隐藏事件
     popupTap () {
-      var myEventDetail = {} // detail对象，提供给事件监听函数
-      var myEventOption = {} // 触发事件的选项
-      this.triggerEvent('confirm', myEventDetail, myEventOption)
       let show = !this.data.show
       this.setData({
         show: show
       })
     },
+    // 取消事件
+    cancelTap () {
+      var myEventDetail = {} // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      this.triggerEvent('cancel', myEventDetail, myEventOption)
+      let show = !this.data.show
+      this.setData({
+        show: show
+      })
+    },
+    // 确定事件
     confirmTap () {
       var myEventDetail = {} // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项
