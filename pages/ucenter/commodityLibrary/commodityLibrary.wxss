@@ -36,6 +36,7 @@ radio {
 }
 
 .search input {
+  width: 100%;
   font-size: 18rpx;
   line-height: 1.6;
   color: #a5a5a5;

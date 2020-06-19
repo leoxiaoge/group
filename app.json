@@ -34,7 +34,8 @@
         "themeSettings/themeSettings",
         "collectionCode/collectionCode",
         "categoryManagement/categoryManagement",
-        "addingGoods/addingGoods"
+        "addingGoods/addingGoods",
+        "addSpecifications/addSpecifications"
       ]
     }
   ],

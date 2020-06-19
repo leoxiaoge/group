@@ -24,7 +24,7 @@
 					<view class="commodity-item touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
 						<label class="commodity-content content" bindtap="radioChange" data-index="{{index}}">
 							<view class="commodity-item-image">
-								<image src="{{deleteIcon}}" mode="aspectFill"></image>
+								<image src="{{item.ProductImages[0].ImageUrl}}" mode="aspectFill"></image>
 							</view>
 							<view class="commodity-item-library">
 								<view class="commodity-item-radio">
@@ -34,10 +34,10 @@
 								<view class="commodity-item-color">颜色： 红色、黄色、黑色</view>
 								<view class="commodity-item-size">尺寸：SMLXLSSL</view>
 								<view class="commodity-item-price-num">
-									<view class="commodity-item-price">¥19.2～¥99.2</view>
-									<view class="commodity-item-num">
+									<view class="commodity-item-price">¥{{item.SellerPrice}}</view>
+									<view class="commodity-item-num" wx:if="{{item.TeamUsers}}">
 										<text class="commodity-item-num-text">参团人次</text>
-										<text class="commodity-item-num-count">123456</text>
+										<text class="commodity-item-num-count">{{item.TeamUsers}}</text>
 									</view>
 								</view>
 							</view>

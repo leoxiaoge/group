@@ -1,9 +1,9 @@
 <!--components/popup-picker/index.wxml-->
-<view class="content" wx:if="{{show}}" catchtouchmove="preventdefault">
+<view class="content" wx:if="{{show}}" catchtap="popupTap" catchtouchmove="preventdefault">
   <view class="page-content">
-    <view class="page-header">
-      <button class="cancel">{{cancel}}</button>
-      <button class="confirm">{{confirm}}</button>
+    <view class="page-item">
+      <button class="cancel" catchtap="popupTap">{{cancel}}</button>
+      <button class="confirm" catchtap="confirmTap">{{confirm}}</button>
     </view>
     <slot name="content" />
   </view>

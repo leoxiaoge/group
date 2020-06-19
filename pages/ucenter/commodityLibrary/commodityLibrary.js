@@ -88,7 +88,9 @@ Page({
   switchCate: function (e) {
     let categoryID = e.currentTarget.dataset.id
     this.setData({
-      categoryID: categoryID
+      categoryID: categoryID,
+      pageNum: 1,
+      items: []
     })
     this.ProductsListGet()
   },
