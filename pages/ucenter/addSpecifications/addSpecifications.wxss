@@ -1,1 +1,130 @@
 /* pages/ucenter/addSpecifications/addSpecifications.wxss */
+page {
+  background-color: #fff;
+}
+
+.spec-content {
+  margin: 0 30rpx;
+}
+
+.spec-item-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.spec-delect-iamge {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.spec-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.spec-tag {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.spec-input {
+  width: 360rpx;
+  border-radius: 8rpx;
+  border: 2rpx solid #e5e5e5;
+  margin: 0 20rpx;
+  padding: 16rpx 24rpx;
+}
+
+.spec-item-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60rpx;
+}
+
+.sign {
+  color: #ff0000;
+}
+
+.spec-prompt {
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #ededed;
+}
+
+.spec-item {
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #ededed;
+}
+
+.spec-tag {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.spec-tag-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 80rpx;
+}
+
+.spec-item-index {
+  padding: 8rpx 0;
+}
+
+.spec-add {
+  display: flex;
+  align-items: center;
+}
+
+.spec-add-iamge {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.spec-add-text {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #ff5c27;
+  padding: 0 8rpx;
+}
+
+.spec-tag-text {
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #6ec902;
+  padding: 0 8rpx;
+}
+
+.spec-prompt {
+  display: flex;
+  align-items: center;
+}
+
+.spec-prompt-image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.empty {
+  height: 100rpx;
+}
+
+.next {
+  position: fixed;
+  bottom: 20rpx;
+  width: 100%;
+  padding: 0 30rpx;
+}
+
+.next button {
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  border-radius: 100rpx;
+  background-color: #ff5c27;
+}

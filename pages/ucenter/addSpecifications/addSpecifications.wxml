@@ -1,20 +1,62 @@
 <!--pages/ucenter/addSpecifications/addSpecifications.wxml-->
 <view class="container">
   <view class="spec-content">
-    <view class="spec-">{{prompt}}</view>
-    <view class="spec-">
-      <block wx:for="{{list}}">
-        <view class="spec-"></view>
+    <view class="spec-prompt">{{prompt}}</view>
+    <view class="spec-list">
+      <block wx:for="{{items}}" wx:key="index">
+        <view class="spec-item">
+          <view class="spec-item-content">
+            <view class="spec-item-header">
+              <view class="spec-item-index">
+                <text class="sign">*</text>
+                <text>规格{{index + 1}}标题</text>
+              </view>
+              <view class="spec-item-index">
+                <input class="spec-input" placeholder="请输入标题，如：颜色" bindinput="titleInput" data-index="{{index}}"></input>
+              </view>
+              <view class="spec-item-image">
+                <image class="spec-delect-iamge" src="{{cutIcon}}" mode="widthFix" bindtap="delectdSpecTap" data-index="{{index}}" wx:if="{{items.length > 1}}"></image>
+              </view>
+            </view>
+            <block wx:for="{{item.list}}" wx:for-item="idx" wx:for-index="y" wx:key="index">
+              <view class="spec-child">
+                <view class="spec-item-index">
+                  <text class="sign">*</text>
+                  <text>规格</text>
+                </view>
+                <view class="spec-item-index">
+                  <input class="spec-input" placeholder="如：白色" bindinput="childInput" data-index="{{index}}" data-y="{{y}}"></input>
+                </view>
+                <view class="spec-item-image">
+                  <image class="spec-delect-iamge" src="{{cutIcon}}" mode="widthFix" bindtap="delectChildSpecTap" data-index="{{index}}" data-y="{{y}}"></image>
+                </view>
+              </view>
+            </block>
+          </view>
+          <view class="spec-tag-right">
+            <view class="spec-add" bindtap="addSpecChildTap" data-index="{{index}}">
+              <image class="spec-add-iamge" src="{{addTagIcon}}" mode="widthFix"></image>
+              <text class="spec-tag-text">添加多规格</text>
+            </view>
+            <view class="spec-prompt">
+              <image class="spec-prompt-image" src="{{promptIcon}}" mode="widthFix"></image>
+            </view>
+          </view>
+        </view>
       </block>
     </view>
-    <view class="spec-">
-      <view class="spec-">
-        <image src="{{}}" mode=""></image>
-        <text></text>
+    <view class="spec-tag" wx:if="{{items.length < 2}}">
+      <view class="spec-add" bindtap="addSpecTap">
+        <image class="spec-add-iamge" src="{{addSpecificationsIcon}}" mode="widthFix"></image>
+        <text class="spec-add-text">添加多规格</text>
       </view>
-      <view class="spec-">
-        <image src="{{}}" mode=""></image>
+      <view class="spec-prompt">
+        <image class="spec-prompt-image" src="{{promptIcon}}" mode="widthFix"></image>
       </view>
     </view>
+  </view>
+  <view class="empty"></view>
+  <view class="next">
+    <button bindtap="nextTap">下一步</button>
   </view>
 </view>
