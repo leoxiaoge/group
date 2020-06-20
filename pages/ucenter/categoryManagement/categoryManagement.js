@@ -97,7 +97,9 @@ Page({
       console.log(res)
       util.showToast('添加成功！')
       this.getCategorysList()
-      this.popupTap()
+      this.setData({
+        showPopup: false,
+      })
     })
   },
 
@@ -167,7 +169,9 @@ Page({
       console.log(res)
       util.showToast('修改成功！')
       this.getCategorysList()
-      this.popupTap()
+      this.setData({
+        showPopup: false,
+      })
     })
   },
 

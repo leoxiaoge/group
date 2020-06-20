@@ -70,7 +70,7 @@ Page({
     items.forEach((item, i) => {
       console.log(item)
       if (index === i) {
-        item.price = value
+        item.SellerPrice = value
       }
     })
     this.setData({
@@ -86,7 +86,7 @@ Page({
     items.forEach((item, i) => {
       console.log(item)
       if (index === i) {
-        item.stock = value
+        item.StockNum = value
       }
     })
     this.setData({
@@ -133,7 +133,7 @@ Page({
     items.forEach((item, i) => {
       console.log(item)
       if (index === i) {
-        item.image = value
+        item.SkuImageUrl = value
       }
     })
     this.setData({
@@ -149,18 +149,19 @@ Page({
     let skusList = []
     items.forEach(item => {
       console.log(item)
-      skusItem = `${item.SkuProperty1_Name},${item.SkuProperty1_Value},${item.SkuProperty2_Name},${item.SkuProperty2_Value},${item.price},${item.stock},${item.image}`
+      skusItem = `${item.SkuProperty1_Name},${item.SkuProperty1_Value},${item.SkuProperty2_Name},${item.SkuProperty2_Value},${item.SellerPrice},${item.StockNum},${item.SkuImageUrl}`
       skusList.push(skusItem)
     })
     let skus = skusList.join('|') // 传入格式分别为：规格名称1,规格1值,规格2名称,规格2值,SKU售价,SKU库存量,Sku图片URL，多个SKU使用|分隔，SKU如果有图片的话请先用平台API进行上传后取得URL
     let pages = getCurrentPages() // 获取页面栈
     let currPage = pages[pages.length - 1] // 当前页面
     let prevPage = pages[pages.length - 2] // 上一个页面
-    console.log(currPage)
+    console.log('当前页面', currPage)
+    console.log('上一个页面', prevPage)
     prevPage.setData({
       skus: skus
     })
-    util.navigateBack('-1')
+    // util.navigateBack('-1')
   },
 
   /**
