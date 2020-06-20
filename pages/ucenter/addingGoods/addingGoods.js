@@ -308,8 +308,8 @@ Page({
     let CategoryID = this.data.categoryID
     let Tags = this.data.tagsList.join('/')
     let ImageUrls = this.data.imageUrl.join(',')
-    // let Skus = this.data.skus
-    let Skus = '颜色,黑色,尺码,S,18.80,-1,|颜色,黑色,尺码,M,19.80,-1,'
+    let Skus = this.data.skus
+    // let Skus = '颜色,黑色,尺码,S,18.80,-1,|颜色,黑色,尺码,M,19.80,-1,'
     if (!ProductTitle) {
       util.showToast('请输入团购名称！')
       return
