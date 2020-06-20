@@ -158,10 +158,11 @@ Page({
     let prevPage = pages[pages.length - 2] // 上一个页面
     console.log('当前页面', currPage)
     console.log('上一个页面', prevPage)
+    console.log('skus', skus)
     prevPage.setData({
       skus: skus
     })
-    // util.navigateBack('-1')
+    util.navigateBack('-1')
   },
 
   /**
