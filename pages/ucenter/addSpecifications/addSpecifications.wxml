@@ -28,7 +28,7 @@
                   <input class="spec-input" placeholder="如：白色" bindinput="childInput" data-index="{{index}}" data-y="{{y}}"></input>
                 </view>
                 <view class="spec-item-image">
-                  <image class="spec-delect-iamge" src="{{cutIcon}}" mode="widthFix" bindtap="delectChildSpecTap" data-index="{{index}}" data-y="{{y}}"></image>
+                  <image class="spec-delect-iamge" src="{{cutIcon}}" mode="widthFix" bindtap="delectChildSpecTap" data-index="{{index}}" data-y="{{y}}" wx:if="{{item.list.length > 1}}"></image>
                 </view>
               </view>
             </block>

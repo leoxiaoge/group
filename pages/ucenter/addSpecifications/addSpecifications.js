@@ -149,7 +149,7 @@ Page({
     util.request(api.SkusListGet, data).then((res) => {
       console.log(res)
       let Skus = res.Skus
-      util.navigateTo('/pages/ucenter/settingSpecifications/settingSpecifications')
+      util.redirectTo('/pages/ucenter/settingSpecifications/settingSpecifications')
     })
   },
 
