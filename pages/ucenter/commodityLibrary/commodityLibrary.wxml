@@ -43,10 +43,10 @@
 							</view>
 						</label>
 						<view class="del operating">
-							<view class="edit-btn" bindtap="editTap" data-id="{{item.ID}}">
+							<view class="edit-btn" bindtap="editTap" data-id="{{item.ID}}" data-index="{{index}}">
 								<image src="{{editIcon}}" mode="aspectFit"></image>
 							</view>
-							<view class="delete-btn" bindtap="deleteTap" data-id="{{item.ID}}">
+							<view class="delete-btn" bindtap="deleteTap" data-id="{{item.ID}}" data-index="{{index}}">
 								<image src="{{deleteIcon}}" mode="aspectFit"></image>
 							</view>
 						</view>
@@ -67,7 +67,7 @@
       <view class="position">
         <view class="position-button">
           <button class="cancel">{{cancelButton}}</button>
-          <button class="confirm">{{confirmButoon}}</button>
+          <button class="confirm">{{confirmButoon}}<block wx:if="{{productsList.length > 0}}">{{productsList.length}}个商品</block></button>
         </view>
       </view>
     </view>

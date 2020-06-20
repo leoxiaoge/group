@@ -1,3 +1,60 @@
 <!--pages/ucenter/settingSpecifications/settingSpecifications.wxml-->
 <view class="container">
+  <view class="setting">
+    <view class="setting-content">
+      <view class="setting-text">所有商品统一价格</view>
+      <view class="setting-switch">
+        <switch checked="{{priceChecked}}" color="#ff5c27" bindchange="switchPriceChange" />
+      </view>
+    </view>
+    <view class="setting-content">
+      <view class="setting-text">所有商品统一库存</view>
+      <view class="setting-switch">
+        <switch checked="{{stockChecked}}" color="#ff5c27" bindchange="switchStockChange" />
+      </view>
+    </view>
+  </view>
+  <view class="spec-title">
+    <text class="spec-title-text">共{{items.length}}个规格</text>
+  </view>
+  <view class="spec">
+    <view class="spec-content-list">
+      <block wx:for="{{items}}" wx:key="index">
+        <view class="spec-item">
+          <view class="spec-content-title">
+            <text class="spec-index">{{index + 1}}/{{items.length}}</text>
+            <text class="spec-index-text">{{item.SkuProperty1_Name}}{{item.SkuProperty1_Value}}</text>
+            <text class="spec-index-text">{{item.SkuProperty2_Name}}{{item.SkuProperty2_Value}}</text>
+          </view>
+          <view class="spec-content">
+            <text class="spec-content-text">团购价(￥)</text>
+            <view class="spec-right">
+              <input class="spec-input" placeholder="如：9.9" bindinput="priceInput" data-index="{{index}}"></input>
+            </view>
+          </view>
+          <view class="spec-content">
+            <text class="spec-content-text">库存</text>
+            <view class="spec-right">
+              <input class="spec-input" placeholder="如：1000" bindinput="stockInput" data-index="{{index}}"></input>
+            </view>
+          </view>
+          <view class="spec-content">
+            <text class="spec-content-text">规格主图</text>
+            <view class="spec-right">
+              <view class="spec-right">
+                <view class="spec-content-image" bindtap="chooseFaceImage" data-index="{{index}}">
+                  <image class="add-image" src="{{addIcon}}" mode="widthFix"></image>
+                  <image class="camera-image" src="{{cameraIcon}}" mode="widthFix"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="empty"></view>
+  <view class="next">
+    <button bindtap="nextTap">确定</button>
+  </view>
 </view>

@@ -65,6 +65,13 @@
       </picker>
     </view>
     <view class="goods-item-tag">
+      <view class="goods-item-tag-content">
+        <view class="goods-item-specifications-image-text" bindtap="popupTap">
+          <image class="goods-item-tag-image" src="{{addTagIcon}}" mode="widthFix"></image>
+          <text class="goods-item-tag-text">添加标签</text>
+        </view>
+        <image class="goods-item-tag-image" src="{{promptIcon}}" mode="widthFix" bindtap="tagPromptTap"></image>
+      </view>
       <view class="tag-chosen" wx:if="{{tagsSelectList.length > 0}}">
         <view class="tag-chosen-title">已选择</view>
         <view class="tag-chosen-list">
@@ -75,13 +82,6 @@
             </view>
           </block>
         </view>
-      </view>
-      <view class="goods-item-tag-content">
-        <view class="goods-item-specifications-image-text" bindtap="popupTap">
-          <image class="goods-item-tag-image" src="{{addTagIcon}}" mode="widthFix"></image>
-          <text class="goods-item-tag-text">添加标签</text>
-        </view>
-        <image class="goods-item-tag-image" src="{{promptIcon}}" mode="widthFix" bindtap="tagPromptTap"></image>
       </view>
     </view>
   </view>

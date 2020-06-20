@@ -187,11 +187,17 @@ Page({
   // 删除商品
   deleteTap: function (e) {
     let ProductID = e.currentTarget.dataset.id
+    let index = e.currentTarget.dataset.index
+    let items = this.data.items
     let data = {
       ProductID: ProductID
     }
     util.request(api.ProductDelete, data).then((res) => {
       console.log(res)
+      items.splice(index, 1)
+      this.setData({
+        items: items
+      })
       util.showToast('删除成功！')
     })
   },

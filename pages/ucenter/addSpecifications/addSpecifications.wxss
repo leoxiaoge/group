@@ -51,7 +51,6 @@ page {
 
 .spec-prompt {
   padding: 30rpx 0;
-  border-bottom: 2rpx solid #ededed;
 }
 
 .spec-item {

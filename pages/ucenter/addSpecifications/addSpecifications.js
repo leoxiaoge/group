@@ -134,12 +134,27 @@ Page({
   nextTap: function () {
     let items = this.data.items
     console.log(items)
+    let isCan = false // 是否可以通过
     let element = []
-    items.forEach(item => {
+    items.forEach((item, i) => {
       console.log(item)
       let itemData = `${item.title}/${item.list.join(',')}`
       element.push(itemData)
+      item.list.forEach(ele => {
+        console.log(ele)
+        if (!ele) {
+          isCan = true
+          util.showToast('规格为空，请输入或删除！')
+        }
+      })
+      if (!item.title) {
+        isCan = true
+        util.showToast(`规格分类${i + 1}名称为空，请输入！`)
+      }
     })
+    if (isCan) {
+      return
+    }
     let SkuNameValues = element.join('|')
     console.log(SkuNameValues)
     // 多规格SKU转换
@@ -148,8 +163,7 @@ Page({
     }
     util.request(api.SkusListGet, data).then((res) => {
       console.log(res)
-      let Skus = res.Skus
-      util.redirectTo('/pages/ucenter/settingSpecifications/settingSpecifications')
+      util.redirectTo(`/pages/ucenter/settingSpecifications/settingSpecifications?value=${SkuNameValues}`)
     })
   },
 
