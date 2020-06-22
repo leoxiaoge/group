@@ -126,7 +126,7 @@
 
   <view class="goods-">
     <view class="goods-"></view>
-    <view class="goods-">已阅读并同意《团长工具箱开团协议》</view>
+    <view class="goods-" bindtap="addGoodsTap">已阅读并同意《团长工具箱开团协议》</view>
   </view>
 	<popup-picker show="{{showPopup}}" bindcancel="cancel">
 		<view class="popup-slot" slot="content" catchtap="catchtap">

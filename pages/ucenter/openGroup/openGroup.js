@@ -1,4 +1,7 @@
 // pages/ucenter/openGroup/openGroup.js
+const util = require('../../../utils/util.js')
+const api = require('../../../config/api.js')
+
 Page({
 
   /**
@@ -19,14 +22,14 @@ Page({
     promptIcon: '/static/images/prompt_icon.png',
     arrowIcon: '/static/images/arrow_icon.png',
     closeTagIcon: '/static/images/close_tag_icon.png',
-    
+    productsListJson: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
   },
 
   /**
@@ -41,6 +44,67 @@ Page({
    */
   onShow: function () {
 
+  },
+
+  // 添加新商品
+  addGoodsTap: function () {
+    util.navigateTo('/pages/ucenter/commodityLibrary/commodityLibrary')
+  },
+
+  // 发布团购
+  addProductsTap: function () {
+    let Title = '海鲜团购 20120-04-30-1 期'
+    let BuyingText = '饶平新鲜海捕采购'
+    let BuyingSmallImages = '/upload/images/201923203203.png,/upload/images/201923203204.png'
+    let BuyingBigImages = ''
+    let BuyingVideos = ''
+    let Tags = ''
+    let BuyingType = 0
+    let BeginTime = '2020-07-28'
+    let EndTime = '2020-09-14'
+    let IsPrePay = 0
+    let ShardType = 1
+    let UserDisplayType = 1
+    let IsSharedDiscount = 0
+    let AutoInputs = ''
+    let AutoAdds = 0
+    let AutoAddSpans = 60
+    let ProductsListJson =  this.data.productsListJson
+    let SelectedProductIds = []
+    ProductsListJson.forEach(item => {
+      console.log(item)
+      SelectedProductIds.push(item.ID)
+    })
+    SelectedProductIds.join(',')
+    let UserCancelOrder = 0
+    let BuyingAddRedPack = ''
+    let ShareRedPack = ''
+    console.log(SelectedProductIds)
+    let data = {
+      Title: Title,
+      BuyingText: BuyingText,
+      BuyingSmallImages: BuyingSmallImages,
+      BuyingBigImages: BuyingBigImages,
+      BuyingVideos: BuyingVideos,
+      Tags: Tags,
+      BuyingType: BuyingType,
+      BeginTime: BeginTime,
+      EndTime: EndTime,
+      IsPrePay: IsPrePay,
+      ShardType: ShardType,
+      UserDisplayType: UserDisplayType,
+      IsSharedDiscount: IsSharedDiscount,
+      AutoInputs: AutoInputs,
+      AutoAdds: AutoAdds,
+      AutoAddSpans: AutoAddSpans,
+      SelectedProductIds: SelectedProductIds,
+      UserCancelOrder: UserCancelOrder,
+      BuyingAddRedPack: BuyingAddRedPack,
+      ShareRedPack: ShareRedPack,
+    }
+    util.request(api.BuyingCreate, data).then((res) => {
+      console.log(res)
+    })
   },
 
   /**

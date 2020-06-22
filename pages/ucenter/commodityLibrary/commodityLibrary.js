@@ -223,6 +223,21 @@ Page({
     }
   },
 
+  // 确定选择
+  confirmTap: function () {
+    let productsListJson = this.data.productsList
+    let pages = getCurrentPages() // 获取页面栈
+    let currPage = pages[pages.length - 1] // 当前页面
+    let prevPage = pages[pages.length - 2] // 上一个页面
+    console.log('当前页面', currPage)
+    console.log('上一个页面', prevPage)
+    console.log('productsListJson', productsListJson)
+    prevPage.setData({
+      productsListJson: productsListJson
+    })
+    util.navigateBack('-1')
+  },
+
   // 添加新商品
   addGoodsTap: function () {
     util.navigateTo('/pages/ucenter/addingGoods/addingGoods')

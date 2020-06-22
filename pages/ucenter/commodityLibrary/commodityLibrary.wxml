@@ -66,8 +66,8 @@
       <view class="empty"></view>
       <view class="position">
         <view class="position-button">
-          <button class="cancel">{{cancelButton}}</button>
-          <button class="confirm">{{confirmButoon}}<block wx:if="{{productsList.length > 0}}">{{productsList.length}}个商品</block></button>
+          <button class="cancel" bindtap="cancelTap">{{cancelButton}}</button>
+          <button class="confirm" bindtap="confirmTap">{{confirmButoon}}<block wx:if="{{productsList.length > 0}}">{{productsList.length}}个商品</block></button>
         </view>
       </view>
     </view>

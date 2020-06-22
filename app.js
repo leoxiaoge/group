@@ -32,6 +32,7 @@ App({
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               }
+              user.loginByWeixin(res.userInfo) // 调用登录，保持长连接
             }
           })
         }
