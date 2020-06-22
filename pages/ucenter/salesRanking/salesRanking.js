@@ -1,25 +1,11 @@
-// pages/ucenter/openGroup/openGroup.js
+// pages/ucenter/salesRanking/salesRanking.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tagsList: [], // 常见标签列表id
-    tagsSelectList: [], // 已选择标签列表
-    showPopup: false, // 窗口显示隐藏
-    showSlotPopup: false, // 提示窗口显示隐藏
-    popupImage: '', // 提示窗口背景图片
-    elementsTag: '', // 标签输入值
-    elementsTagNum: 10,
-    addIcon: '/static/images/add_icon.png',
-    cameraIcon: '/static/images/add_camera_icon.png',
-    addSpecificationsIcon: '/static/images/add_specifications_icon.png',
-    addTagIcon: '/static/images/add_tag_icon.png',
-    promptIcon: '/static/images/prompt_icon.png',
-    arrowIcon: '/static/images/arrow_icon.png',
-    closeTagIcon: '/static/images/close_tag_icon.png',
-    
+
   },
 
   /**

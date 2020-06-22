@@ -36,7 +36,9 @@
         "categoryManagement/categoryManagement",
         "addingGoods/addingGoods",
         "addSpecifications/addSpecifications",
-        "settingSpecifications/settingSpecifications"
+        "settingSpecifications/settingSpecifications",
+        "salesRanking/salesRanking",
+        "merchantRanking/merchantRanking"
       ]
     }
   ],

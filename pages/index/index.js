@@ -160,8 +160,8 @@ Page({
           if (i === 4) {
             let url = `/pages/home/applyAudit/applyAudit?auditStatus=${auditStatus}`
             if (auditStatus == 1) {
-              // url = '/pages/ucenter/openGroup/openGroup'
-              url = '/pages/ucenter/addingGoods/addingGoods'
+              url = '/pages/ucenter/openGroup/openGroup'
+              // url = '/pages/ucenter/addingGoods/addingGoods'
             }
             item.url = url
           }

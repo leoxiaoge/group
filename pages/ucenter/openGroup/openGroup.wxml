@@ -1,4 +1,172 @@
 <!--pages/ucenter/openGroup/openGroup.wxml-->
 <view class="container">
-  
+	<view class="goods-item">
+		<view class="goods-title">
+			<text class="sign">*</text>
+			<input class="title-input" placeholder="请输入团购名称" value="{{productTitle}}" bindinput="titleInput"></input>
+		</view>
+	</view>
+	<view class="goods-item">
+		<view class="goods-title">
+			<view class="goods-title-left">
+				<text class="sign">*</text>
+				<text class="goods-title-text">请上传团购焦点图片</text>
+				<image src="{{promptIcon}}" mode="widthFix"></image>
+			</view>
+			<view class="goods-title-right">
+				<view class="goods-title">
+					<text class="goods-title-msg">焦点图片能更吸引用户，可上传1-6张</text>
+					<image src="{{arrowIcon}}" mode="widthFix"></image>
+				</view>
+			</view>
+		</view>
+		<view>
+			<view class="goods-">
+				<block wx:for="{{image}}">
+					<image src="{{item}}" mode="widthFix"></image>
+				</block>
+			</view>
+			<view class="goods-">
+        <image src="{{addIcon}}"></image>
+      </view>
+		</view>
+	</view>
+  <view class="goods-">
+    <view class="goods-">
+      <view class="goods-"></view>
+      <view class="goods-">
+        <text></text>
+        <image src="{{}}" mode=""></image>
+      </view>
+    </view>
+  </view>
+  <view class="goods-">
+    <view class="goods-"></view>
+    <view class="goods-">
+      <view class="goods-">
+        <image src="{{}}" mode=""></image>
+        <text>大图</text>
+      </view>
+      <view class="goods-">
+        <image src="{{}}" mode=""></image>
+        <text>文字</text>
+      </view>
+      <view class="goods-">
+        <image src="{{}}" mode=""></image>
+        <text>视频</text>
+      </view>
+    </view>
+  </view>
+  <view class="goods-">
+    <view class="goods-">
+      <view class="goods-">
+        <text>*</text>
+        <text>团购商品添加</text>
+      </view>
+      <view class="goods-">
+        <text>商品库中选商品</text>
+        <image src="{{}}" mode=""></image>
+      </view>
+    </view>
+  </view>
+  <view class="goods-">
+    <view class="goods-">
+      <view class="goods-">
+        <text></text>
+        <image src="{{}}" mode=""></image>
+      </view>
+      <view class="goods-">
+        <switch></switch>
+      </view>
+    </view>
+    <view class="goods-">
+      <input placeholder="最低金额 例如 0.5元"></input>
+      <text>~</text>
+      <input placeholder="最高金额 例如 0.5元"></input>
+    </view>
+  </view>
+
+  <view class="goods-">
+    <view class="goods-">团购活动设置</view>
+  </view>
+  <view class="goods-">
+    <view class="goods-"></view>
+    <view class="goods-">
+      <text>只有发布者可以转发</text>
+      <image src="{{}}" mode=""></image>
+    </view>
+  </view>
+  <view class="goods-">
+    <view class="goods-">
+      <view class="goods-"></view>
+      <view class="goods-">
+        <view class="goods-"></view>
+        <view class="goods-"></view>
+      </view>
+    </view>
+    <view class="goods-">
+      <view class="goods-">
+        <image src="{{}}" mode=""></image>
+        <input placeholder="设置活动时间"></input>
+      </view>
+      <view class="goods-"></view>
+      <view class="goods-">
+        <image src="{{}}" mode=""></image>
+        <input placeholder="设置结束时间"></input>
+      </view>
+    </view>
+  </view>
+  <view class="goods-">
+    <view class="goods-"></view>
+    <view class="goods-">
+      <text>不限次</text>
+      <image src="{{}}" mode=""></image>
+    </view>
+  </view>
+
+  <view class="goods-">
+    <view class="goods-"></view>
+    <view class="goods-">已阅读并同意《团长工具箱开团协议》</view>
+  </view>
+	<popup-picker show="{{showPopup}}" bindcancel="cancel">
+		<view class="popup-slot" slot="content" catchtap="catchtap">
+			<view class="tag-header">
+				<view class="tag-input-num">
+					<input class="tag-input" placeholder="请输入标签名称" value="{{elementsTag}}" maxlength="10" bindinput="tagInput"></input>
+					<text class="tag-num">{{elementsTagNum}}</text>
+				</view>
+				<button class="tag-button" disabled="{{!elementsTag}}" bindtap="determineTap">确定</button>
+			</view>
+			<view class="tag-chosen" wx:if="{{tagsSelectList.length > 0}}">
+				<view class="tag-chosen-title">已选择</view>
+				<view class="tag-chosen-list">
+					<block wx:for="{{tagsSelectList}}" wx:key="index">
+						<view class="tag-chosen-item">
+							<text class="tag-chosen-text">{{item}}</text>
+							<image class="tag-close-image" src="{{closeTagIcon}}" mode="aspectFit" bindtap="closeTagTap" data-index="{{index}}"></image>
+						</view>
+					</block>
+				</view>
+			</view>
+			<view class="tag-common" wx:if="{{tagsList.length > 0}}">
+				<view class="tag-common-title">常见标签（点击添加）</view>
+				<view class="tag-common-list">
+					<block wx:for="{{tagsList}}" wx:key="index">
+						<view class="tag-common-item" catchtap="addTagTap" data-index="{{index}}">
+							<text class="tag-common-text">{{item}}</text>
+						</view>
+					</block>
+				</view>
+			</view>
+		</view>
+	</popup-picker>
+	<popup show="{{showSlotPopup}}">
+		<view class="popup-image-slot" slot="content" catchtap="catchtap">
+			<image src="{{popupImage}}" mode="aspectFit"></image>
+		</view>
+	</popup>
+	<view class="empty"></view>
+	<view class="goods-item-button">
+		<button class="submit-button" bindtap="addProductsTap">立即发布</button>
+	</view>
 </view>
